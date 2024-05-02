@@ -113,7 +113,7 @@
 <div class="container">
     <h2>Admin Actions</h2>
     <ul>
-        <li><a href="viewOrganizationsList.html" onclick="viewOrganizationsList()">View Organizations List</a></li>
+        <li><a href="viewOrganizationsList.html">View Organizations List</a></li>
         <li><a href="viewDonorsList.html" onclick="viewDonorsList()">View Donors List</a></li>
         <li><a href="reviewOrganizationSubmissions.html" onclick="reviewOrganizationSubmissions()">Review Organization Submissions</a></li>
         <li><a href="reviewDonorSubmissions.html" onclick="reviewDonorSubmissions()">Review Donor Submissions</a></li>
@@ -128,117 +128,15 @@
     </ul>
 </div>
 
-<script>
-    // Dummy data for organizations and donors
-    const organizations = [
-        { id: 1, name: "Organization A", status: "pending" },
-        { id: 2, name: "Organization B", status: "approved" },
-        { id: 3, name: "Organization C", status: "pending" }
-    ];
 
-    const donors = [
-        { id: 1, name: "Donor X", status: "pending" },
-        { id: 2, name: "Donor Y", status: "approved" },
-        { id: 3, name: "Donor Z", status: "pending" }
-    ];
-
-
-    // Logic to review organization submissions
-    function reviewOrganizationSubmissions() {
-        console.log("Reviewing Organization Submissions:");
-        organizations.forEach(org => {
-            if (org.status === "pending") {
-                console.log(`Reviewing submission for ${org.name}`);
-                // Review logic here
-            }
-        });
-    }
-
-    // Logic to review donor submissions
-    function reviewDonorSubmissions() {
-        console.log("Reviewing Donor Submissions:");
-        donors.forEach(donor => {
-            if (donor.status === "pending") {
-                console.log(`Reviewing submission for ${donor.name}`);
-                // Review logic here
-            }
-        });
-    }
-
-    // Logic to manage organization requests
-    function manageOrganizationRequests() {
-        console.log("Managing Organization Requests:");
-        organizations.forEach(org => {
-            if (org.status === "pending") {
-                console.log(`Managing request for ${org.name}`);
-                // Manage logic here
-            }
-        });
-    }
-
-    // Logic to manage donor requests
-    function manageDonorRequests() {
-        console.log("Managing Donor Requests:");
-        donors.forEach(donor => {
-            if (donor.status === "pending") {
-                console.log(`Managing request for ${donor.name}`);
-                // Manage logic here
-            }
-        });
-    }
-
-    // Logic for password management
-    function passwordManagement() {
-        console.log("Password Management:");
-        // Implement password management logic here
-    }
-
-    // Logic to view registered organizations
-    function viewRegisteredOrganizations() {
-        console.log("Viewing Registered Organizations:");
-        console.table(organizations);
-    }
-
-    // Logic to search registered organizations
-    function searchRegisteredOrganizations(query) {
-        console.log("Searching Registered Organizations:");
-        const results = organizations.filter(org => org.name.toLowerCase().includes(query.toLowerCase()));
-        console.table(results);
-    }
-
-    // Logic to filter registered organizations
-    function filterRegisteredOrganizations(criteria) {
-        console.log("Filtering Registered Organizations:");
-        const results = organizations.filter(org => {
-            // Implement filtering logic based on criteria
-            return true; // Placeholder return, implement based on criteria
-        });
-        console.table(results);
-    }
-
-    // Logic to view organization details
-    function viewOrganizationDetails(orgId) {
-        console.log("Viewing Organization Details:");
-        const organization = organizations.find(org => org.id === orgId);
-        if (organization) {
-            console.log(organization);
-        } else {
-            console.log("Organization not found");
-        }
-    }
-
-    // Logic to delete organization or donor account
-    function deleteOrganizationOrDonorAccount(accountId) {
-        console.log("Deleting Organization or Donor Account:");
-        // Find and remove the organization or donor from the list
-        const index = organizations.findIndex(org => org.id === accountId);
-        if (index !== -1) {
-            organizations.splice(index, 1);
-            console.log("Organization deleted successfully");
-        } else {
-            console.log("Organization not found");
-        }
-    }
-</script>
+<footer>
+    <div class="container_12">
+    <div class="grid_12">
+    <div class="copy">
+    Noor Online Charity Donation Website &copy; 2023 | <a href="privacy-policy.html">Privacy Policy</a>
+    </div>
+    </div>
+    </div>
+    </footer>
 </body>
 </html>

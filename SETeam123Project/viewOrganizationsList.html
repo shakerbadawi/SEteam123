@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <title>Admin Dashboard</title>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no" />
+    <style>
+        /* Additional CSS for navigation bar */
+        @import "reset.css";
+@import "grid.css";
+@import "font-awesome.css";
+@import "superfish.css";
+
+@import url(//fonts.googleapis.com/css?family=Open+Sans:400);
+@import url(//fonts.googleapis.com/css?family=Open+Sans:300);
+@import url(//fonts.googleapis.com/css?family=Open+Sans:600);
+@import url(//fonts.googleapis.com/css?family=Open+Sans:400italic);
+
+html {
+    width: 100%;
+}
+
+header {
+    background-image: url("images/smiling kids BW.pngg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: block;
+    text-align: left;
+    padding: 32px 0 17px;
+    border-bottom: 1px solid #c2c2c2;
+    box-shadow: 0 5px 3px #f7f7f7;
+}
+
+a[href^="tel:"] {
+    color: inherit;
+    text-decoration: none;
+}
+
+* {
+    -webkit-text-size-adjust: none;
+}
+
+body {
+    position: relative;
+    min-width: 960px;
+    background-color: #fff;
+    color: #838181;
+    font: 14px/20px 'Open Sans', sans-serif;
+}
+
+.ic {
+    border: 0;
+    float: right;
+    background: #fff;
+    color: #f00;
+    width: 50%;
+    line-height: 10px;
+    font-size: 10px;
+    margin: -220% 0 0 0;
+    overflow: hidden;
+    padding: 0;
+}
+
+strong {
+    font-weight: 700;
+}
+
+address {
+    font-style: normal;
+}
+
+p {
+    margin-bottom: 20px;
+}
+
+input {
+    border-radius: 0!important;
+    outline: none!important;
+}
+
+img {
+    max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+    color: #FF5B5C;
+}
+
+h2 {
+    font-size: 18px;
+    line-height: 24px;
+    padding-top: 88px;
+    margin-bottom: 18px;
+}
+
+h2 a:hover {
+    color: #626161;
+}
+
+.page1 h2 {
+    padding-top: 89px;
+    margin-bottom: 18px;
+}
+
+h3 {
+    padding-top: 51px;
+    font-size: 16px;
+    line-height: 20px;
+    color: #626161;
+    margin-bottom: 18px;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+ul.list.title {
+    font-size: 16px;
+    margin-bottom: 2px;
+}
+
+ul.list {
+    padding-top: 3px;
+}
+
+ul.list time {
+    padding-bottom: 10px;
+    padding-top: 5px;
+    line-height: 18px;
+    margin-top: 2px;
+    text-align: center;
+    margin-right: 20px;
+    width: 60px;
+    display: block;
+    color: #fff;
+    font-size: 16px;
+    float: left;
+    background-color: #FF5B5C;
+}
+
+ul.list time span {
+    display: block;
+    border-top: 1px solid #c4e7d7;
+    margin: 5px 2px 0;
+}
+
+ul.list li {
+    overflow: hidden;
+    line-height: 18px;
+}
+
+ul.list li+li {
+    margin-top: 14px;
+}
+
+ul.list1 {
+    margin-top: -2px;
+}
+
+a.btn {
+    margin-top: 25px;
+    color: #fff;
+    font-size: 12px;
+    line-height: 20px;
+    display: inline-block;
+    padding: 4px 17px 5px;
+    background-color: #FFBD4A;
+}
+
+a.btn:hover {
+    background-color: #E14F42;
+}
+
+.socials a {
+    display: block;
+    background-color: #FF5B5C;
+    color: #fff;
+    float: left;
+    font-size: 24px;
+    position: relative;
+    width: 38px;
+    text-align: center;
+    height: 37px;
+}
+
+.socials a:hover {
+    background-color: #fff;
+    color: #FF5B5C;
+}
+
+.map figure iframe {
+    width: 100%;
+    height: 312px;
+    max-width: 100%;
+    border: 1px solid #FFBD4A;
+}
+
+footer {
+    display: block;
+    text-align: left;
+    padding: 30px 0 57px;
+    font-size: 12px;
+    color: #8c8989;
+    line-height: 14px;
+    background-color: #FF5B5C;
+}
+
+#toTop {
+    display: none;
+    text-decoration: none;
+    position: fixed;
+    bottom: 40px;
+    left: 51%;
+    margin-left: 500px;
+    overflow: hidden;
+    width: 50px;
+    height: 52px;
+    border: none;
+    text-indent: -999px;
+    z-index: 20;
+    background: url(../images/totop.png) no-repeat left 0;
+    transition: 0s ease;
+    -o-transition: 0s ease;
+    -webkit-transition: 0s ease;
+}
+
+#toTop:hover {
+    outline: none;
+    background-position: right 0;
+}
+
+/* Additional CSS for navigation bar */
+.categories {
+    list-style-type: none;
+    padding: 0;
+}
+
+.categories li {
+    display: inline;
+    margin-right: 10px;
+}
+
+.categories li a {
+    text-decoration: none;
+    color: blue;
+}
+
+.categories li a:hover {
+    text-decoration: underline;
+}
+
+/* Additional CSS for dropdown menu */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+
+/* Additional CSS for search bar */
+.search-container {
+    float: right;
+    margin-top: 10px;
+}
+
+.search-container input[type=text] {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+}
+
+.search-container button {
+    float: right;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+
+.search-container button:hover {
+    background: #ccc;
+}
+
+    </style>
+</head>
+
+<body class="page1" id="top">
+    <!--=================================header=================================-->
+    <header>
+        <div class="container_12">
+            <div class="grid_12">
+                <h1>
+                    <a href="index.html">
+                        <img src="images/NOOR_NGO.png" alt="Online Charity Donation Website">
+                    </a>
+                </h1>
+                <div class="menu_block ">
+                    <div class="clear"></div>
+                    <!-- Navigation bar for categories -->
+        <ul class="categories">
+            <li><a href="#" onclick="filterOrganizations('All')">All</a></li>
+            <li><a href="#" onclick="filterOrganizations('Healthcare')">Healthcare</a></li>
+            <li><a href="#" onclick="filterOrganizations('Education')">Education</a></li>
+            <li><a href="#" onclick="filterOrganizations('Community Development')">Community Development</a></li>
+            <li><a href="#" onclick="filterOrganizations('Humanitarian')">Humanitarian</a></li>
+            <a href="#" onclick="filterOrganizations('Environment')">Environment</a>
+            <a href="#" onclick="filterOrganizations('Child Welfare')">Child Welfare</a>
+            <a href="#" onclick="filterOrganizations('Crisis Support')">Crisis Support</a>
+            <a href="#" onclick="filterOrganizations('Housing & Homelessness')">Housing & Homelessness</a>
+            <a href="#" onclick="filterOrganizations('Social Services')">Social Services</a>
+            <a href="#" onclick="filterOrganizations('Animal Welfare<')">Animal Welfare</a>
+            <a href="#" onclick="filterOrganizations('Food Security')">Food Security</a>
+            <a href="#" onclick="filterOrganizations('Disability Rights')">Disability Rights</a>
+            <!-- Add more categories as needed -->
+        </ul>
+         <!-- Search bar -->
+         
+            <form onsubmit="searchOrganization(); return false;">
+                <input type="text" placeholder="Search by organization name..." id="searchInput">
+                <button type="submit">Search</button>
+            </form>
+             <!-- Dropdown menu for viewing donors list -->
+        <div class="dropdown">
+            <button class="dropbtn">View Organizations List</button>
+            <div class="dropdown-content">
+                <a href="#" onclick="filterOrganizations('All')">All</a>
+                <a href="#" onclick="filterOrganizations('Healthcare')">Healthcare</a>
+                <a href="#" onclick="filterOrganizations('Education')">Education</a>
+                <a href="#" onclick="filterOrganizations('Community Development')">Community Development</a>
+                <a href="#" onclick="filterOrganizations('Humanitarian')">Humanitarian</a>
+                <a href="#" onclick="filterOrganizations('Environment')">Environment</a>
+                <a href="#" onclick="filterOrganizations('Child Welfare')">Child Welfare</a>
+                <a href="#" onclick="filterOrganizations('Crisis Support')">Crisis Support</a>
+                <a href="#" onclick="filterOrganizations('Housing & Homelessness')">Housing & Homelessness</a>
+                <a href="#" onclick="filterOrganizations('Social Services')">Social Services</a>
+                <a href="#" onclick="filterOrganizations('Animal Welfare<')">Animal Welfare</a>
+                <a href="#" onclick="filterOrganizations('Food Security')">Food Security</a>
+                <a href="#" onclick="filterOrganizations('Disability Rights')">Disability Rights</a>
+                <!-- Add more categories as needed -->
+            </div>
+            
+        </div>
+
+                    
+                </div>
+            </div>
+        </div>
+    </header>
+  <body>
+        <h2>Organizations List:</h2>
+
+        
+
+       
+       
+
+        <ul id="organizationsList">
+            <!-- Dummy data will be dynamically inserted here -->
+        </ul>
+
+        <script>
+            // Dummy data for organizations
+            const organizations = [{
+                    name: "Charity Foundation",
+                    category: "Healthcare"
+                },
+                {
+                    name: "Community Support Group",
+                    category: "Education"
+                },
+                {
+                    name: "Hope for All",
+                    category: "Community Development"
+                },
+                {
+                    name: "Global Aid Network",
+                    category: "Humanitarian"
+                },
+                {
+                    name: "Children's Shelter",
+                    category: "Child Welfare"
+                },
+                {
+                    name: "Elderly Care Association",
+                    category: "Social Services"
+                },
+                {
+                    name: "Environmental Conservation Society",
+                    category: "Environment"
+                },
+                {
+                    name: "Youth Empowerment Initiative",
+                    category: "Youth Development"
+                },
+                {
+                    name: "Animal Rescue Organization",
+                    category: "Animal Welfare"
+                },
+                {
+                    name: "Art and Culture Foundation",
+                    category: "Arts & Culture"
+                },
+                {
+                    name: "Sports for All",
+                    category: "Sports & Recreation"
+                },
+                {
+                    name: "Tech for Good",
+                    category: "Technology"
+                },
+                {
+                    name: "Women's Rights Coalition",
+                    category: "Gender Equality"
+                },
+                {
+                    name: "Food Bank Association",
+                    category: "Food Security"
+                },
+                {
+                    name: "Education for All",
+                    category: "Literacy"
+                },
+                {
+                    name: "Medical Relief Society",
+                    category: "Healthcare"
+                },
+                {
+                    name: "Disability Support Network",
+                    category: "Disability Rights"
+                },
+                {
+                    name: "Homeless Shelter",
+                    category: "Housing & Homelessness"
+                },
+                {
+                    name: "Rural Development Initiative",
+                    category: "Community Development"
+                },
+                {
+                    name: "Crisis Intervention Center",
+                    category: "Crisis Support"
+                }
+            ];
+
+            // Function to dynamically populate the organizations list
+            function populateOrganizationsList(organizations) {
+                const organizationsList = document.getElementById("organizationsList");
+                organizationsList.innerHTML = ''; // Clear previous list
+
+                organizations.forEach((org, index) => {
+                    const listItem = document.createElement("li");
+                    listItem.textContent = `${index + 1}. ${org.name} (${org.category})`;
+                    organizationsList.appendChild(listItem);
+                });
+            }
+
+            // Function to filter organizations by category
+            function filterOrganizations(category) {
+                let filteredOrganizations = [];
+                if (category === "All") {
+                    filteredOrganizations = organizations;
+                } else {
+                    filteredOrganizations = organizations.filter(org => org.category === category);
+                }
+                populateOrganizationsList(filteredOrganizations);
+            }
+
+            // Function to search for an organization by name
+            function searchOrganization() {
+                const searchInput = document.getElementById("searchInput").value.trim().toLowerCase();
+                const foundOrganizations = organizations.filter(org => org.name.toLowerCase().includes(searchInput));
+                if (foundOrganizations.length === 0) {
+                    const organizationsList = document.getElementById("organizationsList");
+                    organizationsList.innerHTML = '<li>Organization not found</li>';
+                } else {
+                    populateOrganizationsList(foundOrganizations);
+                }
+            }
+
+            // Initial population of organizations list
+            populateOrganizationsList(organizations);
+        </script>
+
+<footer>
+    <div class="container_12">
+    <div class="grid_12">
+    <div class="copy">
+    Noor Online Charity Donation Website &copy; 2023 | <a href="privacy-policy.html">Privacy Policy</a>
+    </div>
+    </div>
+    </div>
+    </footer>
+    </body>
+
+</html>
