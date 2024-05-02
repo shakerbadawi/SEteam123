@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+ <head>
+ <title>Admin Dashboard</title>
+ <meta charset="utf-8">
+ <meta name = "format-detection" content = "telephone=no" />
+ <link rel="icon" href="images/favicon.ico">
+ <link rel="shortcut icon" href="images/favicon.ico" />
+ <link rel="stylesheet" href="css/form.css">
+ <link rel="stylesheet" href="css/thumbs.css">
+ <link rel="stylesheet" href="css/style.css">
+ <script src="js/jquery.js"></script>
+ <script src="js/jquery-migrate-1.2.1.js"></script>
+ <script src="js/script.js"></script>
+ <script src="js/superfish.js"></script>
+ <script src="js/sForm.js"></script>
+ <script src="js/jquery.ui.totop.js"></script>
+ <script src="js/jquery.equalheights.js"></script>
+ <script src="js/jquery.easing.1.3.js"></script>
+ <script src="js/jquery.iosslider.min.js"></script>
+ <script>
+ $(document).ready(function(){
+ $().UItoTop({ easingType: 'easeOutQuart' });
+ });
+ </script>
+ <!--[if lt IE 8]>
+ <div style=' clear: both; text-align:center; position: relative;'>
+ <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+ <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+ </a>
+ </div>
+ <![endif]-->
+ <!--[if lt IE 9]>
+ <script src="js/html5shiv.js"></script>
+ <link rel="stylesheet" media="screen" href="css/ie.css">
+ <![endif]-->
+ </head>
+ <body class="page1" id="top">
+ <!--=================================header=================================-->
+ <header>
+	
+	
+ <div class="container_12">
+ <div class="grid_12">
+ <h1>
+ <a href="index.html">
+ <img src="images/NOOR_NGO.png" alt="Online Charity Donation Website">
+ </a>
+ 
+ </h1>
+ <div class="menu_block ">
+ <div class="clear"></div>
+ <nav class="horizontal-nav full-width horizontalNav-notprocessed">
+ <ul class="sf-menu">
+ <li class="current"><a href="index.html">Home</a></li>
+ <li><a href="what-we-do.html">What We Do</a></li>
+ 
+ <li><a href="medication-donations.html">Medication and Medical Supplies</a></li>
+ <li><a href="school-supplies-donations.html">School Supplies Donations</a></li>
+ <li><a href="refugee-needs.html">Refugee and People Living Below the Poverty Line Needs</a></li>
+ <li><a href="orphanage-donations.html">Orphanage Donations</a></li>
+ <li><a href="delivery-pickup.html">Pickup/ Delivery of Donations</a></li>
+ <li><a href="contact-us.html">Contact Us</a></li>
+ </ul>
+ </nav>
+ <div class="clear"></div>
+ </div>
+ </div>
+ </div>
+ </header>
+
+<div class="container">
+    <h1>Admin System</h1>
+    <h3>Admin Dashboard</h3>
+    <div class="card">
+        <h2>Recent Donations:</h2>
+        <p><strong>Date:</strong> January 15, 2024</p>
+        <p><strong>Donor Name:</strong> John Doe</p>
+        <p><strong>Donation Type:</strong> Clothing</p>
+        <p><strong>Details:</strong> 5 pairs of jeans, 10 t-shirts</p>
+    </div>
+    <div class="card">
+        <h2>Volunteer Requests:</h2>
+        <p><strong>Date:</strong> January 10, 2024</p>
+        <p><strong>Volunteer Name:</strong> Jane Smith</p>
+        <p><strong>Requested Task:</strong> Food Distribution</p>
+        <p><strong>Details:</strong> Volunteer to help distribute food to homeless shelters.</p>
+    </div>
+    <div class="card">
+        <h2>Donation Requests from Donation Receivers:</h2>
+        <p><strong>Date:</strong> January 20, 2024</p>
+        <p><strong>Receiver Name:</strong> Sarah Johnson</p>
+        <p><strong>Requested Items:</strong> Blankets, Warm Clothing</p>
+        <p><strong>Urgency:</strong> High</p>
+    </div>
+    <div class="card">
+        <h2>Donating Requests from Donors:</h2>
+        <p><strong>Date:</strong> January 25, 2024</p>
+        <p><strong>Donor Name:</strong> Michael Brown</p>
+        <p><strong>Donation Type:</strong> Electrical Appliances</p>
+        <p><strong>Details:</strong> Microwave, Toaster</p>
+    </div>
+    <div class="card">
+        <h2>Upcoming Events:</h2>
+        <p><strong>Date:</strong> February 1, 2024</p>
+        <p><strong>Event Name:</strong> Charity Gala</p>
+        <p><strong>Location:</strong> City Hall</p>
+        <p><strong>Description:</strong> Annual charity gala to provide schooling for children in local shelters.</p>
+    </div>
+</div>
+
+
+<div class="container">
+    <h2>Admin Actions</h2>
+    <ul>
+        <li><a href="viewOrganizationsList.html" onclick="viewOrganizationsList()">View Organizations List</a></li>
+        <li><a href="viewDonorsList.html" onclick="viewDonorsList()">View Donors List</a></li>
+        <li><a href="reviewOrganizationSubmissions.html" onclick="reviewOrganizationSubmissions()">Review Organization Submissions</a></li>
+        <li><a href="reviewDonorSubmissions.html" onclick="reviewDonorSubmissions()">Review Donor Submissions</a></li>
+        <li><a href="manageOrganizationRequests.html" onclick="manageOrganizationRequests()">Manage Organization Requests</a></li>
+        <li><a href="manageDonorRequests.html" onclick="manageDonorRequests()">Manage Donor Requests</a></li>
+        <li><a href="passwordManagement.html" onclick="passwordManagement()">Password Management</a></li>
+        <li><a href="viewRegisteredOrganizations.html" onclick="viewRegisteredOrganizations()">View Registered Organizations</a></li>
+        <li><a href="searchRegisteredOrganizations.html" onclick="searchRegisteredOrganizations()">Search Registered Organizations</a></li>
+        <li><a href="filterRegisteredOrganizations.html" onclick="filterRegisteredOrganizations()">Filter Registered Organizations</a></li>
+        <li><a href="viewOrganizationDetails.html" onclick="viewOrganizationDetails()">View Organization Details</a></li>
+        <li><a href="deleteOrganizationOrDonorAccount.html" onclick="deleteOrganizationOrDonorAccount()">Delete Organization or Donor Account</a></li>
+    </ul>
+</div>
+
+<script>
+    // Dummy data for organizations and donors
+    const organizations = [
+        { id: 1, name: "Organization A", status: "pending" },
+        { id: 2, name: "Organization B", status: "approved" },
+        { id: 3, name: "Organization C", status: "pending" }
+    ];
+
+    const donors = [
+        { id: 1, name: "Donor X", status: "pending" },
+        { id: 2, name: "Donor Y", status: "approved" },
+        { id: 3, name: "Donor Z", status: "pending" }
+    ];
+
+
+    // Logic to review organization submissions
+    function reviewOrganizationSubmissions() {
+        console.log("Reviewing Organization Submissions:");
+        organizations.forEach(org => {
+            if (org.status === "pending") {
+                console.log(`Reviewing submission for ${org.name}`);
+                // Review logic here
+            }
+        });
+    }
+
+    // Logic to review donor submissions
+    function reviewDonorSubmissions() {
+        console.log("Reviewing Donor Submissions:");
+        donors.forEach(donor => {
+            if (donor.status === "pending") {
+                console.log(`Reviewing submission for ${donor.name}`);
+                // Review logic here
+            }
+        });
+    }
+
+    // Logic to manage organization requests
+    function manageOrganizationRequests() {
+        console.log("Managing Organization Requests:");
+        organizations.forEach(org => {
+            if (org.status === "pending") {
+                console.log(`Managing request for ${org.name}`);
+                // Manage logic here
+            }
+        });
+    }
+
+    // Logic to manage donor requests
+    function manageDonorRequests() {
+        console.log("Managing Donor Requests:");
+        donors.forEach(donor => {
+            if (donor.status === "pending") {
+                console.log(`Managing request for ${donor.name}`);
+                // Manage logic here
+            }
+        });
+    }
+
+    // Logic for password management
+    function passwordManagement() {
+        console.log("Password Management:");
+        // Implement password management logic here
+    }
+
+    // Logic to view registered organizations
+    function viewRegisteredOrganizations() {
+        console.log("Viewing Registered Organizations:");
+        console.table(organizations);
+    }
+
+    // Logic to search registered organizations
+    function searchRegisteredOrganizations(query) {
+        console.log("Searching Registered Organizations:");
+        const results = organizations.filter(org => org.name.toLowerCase().includes(query.toLowerCase()));
+        console.table(results);
+    }
+
+    // Logic to filter registered organizations
+    function filterRegisteredOrganizations(criteria) {
+        console.log("Filtering Registered Organizations:");
+        const results = organizations.filter(org => {
+            // Implement filtering logic based on criteria
+            return true; // Placeholder return, implement based on criteria
+        });
+        console.table(results);
+    }
+
+    // Logic to view organization details
+    function viewOrganizationDetails(orgId) {
+        console.log("Viewing Organization Details:");
+        const organization = organizations.find(org => org.id === orgId);
+        if (organization) {
+            console.log(organization);
+        } else {
+            console.log("Organization not found");
+        }
+    }
+
+    // Logic to delete organization or donor account
+    function deleteOrganizationOrDonorAccount(accountId) {
+        console.log("Deleting Organization or Donor Account:");
+        // Find and remove the organization or donor from the list
+        const index = organizations.findIndex(org => org.id === accountId);
+        if (index !== -1) {
+            organizations.splice(index, 1);
+            console.log("Organization deleted successfully");
+        } else {
+            console.log("Organization not found");
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+ <html lang="ar" dir="rtl">
+ <head>
+ <title>Admin Login</title>
+ <meta charset="utf-8">
+ <meta name = "format-detection" content = "telephone=no" />
+ <link rel="icon" href="images/favicon.ico">
+ <link rel="shortcut icon" href="images/favicon.ico" />
+ <link rel="stylesheet" href="css/form.css">
+ <link rel="stylesheet" href="css/thumbs.css">
+ <link rel="stylesheet" href="css/style.css">
+ <script src="js/jquery.js"></script>
+ <script src="js/jquery-migrate-1.2.1.js"></script>
+ <script src="js/script.js"></script>
+ <script src="js/superfish.js"></script>
+ <script src="js/sForm.js"></script>
+ <script src="js/jquery.ui.totop.js"></script>
+ <script src="js/jquery.equalheights.js"></script>
+ <script src="js/jquery.easing.1.3.js"></script>
+ <script src="js/jquery.iosslider.min.js"></script>
+ <script>
+ $(document).ready(function(){
+ $().UItoTop({ easingType: 'easeOutQuart' });
+ });
+ </script>
+ <!--[if lt IE 8]>
+ <div style=' clear: both; text-align:center; position: relative;'>
+ <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+ <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+ </a>
+ </div>
+ <![endif]-->
+ <!--[if lt IE 9]>
+ <script src="js/html5shiv.js"></script>
+ <link rel="stylesheet" media="screen" href="css/ie.css">
+ <![endif]-->
+ </head>
+ <body class="page1" id="top">
+ <!--=================================header=================================-->
+ <header>
+	
+	
+ <div class="container_12">
+ <div class="grid_12">
+ <h1>
+ <a href="index.html">
+ <img src="images/NOOR_NGO.png" alt="Online Charity Donation Website">
+ </a>
+ 
+ </h1>
+ <div class="menu_block ">
+    <h3>New Donor:</h3>
+    <a href="Sign_Up.html" class="donate">Sign Up</a>
+ <div class="clear"></div>
+ <nav class="horizontal-nav full-width horizontalNav-notprocessed">
+ <ul class="sf-menu">
+ <li class="current"><a href="index.html">Home</a></li>
+ <li><a href="what-we-do.html">What We Do</a></li>
+ 
+ <li><a href="medication-donations.html">Medication and Medical Supplies</a></li>
+ <li><a href="school-supplies-donations.html">School Supplies Donations</a></li>
+ <li><a href="refugee-needs.html">Refugee and People Living Below the Poverty Line Needs</a></li>
+ <li><a href="orphanage-donations.html">Orphanage Donations</a></li>
+ <li><a href="delivery-pickup.html">Pickup/ Delivery of Donations</a></li>
+ <li><a href="contact-us.html">Contact Us</a></li>
+ </ul>
+ </nav>
+ <div class="clear"></div>
+ </div>
+ </div>
+ </div>
+ </header>
+<body>
+<div class="container">
+    <h2>Login for Donors</h2>
+    <form id="loginForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <button type="submit" onclick="redirectToDonorPage()">Login</button>
+    </form>
+    <p id="errorMessage" class="error-message"></p>
+</div>
+
+<script>
+    function redirectToDonorDashboard() {
+        window.location.href = "donor_Page.html"; // Replace "donor_dashboard.html" with the actual URL of your donor dashboard page
+    }
+</script>
+
+<script>
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+
+        // Simulate authentication (replace this with actual authentication logic)
+        if (username === "donor" && password === "password") {
+            // Redirect to donor dashboard or perform necessary actions
+            alert("Login successful! Redirecting to donor dashboard...");
+            window.location.href = "donor_dashboard.html"; // Replace "donor_dashboard.html" with actual URL
+        } else {
+            // Show error message
+            document.getElementById("errorMessage").innerText = "Invalid username or password. Please try again.";
+        }
+    });
+</script>
+
+</body>
+</html>

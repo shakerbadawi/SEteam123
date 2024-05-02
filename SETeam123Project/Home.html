@@ -50,7 +50,7 @@
  
  </h1>
  <div class="menu_block ">
- <a href="#" class="donate">DONATE</a>
+ <a href="New_User_Registeration.html" class="donate">Sign Up</a>
  <div class="clear"></div>
  <nav class="horizontal-nav full-width horizontalNav-notprocessed">
  <ul class="sf-menu">
@@ -74,6 +74,29 @@
  <div class="content">
  <div class="container_12">
  <div class="grid_6">
+<!-- Add the button here -->
+<button onclick="redirectToAdminLogin()">Admin Login</button>
+<button onclick="redirectToRequesterLogin()">Requester Login</button>
+<button onclick="redirectToDonorLogin()">Donor Login</button>
+<button onclick="redirectToVolunteerLogin()">Volunteer Login</button>
+
+<script>
+    function redirectToAdminLogin() {
+        window.location.href = "admin_login.html"; // Replace "admin_login.html" with the actual URL of your admin login page
+    }
+
+    function redirectToRequesterLogin() {
+        window.location.href = "requester_login.html"; // Redirects to requester_login.html
+    }
+
+    function redirectToDonorLogin() {
+        window.location.href = "donor_login.html"; // Redirects to donor_login.html
+    }
+
+    function redirectToVolunteerLogin() {
+        window.location.href = "volunteer_login.html"; // Redirects to volunteer_login.html
+    }
+</script>
  <h2>Find Donation Cases</h2>
  <form action="search-results.html" method="get">
  <input type="text" name="search" placeholder="Search for donation cases...">
