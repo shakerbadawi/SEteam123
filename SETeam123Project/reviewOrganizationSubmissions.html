@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <title>Review Organization Submissions</title>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="icon" href="images/favicon.ico">
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <link rel="stylesheet" href="css/form.css">
+    <link rel="stylesheet" href="css/thumbs.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-migrate-1.2.1.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/superfish.js"></script>
+    <script src="js/sForm.js"></script>
+    <script src="js/jquery.ui.totop.js"></script>
+    <script src="js/jquery.equalheights.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/jquery.iosslider.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $().UItoTop({
+                easingType: 'easeOutQuart'
+            });
+        });
+    </script>
+    <!--[if lt IE 8]>
+    <div style=' clear: both; text-align:center; position: relative;'>
+        <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+            <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+        </a>
+    </div>
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <link rel="stylesheet" media="screen" href="css/ie.css">
+    <![endif]-->
+</head>
+
+<body class="page1" id="top">
+    <!--=================================header=================================-->
+    <header>
+        <div class="container_12">
+            <div class="grid_12">
+                <h1>
+                    <a href="index.html">
+                        <img src="images/NOOR_NGO.png" alt="Online Charity Donation Website">
+                    </a>
+                </h1>
+                <div class="menu_block ">
+                    <div class="clear"></div>
+                    <nav class="horizontal-nav full-width horizontalNav-notprocessed">
+                        <ul class="sf-menu">
+                            <li class="current"><a href="index.html">Home</a></li>
+                            <li><a href="what-we-do.html">What We Do</a></li>
+                            <li><a href="medication-donations.html">Medication and Medical Supplies</a></li>
+                            <li><a href="school-supplies-donations.html">School Supplies Donations</a></li>
+                            <li><a href="refugee-needs.html">Refugee and People Living Below the Poverty Line Needs</a></li>
+                            <li><a href="orphanage-donations.html">Orphanage Donations</a></li>
+                            <li><a href="delivery-pickup.html">Pickup/ Delivery of Donations</a></li>
+                            <li><a href="contact-us.html">Contact Us</a></li>
+                        </ul>
+                    </nav>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <body>
+        <h1>Review Organization Submissions</h1>
+
+        <div id="submissionList">
+            <!-- Submission details will be dynamically inserted here -->
+        </div>
+
+        <script>
+            // Dummy data for organization submissions
+            const submissions = [
+                {
+                    organizationName: "Charity Foundation",
+                    category: "Healthcare",
+                    contactPerson: "John Doe",
+                    email: "john@example.com",
+                    phone: "1234567890",
+                    documents: ["document1.pdf", "document2.pdf"],
+                    submissionDate: "2024-05-02"
+                },
+                {
+                    organizationName: "Community Support Group",
+                    category: "Community Development",
+                    contactPerson: "Jane Smith",
+                    email: "jane@example.com",
+                    phone: "9876543210",
+                    documents: ["document3.pdf"],
+                    submissionDate: "2024-05-01"
+                },
+                {
+                    organizationName: "Hope for All",
+                    category: "Humanitarian",
+                    contactPerson: "Michael Johnson",
+                    email: "michael@example.com",
+                    phone: "3456789012",
+                    documents: ["document4.pdf", "document5.pdf"],
+                    submissionDate: "2024-05-03"
+                },
+                {
+                    organizationName: "Education Empowerment",
+                    category: "Education",
+                    contactPerson: "Alice Brown",
+                    email: "alice@example.com",
+                    phone: "6789012345",
+                    documents: ["document6.pdf", "document7.pdf"],
+                    submissionDate: "2024-05-05"
+                },
+                {
+                    organizationName: "Healthcare Alliance",
+                    category: "Healthcare",
+                    contactPerson: "Robert Wilson",
+                    email: "robert@example.com",
+                    phone: "8901234567",
+                    documents: ["document8.pdf"],
+                    submissionDate: "2024-05-06"
+                },
+                {
+                    organizationName: "Community Development Network",
+                    category: "Community Development",
+                    contactPerson: "Emily Green",
+                    email: "emily@example.com",
+                    phone: "7890123456",
+                    documents: ["document9.pdf", "document10.pdf"],
+                    submissionDate: "2024-05-07"
+                },
+                {
+                    organizationName: "Disability Support Association",
+                    category: "Disability Rights",
+                    contactPerson: "David White",
+                    email: "david@example.com",
+                    phone: "5678901234",
+                    documents: ["document11.pdf"],
+                    submissionDate: "2024-05-08"
+                },
+                {
+                    organizationName: "Environmental Conservation Society",
+                    category: "Environment",
+                    contactPerson: "Sarah Black",
+                    email: "sarah@example.com",
+                    phone: "4567890123",
+                    documents: ["document12.pdf", "document13.pdf"],
+                    submissionDate: "2024-05-09"
+                },
+                {
+                    organizationName: "Food Security Foundation",
+                    category: "Food Security",
+                    contactPerson: "Peter Brown",
+                    email: "peter@example.com",
+                    phone: "3456789012",
+                    documents: ["document14.pdf"],
+                    submissionDate: "2024-05-10"
+                },
+                {
+                    organizationName: "Animal Welfare Association",
+                    category: "Animal Welfare",
+                    contactPerson: "Lisa Johnson",
+                    email: "lisa@example.com",
+                    phone: "2345678901",
+                    documents: ["document15.pdf", "document16.pdf"],
+                    submissionDate: "2024-05-11"
+                },
+                {
+                    organizationName: "Women's Rights Coalition",
+                    category: "Social Services",
+                    contactPerson: "Daniel Smith",
+                    email: "daniel@example.com",
+                    phone: "1234567890",
+                    documents: ["document17.pdf"],
+                    submissionDate: "2024-05-12"
+                },
+                {
+                    organizationName: "Child Welfare Foundation",
+                    category: "Child Welfare",
+                    contactPerson: "Emma Johnson",
+                    email: "emma@example.com",
+                    phone: "0123456789",
+                    documents: ["document18.pdf", "document19.pdf"],
+                    submissionDate: "2024-05-13"
+                },
+                {
+                    organizationName: "Housing Support Group",
+                    category: "Housing & Homelessness",
+                    contactPerson: "Michael Smith",
+                    email: "michael@example.com",
+                    phone: "9876543210",
+                    documents: ["document20.pdf"],
+                    submissionDate: "2024-05-14"
+                },
+                // Add 7 more submissions
+                {
+                    organizationName: "Education for All",
+                    category: "Education",
+                    contactPerson: "Sophia Lee",
+                    email: "sophia@example.com",
+                    phone: "5678901234",
+                    documents: ["document21.pdf", "document22.pdf"],
+                    submissionDate: "2024-05-15"
+                },
+                {
+                    organizationName: "Healthcare Volunteers",
+                    category: "Healthcare",
+                    contactPerson: "Ethan Wilson",
+                    email: "ethan@example.com",
+                    phone: "4567890123",
+                    documents: ["document23.pdf"],
+                    submissionDate: "2024-05-16"
+                },
+                {
+                    organizationName: "Community Empowerment Initiative",
+                    category: "Community Development",
+                    contactPerson: "Olivia Brown",
+                    email: "olivia@example.com",
+                    phone: "3456789012",
+                    documents: ["document24.pdf", "document25.pdf"],
+                    submissionDate: "2024-05-17"
+                },
+                {
+                    organizationName: "Humanitarian Aid Society",
+                    category: "Humanitarian",
+                    contactPerson: "Lucas Johnson",
+                    email: "lucas@example.com",
+                    phone: "2345678901",
+                    documents: ["document26.pdf"],
+                    submissionDate: "2024-05-18"
+                },
+                {
+                    organizationName: "Environmental Preservation Group",
+                    category: "Environment",
+                    contactPerson: "Ava Smith",
+                    email: "ava@example.com",
+                    phone: "1234567890",
+                    documents: ["document27.pdf", "document28.pdf"],
+                    submissionDate: "2024-05-19"
+                },
+                {
+                    organizationName: "Food Distribution Network",
+                    category: "Food Security",
+                    contactPerson: "Logan Lee",
+                    email: "logan@example.com",
+                    phone: "0123456789",
+                    documents: ["document29.pdf"],
+                    submissionDate: "2024-05-20"
+                },
+                {
+                    organizationName: "Animal Rescue Foundation",
+                    category: "Animal Welfare",
+                    contactPerson: "Chloe Wilson",
+                    email: "chloe@example.com",
+                    phone: "7890123456",
+                    documents: ["document30.pdf", "document31.pdf"],
+                    submissionDate: "2024-05-21"
+                },
+                {
+                    organizationName: "Women's Health Initiative",
+                    category: "Social Services",
+                    contactPerson: "Mia Johnson",
+                    email: "mia@example.com",
+                    phone: "6789012345",
+                    documents: ["document32.pdf"],
+                    submissionDate: "2024-05-22"
+                },
+                {
+                    organizationName: "Child Protection Agency",
+                    category: "Child Welfare",
+                    contactPerson: "Noah Brown",
+                    email: "noah@example.com",
+                    phone: "5678901234",
+                    documents: ["document33.pdf", "document34.pdf"],
+                    submissionDate: "2024-05-23"
+                },
+                {
+                    organizationName: "Homeless Shelter Foundation",
+                    category: "Housing & Homelessness",
+                    contactPerson: "Ella Smith",
+                    email: "ella@example.com",
+                    phone: "4567890123",
+                    documents: ["document35.pdf"],
+                    submissionDate: "2024-05-24"
+                }
+                // Add more submissions as needed
+            ];
+
+            // Function to generate and display organization submissions
+            function displaySubmissions() {
+                const submissionList = document.getElementById("submissionList");
+                submissionList.innerHTML = ''; // Clear previous list
+
+                submissions.forEach(submission => {
+                    const submissionDiv = document.createElement("div");
+                    submissionDiv.innerHTML = `
+                        <p>Organization Name: ${submission.organizationName}</p>
+                        <p>Category: ${submission.category}</p>
+                        <p>Contact Person: ${submission.contactPerson}</p>
+                        <p>Email: ${submission.email}</p>
+                        <p>Phone: ${submission.phone}</p>
+                        <p>Submission Date: ${submission.submissionDate}</p>
+                        <p>Documents:</p>
+                        <ul>
+                            ${submission.documents.map(doc => `<li>${doc}</li>`).join('')}
+                        </ul>
+                        <button onclick="acceptSubmission('${submission.organizationName}')">Accept</button>
+                        <button onclick="rejectSubmission('${submission.organizationName}')">Reject</button>
+                        <button onclick="downloadSubmission('${submission.organizationName}')" disabled>Download</button>
+                        <hr>
+                    `;
+                    submissionList.appendChild(submissionDiv);
+                });
+            }
+
+            // Function to accept a submission
+            function acceptSubmission(organizationName) {
+                // Implement logic to accept the submission
+                console.log(`Submission from ${organizationName} accepted.`);
+                enableDownloadButton(organizationName);
+            }
+
+            // Function to reject a submission
+            function rejectSubmission(organizationName) {
+                // Implement logic to reject the submission
+                console.log(`Submission from ${organizationName} rejected.`);
+                deleteSubmission(organizationName);
+            }
+
+            // Function to delete a submission
+            function deleteSubmission(organizationName) {
+                // Implement logic to delete the submission
+                console.log(`Submission from ${organizationName} deleted.`);
+                // For demonstration purposes, removing the submission from the list
+                submissions.splice(submissions.findIndex(submission => submission.organizationName === organizationName), 1);
+                displaySubmissions();
+            }
+
+            // Function to enable download button
+            function enableDownloadButton(organizationName) {
+                const downloadButton = document.querySelector(`[onclick="downloadSubmission('${organizationName}')"`);
+                downloadButton.disabled = false;
+            }
+
+            // Function to download submission details
+            function downloadSubmission(organizationName) {
+                // Implement logic to download submission details
+                console.log(`Downloading submission details for ${organizationName}`);
+            }
+
+            // Display submissions on page load
+            displaySubmissions();
+        </script>
+    </body>
+
+</html>
