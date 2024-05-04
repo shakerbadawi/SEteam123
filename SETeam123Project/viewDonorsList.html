@@ -347,11 +347,263 @@
                         <input type="text" placeholder="Search by donor name..." id="searchInput">
                         <button type="submit">Search</button>
                     </form>
-                    
+                    <!-- Dropdown menu for viewing donors list -->
+                    <div class="dropdown">
+                        <button class="dropbtn">View Donors List</button>
+                        <div class="dropdown-content">
+                            <a href="#" onclick="filterDonors('All')">All</a>
+                            <a href="#" onclick="filterDonors('Doctors')">Doctors</a>
+                            <a href="#" onclick="filterDonors('Teachers')">Teachers</a>
+                            <!-- Add more categories as needed -->
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
+    <!--==============================content================================-->
+    <body>
+        <h2>Donors List:</h2>
+
+        <ul id="donorsList">
+            <!-- Dummy data will be dynamically inserted here -->
+        </ul>
+
+        <script>
+            // Dummy data for donors
+            const donors = [{
+                    name: "John Doe",
+                    category: "Doctors"
+                },
+                {
+                    name: "Jane Smith",
+                    category: "Doctors"
+                },
+                {
+                    name: "Michael Johnson",
+                    category: "Doctors"
+                },
+                {
+                    name: "Emily Davis",
+                    category: "Doctors"
+                },
+                {
+                    name: "Robert Wilson",
+                    category: "Doctors"
+                },
+                {
+                    name: "David Brown",
+                    category: "Doctors"
+                },
+                {
+                    name: "Jennifer Martinez",
+                    category: "Doctors"
+                },
+                {
+                    name: "Lisa Miller",
+                    category: "Doctors"
+                },
+                {
+                    name: "James Taylor",
+                    category: "Doctors"
+                },
+                {
+                    name: "Susan Anderson",
+                    category: "Doctors"
+                },
+                {
+                    name: "Mark Thomas",
+                    category: "Doctors"
+                },
+                {
+                    name: "Linda Jackson",
+                    category: "Doctors"
+                },
+                {
+                    name: "William White",
+                    category: "Doctors"
+                },
+                {
+                    name: "Carol Harris",
+                    category: "Doctors"
+                },
+                {
+                    name: "George Nelson",
+                    category: "Doctors"
+                },
+                {
+                    name: "Margaret Carter",
+                    category: "Doctors"
+                },
+                {
+                    name: "Brian King",
+                    category: "Doctors"
+                },
+                {
+                    name: "Jessica Adams",
+                    category: "Doctors"
+                },
+                {
+                    name: "Edward Clark",
+                    category: "Doctors"
+                },
+                {
+                    name: "Karen Hill",
+                    category: "Doctors"
+                },
+                // Additional dummy data for Teachers category
+                {
+                    name: "Sarah Lee",
+                    category: "Teachers"
+                },
+                {
+                    name: "Daniel Scott",
+                    category: "Teachers"
+                },
+                {
+                    name: "Maria Garcia",
+                    category: "Teachers"
+                },
+                {
+                    name: "Kevin Turner",
+                    category: "Teachers"
+                },
+                {
+                    name: "Hannah Baker",
+                    category: "Teachers"
+                },
+                {
+                    name: "Paul Reed",
+                    category: "Teachers"
+                },
+                {
+                    name: "Stephanie Cook",
+                    category: "Teachers"
+                },
+                {
+                    name: "Andrew Perez",
+                    category: "Teachers"
+                },
+                {
+                    name: "Olivia Hall",
+                    category: "Teachers"
+                },
+                {
+                    name: "Thomas Murphy",
+                    category: "Teachers"
+                },
+                {
+                    name: "Rachel Bell",
+                    category: "Teachers"
+                },
+                {
+                    name: "Christopher Ward",
+                    category: "Teachers"
+                },
+                {
+                    name: "Victoria Green",
+                    category: "Teachers"
+                },
+                {
+                    name: "Justin Cox",
+                    category: "Teachers"
+                },
+                {
+                    name: "Amelia Ross",
+                    category: "Teachers"
+                },
+                {
+                    name: "Brandon Price",
+                    category: "Teachers"
+                },
+                {
+                    name: "Lauren Brooks",
+                    category: "Teachers"
+                },
+                {
+                    name: "Timothy Hayes",
+                    category: "Teachers"
+                },
+                {
+                    name: "Natalie Russell",
+                    category: "Teachers"
+                },
+                {
+                    name: "Erica Butler",
+                    category: "Teachers"
+                },
+                // Additional dummy data for other categories
+                {
+                    name: "Alexis Baker",
+                    category: "Community Development"
+                },
+                {
+                    name: "Jordan Wright",
+                    category: "Humanitarian"
+                },
+                {
+                    name: "Taylor Martinez",
+                    category: "Environment"
+                },
+                {
+                    name: "Christian Hill",
+                    category: "Child Welfare"
+                },
+                {
+                    name: "Madison Young",
+                    category: "Crisis Support"
+                },
+                {
+                    name: "Gabriel Allen",
+                    category: "Housing & Homelessness"
+                },
+                {
+                    name: "Avery Flores",
+                    category: "Social Services"
+                },
+                {
+                    name: "Logan Lopez",
+                    category: "Animal Welfare"
+                },
+                {
+                    name: "Dylan Hall",
+                    category: "Food Security"
+                },
+                {
+                    name: "Isabella Ward",
+                    category: "Disability Rights"
+                },
+            ];
+
+            // Function to filter donors based on category
+            function filterDonors(category) {
+                const filteredDonors = category === "All" ? donors : donors.filter(donor => donor.category === category);
+                displayDonors(filteredDonors);
+            }
+
+            // Function to search donors by name
+            function searchDonor() {
+                const searchTerm = document.getElementById("searchInput").value.trim().toLowerCase();
+                const filteredDonors = donors.filter(donor => donor.name.toLowerCase().includes(searchTerm));
+                displayDonors(filteredDonors);
+            }
+
+            // Function to display donors list
+            function displayDonors(donorList) {
+                const donorsList = document.getElementById("donorsList");
+                donorsList.innerHTML = ""; // Clear previous list
+
+                donorList.forEach(donor => {
+                    const li = document.createElement("li");
+                    li.textContent = donor.name + " - " + donor.category;
+                    donorsList.appendChild(li);
+                });
+            }
+
+            // Initial display of all donors
+            displayDonors(donors);
+        </script>
+
     </body>
 
 </html>
