@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Organizations</title>
+    <style>
+        /* Add your CSS styles here */
+        .organization {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .organization h3 {
+            margin-top: 0;
+            color: #007bff;
+        }
+        .organization p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Display all organizations -->
+<div class="container">
+    <h1>All Organizations</h1>
+    <div id="organizations"></div>
+</div>
+<script>
+    // Dummy data for organizations
+    const organizations = [{
+                      name: "Charity Foundation",
+                    category: "Healthcare",
+                    City: "Cairo",
+                    address:{
+                        street:"12 thawra street",
+                        postalCode: "12345"
+                    },
+                    contact:{
+                        Gmail:"charityfoundation@gmail.com",
+                        website: "www.charityfoundation.com",
+                        phone:"01234567899"
+                    },
+                    OrganizationType:"Non-profit"
+
+                },
+                {
+                    name: "Community Support Group",
+                    category: "Education",
+                    City: "Cairo",
+                    address:{
+                        street:"13 thawra street",
+                        postalCode: "12345"
+                    },
+                    contact:{
+                        Gmail:"communitysupportgroup@gmail.com",
+                        website: "www.communitysupportgroup.com",
+                        phone:"01234567889"
+                    },
+                    OrganizationType:"Non-profit"
+                },
+                {
+                    name: "Hope for All",
+                    category: "Community Development",
+                    City: "Cairo",
+                    address:{
+                        street:"14 thawra street",
+                        postalCode: "12345"
+                    },
+                    contact:{
+                        Gmail:"hopeforall@gmail.com",
+                        website: "www.hopeforall.com",
+                        phone:"01234567789"
+                    },
+                    OrganizationType:"Non-profit"
+                },
+                {
+                    name: "Global Aid Network",
+                    category: "Humanitarian",
+                    address:{
+                        street:"15 thawra street",
+                        postalCode: "12345"
+                    },
+                    contact:{
+                        Gmail:"globalaidnetwork@gmail.com",
+                        website: "www.globalaidnetwork.com",
+                        phone:"01234566789"
+                    },
+                    OrganizationType:"Non-profit"
+                },
+                {
+                    name: "Children's Shelter",
+                    category: "Child Welfare",
+                    address:{
+                        street:"16 thawra street",
+                        postalCode: "12345"
+                    },
+                    contact:{
+                        Gmail:"childreshelter@gmail.com",
+                        website: "www.childreshelter.com",
+                        phone:"01234556789"
+                    },
+                    OrganizationType:"Non-profit"
+                },
+                {
+                    name: "Elderly Care Association",
+                    category: "Social Services",
+                    address:{
+                        street:"17 thawra street",
+                        postalCode: "12345"
+                    },
+                    contact:{
+                        Gmail:"elderlycareassociation@gmail.com",
+                        website: "www.elderlycareassociation.com",
+                        phone:"01234456789"
+                    },
+                    OrganizationType:"Non-profit"
+                },
+                {
+                    name: "Environmental Conservation Society",
+                    category: "Environment",
+                    address:{
+                        street:"18 thawra street",
+                        postalCode: "12345"
+                    },
+                    contact:{
+                        Gmail:"environmentalconservationsociety@gmail.com",
+                        website: "www.environmentalconservationsociety.com",
+                        phone:"01233456789"
+                    },
+                    OrganizationType:"Non-profit"
+                },
+                {
+                    name: "Youth Empowerment Initiative",
+                    category: "Youth Development",
+                    address:{
+                        street:"19 thawra street",
+                        postalCode: "12345"
+                    },
+                    contact:{
+                        Gmail:"youthempowermentinitiative@gmail.com",
+                        website: "www.youthempowermentinitiative.com",
+                        phone:"01223456789"
+                    },
+                    OrganizationType:"Non-profit"
+                },
+                {
+                    name: "Animal Rescue Organization",
+                    category: "Animal Welfare",
+                    address:{
+                        street:"20 thawra street",
+                        postalCode: "12345"
+                    },
+                    contact:{
+                        Gmail:"animalrescueorg@gmail.com",
+                        website: "www.animalrescueorg.org",
+                        phone:"01123456789"
+                    },
+                    OrganizationType:"Non-profit"
+                },
+                {
+                    name: "Art and Culture Foundation",
+                    category: "Arts & Culture",
+                    address:{
+                        street:"21 thawra street",
+                        postalCode: "12345"
+                    },
+                    contact:{
+                        Gmail:"artculturefoundation@gmail.com",
+                        website: "www.artculturefoundation.com",
+                        phone:"01222456789"
+                    },
+                    OrganizationType:"Non-profit"
+                },
+                {
+                    name: "Sports for All",
+                    category: "Sports & Recreation",
+                    address:{
+                        street:"22 thawra street",
+                        postalCode: "12345"
+                    },
+                    contact:{
+                        Gmail:"sportsforall@gmail.com",
+                        website: "www.sportsforall.com",
+                        phone:"01223456889"
+                    },
+                    OrganizationType:"Non-profit"
+                },
+                {
+                    name: "Tech for Good",
+                    category: "Technology",
+                    address:{
+                        street:"23 thawra street",
+                        postalCode: "12345"
+                    },
+                    contact:{
+                        Gmail:"techforgood@gmail.com",
+                        website: "www.techforgoof.com",
+                        phone:"01223455789"
+                    },
+                    OrganizationType:"Non-profit"
+                },
+                {
+                    name: "Women's Rights Coalition",
+                    category: "Gender Equality",
+                    address:{
+                        street:"24 thawra street",
+                        postalCode: "12345"
+                    },
+                    contact:{
+                        Gmail:"womenrigthcoalition@gmail.com",
+                        website: "www.womenrightcoalition.com",
+                        phone:"01223456788"
+                    },
+                    OrganizationType:"Non-profit"
+                },
+                {
+                    name: "Food Bank Association",
+                    category: "Food Security",
+                    address:{
+                        street:"25 thawra street",
+                        postalCode: "12345"
+                    },
+                    contact:{
+                        Gmail:"foodbank@gmail.com",
+                        website: "www.foodbank.com",
+                        phone:"01223456669"
+                    },
+                    OrganizationType:"Non-profit"
+                },
+                {
+                    name: "Education for All",
+                    category: "Literacy",
+                    address:{
+                        street:"5 Nasr street",
+                        postalCode: "12345"
+                    },
+                    contact:{
+                        Gmail:"educationforall@gmail.com",
+                        website: "www.educationforall.com",
+                        phone:"01222456789"
+                    },
+                    OrganizationType:"Non-profit"
+                },
+                {
+                    name: "Medical Relief Society",
+                    category: "Healthcare",
+                    address:{
+                        street:"6 Nasr street",
+                        postalCode: "12345"
+                    },
+                    contact:{
+                        Gmail:"medreliefsociety@gmail.com",
+                        website: "www.medreliefsocity.com",
+                        phone:"01233356789"
+                    },
+                    OrganizationType:"Non-profit"
+                },
+                {
+                    name: "Disability Support Network",
+                    category: "Disability Rights",
+                    address:{
+                        street:"7 Nasr street",
+                        postalCode: "12345"
+                    },
+                    contact:{
+                        Gmail:"disabilitysupportnetwork.com",
+                        website: "www.disabilitysupportnetwork.com",
+                        phone:"01133456789"
+                    },
+                    OrganizationType:"Non-profit"
+                },
+                {
+                    name: "Homeless Shelter",
+                    category: "Housing & Homelessness",
+                    address:{
+                        street:"9 Nasr street",
+                        postalCode: "12345"
+                    },
+                    contact:{
+                        Gmail:"homelesshelter@gmail.com",
+                        website: "www.homelesshelter.com",
+                        phone:"01222455589"
+                    },
+                    OrganizationType:"Non-profit"
+                },
+                {
+                    name: "Rural Development Initiative",
+                    category: "Community Development",
+                    address:{
+                        street:"11 Nasr street",
+                        postalCode: "12345"
+                    },
+                    contact:{
+                        Gmail:"ruraldevinit@gmail.com",
+                        website: "www.ruraldevinit.com",
+                        phone:"01222444489"
+                    },
+                    OrganizationType:"Non-profit"
+                },
+                {
+                    name: "Crisis Intervention Center",
+                    category: "Crisis Support",
+                    address:{
+                        street:"15 Nasr street",
+                        postalCode: "12345"
+                    },
+                    contact:{
+                        Gmail:"crisisinitcanter@gmail.com",
+                        website: "www.crisisinitcenter.com",
+                        phone:"01232455589"
+                    },
+                    OrganizationType:"Non-profit"
+                }
+        // Add more organization objects here...
+    ];
+
+    // Function to create HTML markup for organizations
+    function createOrganizationHTML(organization) {
+        return `
+            <div class="organization">
+                <h3>${organization.name}</h3>
+                <p><strong>Category:</strong> ${organization.category}</p>
+                <p><strong>City:</strong> ${organization.City}</p>
+                <p><strong>Address:</strong> ${organization.address.street}, ${organization.address.postalCode}</p>
+                <p><strong>Contact:</strong> ${organization.contact.phone}, ${organization.contact.Gmail}</p>
+                <p><strong>Website:</strong> <a href="http://${organization.contact.website}" target="_blank">${organization.contact.website}</a></p>
+                <p><strong>Type:</strong> ${organization.OrganizationType}</p>
+            </div>
+        `;
+    }
+
+    // Function to display organizations on the page
+    function displayOrganizations() {
+    const organizationsContainer = document.getElementById("organizations");
+    let organizationsHTML = "";
+    organizations.forEach(organization => {
+        organizationsHTML += createOrganizationHTML(organization);
+    });
+    organizationsContainer.innerHTML = organizationsHTML;
+}
+    function displayOrganizations() {
+        const organizationsContainer = document.getElementById("organizations");
+        let organizationsHTML = "";
+        organizations.forEach(organization => {
+            organizationsHTML += createOrganizationHTML(organization);
+        });
+        organizationsContainer.innerHTML = organizationsHTML;
+    }
+
+    // Call the function to display organizations
+    displayOrganizations();
+</script>
+
+</body>
+</html>
