@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donors</title>
+    <style>
+        .donor {
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Teachers List</h1>
+    <div id="donors"></div>
+
+    <script>
+      const donors = [        
+                {
+                    name: "Sarah Lee",
+                    category: "Teachers"
+                },
+                {
+                    name: "Daniel Scott",
+                    category: "Teachers"
+                },
+                {
+                    name: "Maria Garcia",
+                    category: "Teachers"
+                },
+                {
+                    name: "Kevin Turner",
+                    category: "Teachers"
+                },
+                {
+                    name: "Hannah Baker",
+                    category: "Teachers"
+                },
+                {
+                    name: "Paul Reed",
+                    category: "Teachers"
+                },
+                {
+                    name: "Stephanie Cook",
+                    category: "Teachers"
+                },
+                {
+                    name: "Andrew Perez",
+                    category: "Teachers"
+                },
+                {
+                    name: "Olivia Hall",
+                    category: "Teachers"
+                },
+                {
+                    name: "Thomas Murphy",
+                    category: "Teachers"
+                },
+                {
+                    name: "Rachel Bell",
+                    category: "Teachers"
+                },
+                {
+                    name: "Christopher Ward",
+                    category: "Teachers"
+                },
+                {
+                    name: "Victoria Green",
+                    category: "Teachers"
+                },
+                {
+                    name: "Justin Cox",
+                    category: "Teachers"
+                },
+                {
+                    name: "Amelia Ross",
+                    category: "Teachers"
+                },
+                {
+                    name: "Brandon Price",
+                    category: "Teachers"
+                },
+                {
+                    name: "Lauren Brooks",
+                    category: "Teachers"
+                },
+                {
+                    name: "Timothy Hayes",
+                    category: "Teachers"
+                },
+                {
+                    name: "Natalie Russell",
+                    category: "Teachers"
+                },
+                {
+                    name: "Erica Butler",
+                    category: "Teachers"
+                }                
+            ];
+
+
+        // Function to create HTML markup for donor name and category
+        function createDonorHTML(donor) {
+            return `
+                <div class="donor">
+                    <p><strong>Name:</strong> ${donor.name}</p>
+                    <p><strong>Category:</strong> ${donor.category}</p>
+                </div>
+            `;
+        }
+
+        // Function to display donors on the page
+        function displayDonors() {
+            const donorsContainer = document.getElementById("donors");
+            let donorsHTML = "";
+            donors.forEach(donor => {
+                donorsHTML += createDonorHTML(donor);
+            });
+            donorsContainer.innerHTML = donorsHTML;
+        }
+
+        // Call the function to display donors
+        displayDonors();
+    </script>
+</body>
+</html>
