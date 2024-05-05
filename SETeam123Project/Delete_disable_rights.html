@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Organizations</title>
+    <style>
+        /* Add your CSS styles here */
+        .organization {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .organization h3 {
+            margin-top: 0;
+            color: #007bff;
+        }
+        .organization p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Display all organizations -->
+<div class="container">
+    <h1>Disability Rights Organizations</h1>
+    <button id="deleteButton">Delete Selected</button>
+    <div id="organizations"></div>
+</div>
+<script>
+    // Dummy data for organizations
+    const organizations = [
+    {
+                    name: "Disability Support Network",
+                    category: "Disability Rights",
+City:"Cairo",
+                    address:{
+                        street:"7 Nasr street",
+                        postalCode: "12345"
+                    },
+                    contact:{
+                        Gmail:"disabilitysupportnetwork.com",
+                        website: "www.disabilitysupportnetwork.com",
+                        phone:"01133456789"
+                    },
+                    OrganizationType:"Non-profit"
+                },
+
+
+    ];
+
+    // Function to create HTML markup for organizations
+    function createOrganizationHTML(organization, index) {
+        return `
+            <div class="organization">
+                <input type="checkbox" id="checkbox${index}" class="organizationCheckbox" data-index="${index}">
+                <h3>${organization.name}</h3>
+                <p><strong>Category:</strong> ${organization.category}</p>
+                <p><strong>City:</strong> ${organization.City}</p>
+                <p><strong>Address:</strong> ${organization.address.street}, ${organization.address.postalCode}</p>
+                <p><strong>Contact:</strong> ${organization.contact.phone}, ${organization.contact.Gmail}</p>
+                <p><strong>Website:</strong> <a href="http://${organization.contact.website}" target="_blank">${organization.contact.website}</a></p>
+                <p><strong>Type:</strong> ${organization.OrganizationType}</p>
+            </div>
+        `;
+    }
+
+    // Function to display organizations on the page
+    function displayOrganizations() {
+        const organizationsContainer = document.getElementById("organizations");
+        let organizationsHTML = "";
+        organizations.forEach((organization, index) => {
+            organizationsHTML += createOrganizationHTML(organization, index);
+        });
+        organizationsContainer.innerHTML = organizationsHTML;
+
+        // Add event listener for delete selected button
+        const deleteButton = document.getElementById('deleteButton');
+        deleteButton.addEventListener('click', deleteSelectedOrganizations);
+    }
+
+    // Function to delete selected organizations
+    function deleteSelectedOrganizations() {
+        const checkboxes = document.querySelectorAll('.organizationCheckbox');
+        const selectedIndexes = [];
+        checkboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+                selectedIndexes.push(parseInt(checkbox.getAttribute('data-index')));
+            }
+        });
+        // Remove selected organizations from organizations array
+        selectedIndexes.sort((a, b) => b - a).forEach(index => {
+            organizations.splice(index, 1);
+        });
+        // Re-display organizations
+        displayOrganizations();
+    }
+
+    // Call the function to display organizations
+    displayOrganizations();
+</script>
+
+</body>
+</html>

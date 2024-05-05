@@ -25,77 +25,76 @@
 
 <!-- Display all organizations -->
 <div class="container">
-    <h1>Community Development</h1>
+    <h1>Food Security Organizations</h1>
+    <button id="deleteButton">Delete Selected</button>
     <div id="organizations"></div>
 </div>
-
 <script>
     // Dummy data for organizations
     const organizations = [
-                 {
-                    name: "Community Support Group",
-                    category: "Community Development",
-                    City: "Cairo",
+    {
+                    name: "Food Bank Association",
+                    category: "Food Security",
+City:"Cairo",
                     address:{
-                        street:"13 thawra street",
+                        street:"25 thawra street",
                         postalCode: "12345"
                     },
                     contact:{
-                        Gmail:"communitysupportgroup@gmail.com",
-                        website: "www.communitysupportgroup.com",
-                        phone:"01234567889"
-                    },
-                  },
-                  {
-                    name: "Hope for All",
-                    category: "Community Development",
-                    City: "Cairo",
-                    address:{
-                        street:"14 thawra street",
-                        postalCode: "12345"
-                    },
-                    contact:{
-                        Gmail:"hopeforall@gmail.com",
-                        website: "www.hopeforall.com",
-                        phone:"01234567789"
+                        Gmail:"foodbank@gmail.com",
+                        website: "www.foodbank.com",
+                        phone:"01223456669"
                     },
                     OrganizationType:"Non-profit"
-                }
-    
+                },
+
     ];
 
     // Function to create HTML markup for organizations
-    function createOrganizationHTML(organization) {
+    function createOrganizationHTML(organization, index) {
         return `
             <div class="organization">
+                <input type="checkbox" id="checkbox${index}" class="organizationCheckbox" data-index="${index}">
                 <h3>${organization.name}</h3>
                 <p><strong>Category:</strong> ${organization.category}</p>
                 <p><strong>City:</strong> ${organization.City}</p>
-                <p><strong>Address:</strong> ${organization.address.street}</p>
-                <p><strong>Postal Code:</strong> ${organization.address.postalCode}</p>
-                <p><strong>Contact:</strong> ${organization.contact.phone}</p>
-                <p><strong>Gmail:</strong>${organization.contact.Gmail}</p>
+                <p><strong>Address:</strong> ${organization.address.street}, ${organization.address.postalCode}</p>
+                <p><strong>Contact:</strong> ${organization.contact.phone}, ${organization.contact.Gmail}</p>
                 <p><strong>Website:</strong> <a href="http://${organization.contact.website}" target="_blank">${organization.contact.website}</a></p>
                 <p><strong>Type:</strong> ${organization.OrganizationType}</p>
-            </div>`;
+            </div>
+        `;
     }
 
     // Function to display organizations on the page
     function displayOrganizations() {
-    const organizationsContainer = document.getElementById("organizations");
-    let organizationsHTML = "";
-    organizations.forEach(organization => {
-        organizationsHTML += createOrganizationHTML(organization);
-    });
-    organizationsContainer.innerHTML = organizationsHTML;
-}
-    function displayOrganizations() {
         const organizationsContainer = document.getElementById("organizations");
         let organizationsHTML = "";
-        organizations.forEach(organization => {
-            organizationsHTML += createOrganizationHTML(organization);
+        organizations.forEach((organization, index) => {
+            organizationsHTML += createOrganizationHTML(organization, index);
         });
         organizationsContainer.innerHTML = organizationsHTML;
+
+        // Add event listener for delete selected button
+        const deleteButton = document.getElementById('deleteButton');
+        deleteButton.addEventListener('click', deleteSelectedOrganizations);
+    }
+
+    // Function to delete selected organizations
+    function deleteSelectedOrganizations() {
+        const checkboxes = document.querySelectorAll('.organizationCheckbox');
+        const selectedIndexes = [];
+        checkboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+                selectedIndexes.push(parseInt(checkbox.getAttribute('data-index')));
+            }
+        });
+        // Remove selected organizations from organizations array
+        selectedIndexes.sort((a, b) => b - a).forEach(index => {
+            organizations.splice(index, 1);
+        });
+        // Re-display organizations
+        displayOrganizations();
     }
 
     // Call the function to display organizations

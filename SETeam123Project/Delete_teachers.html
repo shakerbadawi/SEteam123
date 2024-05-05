@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donors</title>
+    <style>
+        .donor {
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Teachers List</h1>
+    <button id="deleteButton">Delete Selected</button>
+    <div id="donors"></div>
+
+    <script>
+        const donors = [
+        {
+        name: "Sarah Lee",
+        category: "Teachers",
+        age: 35,
+        email: "sarah.lee@gmail.com",
+        mobile: "123-456-7890",
+        company: "ABC Hospital",
+        address: {
+            street: "123 Main St",
+            city: "Cairo",
+            state: "State",
+            postalCode: "12345",
+            country: "Country"
+    },
+    },
+    {
+        name: "Daniel Scott",
+        category: "Teachers",
+        age: 40,
+        email: "daniel.scott@gmail.com",
+        mobile: "123-456-7890",
+        company: "ABC Hospital",
+        address: {
+            street: "123 Main St",
+            city: "Cairo",
+            state: "State",
+            postalCode: "12345",
+            country: "Country"
+    },
+    },
+    {
+        name: "Maria Garcia",
+        category: "Teachers",
+        age: 28,
+        email: "maria.garcia@gmail.com",
+        mobile: "123-456-7890",
+        company: "ABC Hospital",
+        address: {
+            street: "123 Main St",
+            city: "Cairo",
+            state: "State",
+            postalCode: "12345",
+            country: "Country"
+    },
+    },
+    {
+        name: "Kevin Turner",
+        category: "Teachers",
+        age: 45,
+        email: "kevin.turner@gmail.com",
+        mobile: "123-456-7890",
+        company: "ABC Hospital",
+        address: {
+            street: "123 Main St",
+            city: "Cairo",
+            state: "State",
+            postalCode: "12345",
+            country: "Country"
+    },
+    },
+    {
+        name: "Hannah Baker",
+        category: "Teachers",
+        age: 32,
+        email: "hannah.baker@gmail.com",
+        mobile: "123-456-7890",
+        company: "ABC Hospital",
+        address: {
+            street: "123 Main St",
+            city: "Cairo",
+            state: "State",
+            postalCode: "12345",
+            country: "Country"
+    },
+    },
+    {
+        name: "Paul Reed",
+        category: "Teachers",
+        age: 39,
+        email: "paul.reed@gmail.com",
+        mobile: "123-456-7890",
+        company: "ABC Hospital",
+        address: {
+            street: "123 Main St",
+            city: "Cairo",
+            state: "State",
+            postalCode: "12345",
+            country: "Country"
+    },
+    },
+    {
+        name: "Stephanie Cook",
+        category: "Teachers",
+        age: 36,
+        email: "stephanie.cook@gmail.com",
+        mobile: "123-456-7890",
+        company: "ABC Hospital",
+        address: {
+            street: "123 Main St",
+            city: "Cairo",
+            state: "State",
+            postalCode: "12345",
+            country: "Country"
+    },
+    },
+    {
+        name: "Andrew Perez",
+        category: "Teachers",
+        age: 41,
+        email: "andrew.perez@gmail.com",
+        mobile: "123-456-7890",
+        company: "ABC Hospital",
+        address: {
+            street: "123 Main St",
+            city: "Cairo",
+            state: "State",
+            postalCode: "12345",
+            country: "Country"
+    },
+    },
+    {
+        name: "Olivia Hall",
+        category: "Teachers",
+        age: 29,
+        email: "olivia.hall@gmail.com",
+        mobile: "123-456-7890",
+        company: "ABC Hospital",
+        address: {
+            street: "123 Main St",
+            city: "Cairo",
+            state: "State",
+            postalCode: "12345",
+            country: "Country"
+    },
+    },
+    {
+        name: "Thomas Murphy",
+        category: "Teachers",
+        age: 38,
+        email: "thomas.murphy@gmail.com",
+        mobile: "123-456-7890",
+        company: "ABC Hospital",
+        address: {
+            street: "123 Main St",
+            city: "Cairo",
+            state: "State",
+            postalCode: "12345",
+            country: "Country"
+    },
+    },
+    {
+        name: "Rachel Bell",
+        category: "Teachers",
+        age: 33,
+        email: "rachel.bell@gmail.com",
+        mobile: "123-456-7890",
+        company: "ABC Hospital",
+        address: {
+            street: "123 Main St",
+            city: "Cairo",
+            state: "State",
+            postalCode: "12345",
+            country: "Country"
+    },
+    },
+    {
+        name: "Christopher Ward",
+        category: "Teachers",
+        age: 42,
+        email: "christopher.ward@gmail.com",
+        mobile: "123-456-7890",
+        company: "ABC Hospital",
+        address: {
+            street: "123 Main St",
+            city: "Cairo",
+            state: "State",
+            postalCode: "12345",
+            country: "Country"
+    },
+    },
+    {
+        name: "Victoria Green",
+        category: "Teachers",
+        age: 30,
+        email: "victoria.green@gmail.com",
+        mobile: "123-456-7890",
+        company: "ABC Hospital",
+        address: {
+            street: "123 Main St",
+            city: "Cairo",
+            state: "State",
+            postalCode: "12345",
+            country: "Country"
+    },
+    },
+    {
+        name: "Justin Cox",
+        category: "Teachers",
+        age: 37,
+        email: "justin.cox@gmail.com",
+        mobile: "123-456-7890",
+        company: "ABC Hospital",
+        address: {
+            street: "123 Main St",
+            city: "Cairo",
+            state: "State",
+            postalCode: "12345",
+            country: "Country"
+    },
+    },
+    {
+        name: "Amelia Ross",
+        category: "Teachers",
+        age: 34,
+        email: "amelia.ross@gmail.com",
+        mobile: "123-456-7890",
+        company: "ABC Hospital",
+        address: {
+            street: "123 Main St",
+            city: "Cairo",
+            state: "State",
+            postalCode: "12345",
+            country: "Country"
+    },
+    },
+    {
+        name: "Brandon Price",
+        category: "Teachers",
+        age: 31,
+        email: "brandon.price@gmail.com",
+        mobile: "123-456-7890",
+        company: "ABC Hospital",
+        address: {
+            street: "123 Main St",
+            city: "Cairo",
+            state: "State",
+            postalCode: "12345",
+            country: "Country"
+    },
+    },
+    {
+        name: "Lauren Brooks",
+        category: "Teachers",
+        age: 43,
+        email: "lauren.brooks@gmail.com",
+        mobile: "123-456-7890",
+        company: "ABC Hospital",
+        address: {
+            street: "123 Main St",
+            city: "Cairo",
+            state: "State",
+            postalCode: "12345",
+            country: "Country"
+    },
+    },
+    {
+        name: "Timothy Hayes",
+        category: "Teachers",
+        age: 27,
+        email: "timothy.hayes@gmail.com",
+        mobile: "123-456-7890",
+        company: "ABC Hospital",
+        address: {
+            street: "123 Main St",
+            city: "Cairo",
+            state: "State",
+            postalCode: "12345",
+            country: "Country"
+    },
+    },
+    {
+        name: "Natalie Russell",
+        category: "Teachers",
+        age: 44,
+        email: "natalie.russell@gmail.com",
+        mobile: "123-456-7890",
+        company: "ABC Hospital",
+        address: {
+            street: "123 Main St",
+            city: "Cairo",
+            state: "State",
+            postalCode: "12345",
+            country: "Country"
+    },
+    },
+    {
+        name: "Erica Butler",
+        category: "Teachers",
+        age: 26,
+        email: "erica.butler@gmail.com",
+        mobile: "123-456-7890",
+        company: "ABC Hospital",
+        address: {
+            street: "123 Main St",
+            city: "Cairo",
+            state: "State",
+            postalCode: "12345",
+            country: "Country"
+    },
+    }         
+     ];
+
+        // Function to create HTML markup for donor with checkbox
+        function createDonorHTML(donor, index) {
+            return `
+                <div class="donor">
+                    <input type="checkbox" id="checkbox${index}" class="donorCheckbox" data-index="${index}">
+                    <p><strong>Name:</strong> ${donor.name}</p>
+                    <p><strong>Category:</strong> ${donor.category}</p>
+                    <p><strong>Age:</strong> ${donor.age}</p>
+                    <p><strong>Email:</strong> ${donor.email}</p>
+                    <p><strong>Mobile:</strong> ${donor.mobile}</p>
+                    <p><strong>Company:</strong> ${donor.company}</p>
+                    <p><strong>Address:</strong><br>
+                        ${donor.address.street}<br>
+                        ${donor.address.city}, ${donor.address.state} ${donor.address.postalCode}
+                    </p>
+                </div>
+            `;
+        }
+
+        // Function to display donors on the page
+        function displayDonors() {
+            const donorsContainer = document.getElementById("donors");
+            let donorsHTML = "";
+            donors.forEach((donor, index) => {
+                donorsHTML += createDonorHTML(donor, index);
+            });
+            donorsContainer.innerHTML = donorsHTML;
+
+            // Add event listener for delete selected button
+            const deleteButton = document.getElementById('deleteButton');
+            deleteButton.addEventListener('click', deleteSelectedDonors);
+        }
+
+        // Function to delete selected donors
+        function deleteSelectedDonors() {
+            const checkboxes = document.querySelectorAll('.donorCheckbox');
+            const selectedIndexes = [];
+            checkboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    selectedIndexes.push(parseInt(checkbox.getAttribute('data-index')));
+                }
+            });
+            // Remove selected donors from donors array
+            selectedIndexes.sort((a, b) => b - a).forEach(index => {
+                donors.splice(index, 1);
+            });
+            // Re-display donors
+            displayDonors();
+        }
+
+        // Call the function to display donors
+        displayDonors();
+    </script>
+</body>
+</html>
