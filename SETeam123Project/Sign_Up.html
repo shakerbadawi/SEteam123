@@ -45,7 +45,7 @@
  <div class="grid_12">
  <h1>
  <a href="index.html">
- <img src="images/Noor_New_LOGO.png" alt="Online Charity Donation Website">
+ <img src="images/NOOR_NGO.png" alt="Online Charity Donation Website">
  </a>
  
  </h1>
@@ -72,18 +72,25 @@
 <body>
 
 <h2>Sign Up New User:</h2>
-
 <div>
-    <label for="userType">Select User Type:</label>
-    <select id="userType">
-        <option value="admin">Admin</option>
-        <option value="donor">Donor</option>
-        <option value="Organization">Organization</option>
-        <option value="requester">Donation Requester</option>
-        <option value="volunteer">Volunteer</option>
-    </select>
-</div>
+<label for="userType">Select User Type:</label>
+<select id="userType" onchange="redirectToPage()">
+    <option value="admin">Admin</option>
+    <option value="donor">Donor</option>
+    <option value="Organization">Organization</option>
+    <option value="requester">Donation Requester</option>
+    <option value="volunteer">Volunteer</option>
+</select>
 
+<script>
+    function redirectToPage() {
+        var selectedOption = document.getElementById("userType").value;
+        if (selectedOption === "Organization") {
+            window.location.href = "organization_signup.html"; // Replace with the filename you want to redirect to
+        }
+    }
+</script>
+</div>
 <div>
     <label for="firstName">First Name:</label>
     <input type="text" id="firstName" required>
@@ -145,6 +152,11 @@
 
 <button onclick="registerUser()">Sign Up</button>
 
+
+
+
+
+
 <script>
     function registerUser() {
         var userType = document.getElementById("userType").value;
@@ -201,3 +213,4 @@
 
 </body>
 </html>
+

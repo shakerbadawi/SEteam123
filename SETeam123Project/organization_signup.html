@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Registration</title>
+</head>
+<body>
+<div>
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" required>
+</div>
+<div>
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" required>
+</div>
+<div>
+    <label for="gender">Gender:</label>
+    <select id="gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+    </select>
+</div>
+<div>
+    <label for="email">Email:</label>
+    <input type="email" id="email" required>
+</div>
+<div>
+    <label for="password">Password:</label>
+    <input type="password" id="password" required>
+</div>
+<div>
+    <label for="confirmPassword">Confirm Password:</label>
+    <input type="password" id="confirmPassword" required>
+</div>
+<div>
+    <label for="mobilePhone">Mobile Phone:</label>
+    <input type="tel" id="mobilePhone" required>
+</div>
+<div>
+    <label for="organizationName">Organization Name:</label>
+    <input type="text" id="organizationName" required>
+</div>
+<div>
+    <label for="organizationType">Organization Type:</label>
+    <input type="text" id="organizationType" required>
+</div>
+<div>
+    <label for="organizationAddress">Organization Address:</label>
+    <input type="text" id="organizationAddress" required>
+</div>
+<div>
+    <label for="organizationArea">Organization Area:</label>
+    <input type="text" id="organizationArea" required>
+</div>
+<div>
+    <label for="organizationGovernorate">Organization Governorate:</label>
+    <input type="text" id="organizationGovernorate" required>
+    <button onclick="validateForm()">Sign Up</button>
+</div>
+
+
+<script>
+function validateForm() {
+    var firstName = document.getElementById("firstName").value;
+    var lastName = document.getElementById("lastName").value;
+    var gender = document.getElementById("gender").value;
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+    var confirmPassword = document.getElementById("confirmPassword").value;
+    var mobilePhone = document.getElementById("mobilePhone").value;
+    var organizationName = document.getElementById("organizationName").value;
+    var organizationType = document.getElementById("organizationType").value;
+    var organizationAddress = document.getElementById("organizationAddress").value;
+    var organizationArea = document.getElementById("organizationArea").value;
+    var organizationGovernorate = document.getElementById("organizationGovernorate").value;
+
+    if (password !== confirmPassword) {
+        alert("Passwords do not match.");
+        return;
+    }
+
+    // Add more validation logic if needed...
+
+    // If all validation passes, display success message
+    alert("Registration is done successfully!");
+}
+</script>
+</body>
+</html>
