@@ -3,213 +3,35 @@
  <html lang="ar" dir="rtl">
  <head>
  <title>Sign Up</title>
- <meta charset="utf-8">
- <meta name = "format-detection" content = "telephone=no" />
- <link rel="icon" href="images/favicon.ico">
- <link rel="shortcut icon" href="images/favicon.ico" />
- <link rel="stylesheet" href="css/form.css">
- <link rel="stylesheet" href="css/thumbs.css">
- <link rel="stylesheet" href="css/style.css">
- <script src="js/jquery.js"></script>
- <script src="js/jquery-migrate-1.2.1.js"></script>
- <script src="js/script.js"></script>
- <script src="js/superfish.js"></script>
- <script src="js/sForm.js"></script>
- <script src="js/jquery.ui.totop.js"></script>
- <script src="js/jquery.equalheights.js"></script>
- <script src="js/jquery.easing.1.3.js"></script>
- <script src="js/jquery.iosslider.min.js"></script>
- <script>
- $(document).ready(function(){
- $().UItoTop({ easingType: 'easeOutQuart' });
- });
- </script>
- <!--[if lt IE 8]>
- <div style=' clear: both; text-align:center; position: relative;'>
- <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
- <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
- </a>
- </div>
- <![endif]-->
- <!--[if lt IE 9]>
- <script src="js/html5shiv.js"></script>
- <link rel="stylesheet" media="screen" href="css/ie.css">
- <![endif]-->
- </head>
- <body class="page1" id="top">
- <!--=================================header=================================-->
- <header>
-	
-	
- <div class="container_12">
- <div class="grid_12">
- <h1>
- <a href="index.html">
- <img src="images/NOOR_NGO.png" alt="Online Charity Donation Website">
- </a>
  
- </h1>
- <div class="menu_block ">
- <div class="clear"></div>
- <nav class="horizontal-nav full-width horizontalNav-notprocessed">
- <ul class="sf-menu">
- <li class="current"><a href="index.html">Home</a></li>
- <li><a href="what-we-do.html">What We Do</a></li>
- 
- <li><a href="medication-donations.html">Medication and Medical Supplies</a></li>
- <li><a href="school-supplies-donations.html">School Supplies Donations</a></li>
- <li><a href="refugee-needs.html">Refugee and People Living Below the Poverty Line Needs</a></li>
- <li><a href="orphanage-donations.html">Orphanage Donations</a></li>
- <li><a href="delivery-pickup.html">Pickup/ Delivery of Donations</a></li>
- <li><a href="contact-us.html">Contact Us</a></li>
- </ul>
- </nav>
- <div class="clear"></div>
- </div>
- </div>
- </div>
- </header>
-<body>
+           
+         <img src="images/NOOR_NGO.png" alt="Online Charity Donation Website">
 
-<h2>Sign Up New User:</h2>
-<div>
-<label for="userType">Select User Type:</label>
-<select id="userType" onchange="redirectToPage()">
-    <option value="admin">Admin</option>
-    <option value="donor">Donor</option>
-    <option value="Organization">Organization</option>
-    <option value="requester">Donation Requester</option>
-    <option value="volunteer">Volunteer</option>
-</select>
+         <h2>Sign Up New User:</h2>
+         <div>
+         <label for="userType">Select User Type:</label>
+         <select id="userType" onchange="redirectToPage()">
+            <option> </option>
+             <option value="Admin">Admin</option>
+             <option value="donor">Donor</option>
+             <option value="Organization">Organization</option>
 
-<script>
-    function redirectToPage() {
-        var selectedOption = document.getElementById("userType").value;
-        if (selectedOption === "Organization") {
-            window.location.href = "organization_signup.html"; // Replace with the filename you want to redirect to
-        }
-    }
-</script>
-</div>
-<div>
-    <label for="firstName">First Name:</label>
-    <input type="text" id="firstName" required>
-</div>
+         </select>
+         
+         <script>
+             function redirectToPage() {
+                 var selectedOption = document.getElementById("userType").value;
+                 if (selectedOption === "Organization") {
+                     window.location.href = "organization_signup.html"; // Redirect to organization signup page
+                 } else if (selectedOption === "Admin") {
+                     window.location.href = "Admin_signup.html"; // Redirect to admin signup page
+                 }
+                 else if (selectedOption === "donor")
+                 window.location.href = "donor_signup.html";
+             }
+         </script>
+         
 
-<div>
-    <label for="lastName">Last Name:</label>
-    <input type="text" id="lastName" required>
-</div>
-
-<div>
-    <label for="age">Age:</label>
-    <input type="number" id="age" required>
-</div>
-
-<div>
-    <label for="gender">Gender:</label>
-    <select id="gender">
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-        <option value="other">Other</option>
-    </select>
-</div>
-
-<div>
-    <label for="nationality">Nationality:</label>
-    <input type="text" id="nationality" required>
-</div>
-
-<div>
-    <label for="address">Address:</label>
-    <input type="text" id="address" required>
-</div>
-
-<div>
-    <label for="email">Email:</label>
-    <input type="email" id="email" required>
-</div>
-
-<div>
-    <label for="username">Username:</label>
-    <input type="text" id="username" required>
-</div>
-
-<div>
-    <label for="mobilePhone">Mobile Phone:</label>
-    <input type="tel" id="mobilePhone" required>
-</div>
-
-<div>
-    <label for="password">Password:</label>
-    <input type="password" id="password" required>
-</div>
-
-<div>
-    <label for="confirmPassword">Confirm Password:</label>
-    <input type="password" id="confirmPassword" required>
-</div>
-
-<button onclick="registerUser()">Sign Up</button>
-
-
-
-
-
-
-<script>
-    function registerUser() {
-        var userType = document.getElementById("userType").value;
-        var firstName = document.getElementById("firstName").value;
-        var lastName = document.getElementById("lastName").value;
-        var age = document.getElementById("age").value;
-        var gender = document.getElementById("gender").value;
-        var nationality = document.getElementById("nationality").value;
-        var address = document.getElementById("address").value;
-        var email = document.getElementById("email").value;
-        var username = document.getElementById("username").value;
-        var mobilePhone = document.getElementById("mobilePhone").value;
-        var password = document.getElementById("password").value;
-        var confirmPassword = document.getElementById("confirmPassword").value;
-
-        // Validate password match
-        if (password !== confirmPassword) {
-            alert("Passwords do not match. Please try again.");
-            return;
-        }
-
-        // Redirect to appropriate login page based on user type
-        switch (userType) {
-            case "admin":
-                window.location.href = "admin_login.html";
-                break;
-            case "requester":
-                window.location.href = "requester_login.html";
-                break;
-            case "donor":
-                window.location.href = "donor_login.html";
-                break;
-            case "volunteer":
-                window.location.href = "volunteer_login.html";
-                break;
-            default:
-                break;
-        }
-
-        // This is just a sample code, you can replace it with your backend logic
-        console.log("User Type: " + userType);
-        console.log("First Name: " + firstName);
-        console.log("Last Name: " + lastName);
-        console.log("Age: " + age);
-        console.log("Gender: " + gender);
-        console.log("Nationality: " + nationality);
-        console.log("Address: " + address);
-        console.log("Email: " + email);
-        console.log("Username: " + username);
-        console.log("Mobile Phone: " + mobilePhone);
-        console.log("Password: " + password);
-    }
-</script>
 
 </body>
 </html>
