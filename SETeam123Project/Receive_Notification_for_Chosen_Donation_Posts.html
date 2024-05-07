@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receive Notification for Chosen Donation Posts</title>
+    <style>
+        /* Add your CSS styles here */
+        .notification-area {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f3f3f3;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .notification {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Receive Notification for Chosen Donation Posts</h2>
+
+<div class="notification-area" id="notificationArea">
+    <!-- Notifications will appear here -->
+</div>
+
+<script>
+    // Function to add a new notification
+    function addNotification(message) {
+        const notificationArea = document.getElementById('notificationArea');
+        const notification = document.createElement('div');
+        notification.classList.add('notification');
+        notification.textContent = message;
+        notificationArea.appendChild(notification);
+    }
+
+    // Example usage: Add a notification
+    addNotification('A donation post has been chosen by a donor. Please coordinate pickup.');
+</script>
+
+</body>
+</html>
