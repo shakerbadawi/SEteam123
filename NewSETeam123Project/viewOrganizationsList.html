@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Tadamun - View Organization List</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Overpass:300,400,400i,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/ionicons.min.css">
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            padding-top: 80px; /* add top padding to create space between navbar and content */
+        }
+
+        /* Add some top margin to the navbar to align it with the padding */
+        .navbar {
+            margin-top: 20px;
+        }
+
+        /* Style the organization list table */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        /* Style the search input and category filter select elements */
+        #search-input, #category-filter {
+            margin-bottom: 10px;
+            padding: 6px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        /* Reset filters button */
+        #reset-filters {
+            background-color: black;
+            color: white;
+            margin-top: 10px;
+            padding: 6px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #reset-filters:hover {
+            background-color: darkorange;
+        }
+
+        /* Style the delete button */
+        .delete-button {
+            background-color: black;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .delete-button:hover {
+            background-color: darkorange;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Tadamun</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>View Organization List</h1>
+        <div class="row">
+            <div class="col-md-3">
+                <input type="search" id="search-input" placeholder="Search by name">
+            </div>
+            <div class="col-md-3">
+                <select id="category-filter">
+                    <option value="">All Categories</option>
+                    <option value="Healthcare">Healthcare</option>
+                    <option value="Education">Education</option>
+                    <option value="Community Development">Community Development</option>
+                    <option value="Humanitarian">Humanitarian</option>
+                    <option value="Child Welfare">Child Welfare</option>
+                    <option value="Social Services">Social Services</option>
+                    <option value="Environment">Environment</option>
+                    <option value="Youth Development">Youth Development</option>
+                    <option value="Animal Welfare">Animal Welfare</option>
+                    <option value="Arts & Culture">Arts & Culture</option>
+                    <option value="Sports & Recreation">Sports & Recreation</option>
+                    <option value="Technology">Technology</option>
+                    <option value="Gender Equality">Gender Equality</option>
+                    <option value="Food Security">Food Security</option>
+                    <option value="Literacy">Literacy</option>
+                    <option value="Disability Rights">Disability Rights</option>
+                    <option value="Housing & Homelessness">Housing & Homelessness</option>
+                    <option value="Crisis Support">Crisis Support</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <button id="reset-filters">Reset Filters</button>
+            </div>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>City</th>
+                    <th>Address</th>
+                    <th>Contact</th>
+                    <th>Organization Type</th>
+                    <th>Admin Action</th>
+                </tr>
+            </thead>
+            <tbody id="organization-list">
+                <!-- Dummy data for organizations -->
+                <script>
+                const organizations = [
+                    {
+                        name: "Charity Foundation",
+                        category: "Healthcare",
+                        City: "Cairo",
+                        address: {
+                            street: "12 thawra street",
+                            postalCode: "12345"
+                        },
+                        contact: {
+                            Gmail: "charityfoundation@gmail.com",
+                            website: "www.charityfoundation.com",
+                            phone: "01234567899"
+                        },
+                        OrganizationType: "Non-profit"
+                    },
+                    {
+                        name: "Community Support Group",
+                        category: "Education",
+City: "Cairo",
+                        address:{
+                            street:"13 thawra street",
+                            postalCode: "12345"
+                        },
+                        contact:{
+                            Gmail:"communitysupportgroup@gmail.com",
+                            website: "www.communitysupportgroup.com",
+                            phone:"01234567889"
+                        },
+                        OrganizationType:"Non-profit"
+                    },
+                    {
+                        name: "Hope for All",
+                        category: "Community Development",
+                        City: "Cairo",
+                        address:{
+                            street:"14 thawra street",
+                            postalCode: "12345"
+                        },
+                        contact:{
+                            Gmail:"hopeforall@gmail.com",
+                            website: "www.hopeforall.com",
+                            phone:"01234567789"
+                        },
+                        OrganizationType:"Non-profit"
+                    },
+                    {
+                        name: "Global Aid Network",
+                        category: "Humanitarian",
+                        address:{
+                            street:"15 thawra street",
+                postalCode: "12345"
+                        },
+                        contact:{
+                            Gmail:"globalaidnetwork@gmail.com",
+                            website: "www.globalaidnetwork.com",
+                            phone:"01234566789"
+                        },
+                        OrganizationType:"Non-profit"
+                    },
+                    {
+                        name: "Children's Shelter",
+                        category: "Child Welfare",
+                        address:{
+                            street:"16 thawra street",
+                            postalCode: "12345"
+                        },
+                        contact:{
+                            Gmail:"childreshelter@gmail.com",
+                            website: "www.childreshelter.com",
+                            phone:"01234556789"
+                        },
+                        OrganizationType:"Non-profit"
+                    },
+                    {
+                        name: "Elderly Care Association",
+                        category: "Social Services",
+                        address:{
+                            street:"17 thawra street",
+                            postalCode: "12345"
+                        },
+                        contact:{
+                            Gmail:"elderlycareassociation@gmail.com",
+                            website: "www.elderlycareassociation.com",
+                            phone:"01234456789"
+                        },
+                        OrganizationType:"Non-profit"
+                    },
+                    {
+                        name: "Environmental Conservation Society",
+                        category: "Environment",
+                        address:{
+                            street:"18 thawra street",
+                            postalCode: "12345"
+                        },
+                        contact:{
+                            Gmail:"environmentalconservationsociety@gmail.com",
+                            website: "www.environmentalconservationsociety.com",
+                            phone:"01233456789"
+                        },
+                        OrganizationType:"Non-profit"
+                    },
+                    {
+                        name: "Youth Empowerment Initiative",
+                        category: "Youth Development",
+                        address:{
+                            street:"19 thawra street",
+                            postalCode: "12345"
+                        },
+                        contact:{
+                            Gmail:"youthempowermentinitiative@gmail.com",
+                            website: "www.youthempowermentinitiative.com",
+                            phone:"01223456789"
+                        },
+                        OrganizationType:"Non-profit"
+                    },
+                    {
+                        name: "Animal Rescue Organization",
+                        category: "Animal Welfare",
+                        address:{
+                            street:"20 thawra street",
+                            postalCode: "12345"
+                        },
+                        contact:{
+                            Gmail:"animalrescueorg@gmail.com",
+                            website: "www.animalrescueorg.org",
+                            phone:"01123456789"
+                        },
+                        OrganizationType:"Non-profit"
+                    },
+                    {
+                        name: "Art and Culture Foundation",
+                        category: "Arts & Culture",
+                        address:{
+                            street:"21 thawra street",
+                            postalCode: "12345"
+                        },
+                        contact:{
+                            Gmail:"artculturefoundation@gmail.com",
+                            website: "www.artculturefoundation.com",
+                            phone:"01222456789"
+                        },
+                        OrganizationType:"Non-profit"
+                    },
+                    {
+                        name: "Sports for All",
+                        category: "Sports & Recreation",
+                        address:{
+                            street:"22 thawra street",
+                            postalCode: "12345"
+                        },
+                        contact:{
+                            Gmail:"sportsforall@gmail.com",
+                            website: "www.sportsforall.com",
+                            phone:"01223456889"
+                        },
+                        OrganizationType:"Non-profit"
+                    },
+{
+                        name: "Tech for Good",
+                        category: "Technology",
+                        address:{
+                            street:"23 thawra street",
+                            postalCode: "12345"
+                        },
+                        contact:{
+                            Gmail:"techforgood@gmail.com",
+                            website: "www.techforgoof.com",
+                            phone:"01223455789"
+                        },
+                        OrganizationType:"Non-profit"
+                    },
+                    {
+                        name: "Women's Rights Coalition",
+                        category: "Gender Equality",
+                        address:{
+                            street:"24 thawra street",
+                            postalCode: "12345"
+                        },
+                        contact:{
+                            Gmail:"womenrigthcoalition@gmail.com",
+                            website: "www.womenrightcoalition.com",
+                            phone:"01223456788"
+                        },
+                        OrganizationType:"Non-profit"
+                    },
+                    {
+                        name: "Food Bank Association",
+                        category: "Food Security",
+                        address:{
+                            street:"25 thawra street",
+                            postalCode: "12345"
+                        },
+                        contact:{
+                            Gmail:"foodbank@gmail.com",
+                            website: "www.foodbank.com",
+                            phone:"01223456669"
+                        },
+                        OrganizationType:"Non-profit"
+                    },
+                    {
+                        name: "Education for All",
+                        category: "Literacy",
+                        address:{
+                            street:"5 Nasr street",
+                            postalCode: "12345"
+                        },
+                        contact:{
+                            Gmail:"educationforall@gmail.com",
+                            website: "www.educationforall.com",
+                            phone:"01222456789"
+                        },
+                        OrganizationType:"Non-profit"
+                    },
+                    {
+                        name: "Medical Relief Society",
+                        category: "Healthcare",
+                        address:{
+                            street:"6 Nasr street",
+                            postalCode: "12345"
+                        },
+                        contact:{
+                            Gmail:"medreliefsociety@gmail.com",
+                            website: "www.medreliefsocity.com",
+                            phone:"01233356789"
+                        },
+                        OrganizationType:"Non-profit"
+                    },
+                    {
+                        name: "Disability Support Network",
+                        category: "Disability Rights",
+                        address:{
+                            street:"7 Nasr street",
+                            postalCode: "12345"
+                        },
+                        contact:{
+                            Gmail:"disabilitysupportnetwork.com",
+                            website:"www.disabilitysupportnetwork.com",
+                            phone:"01133456789"
+                        },
+                        OrganizationType:"Non-profit"
+                    },
+                    {
+                        name: "Homeless Shelter",
+                        category: "Housing & Homelessness",
+                        address:{
+                            street:"9 Nasr street",
+                            postalCode: "12345"
+                        },
+                        contact:{
+                            Gmail:"homelesshelter@gmail.com",
+                            website: "www.homelesshelter.com",
+                            phone:"01222455589"
+                        },
+                        OrganizationType:"Non-profit"
+                    },
+                    {
+                        name: "Rural Development Initiative",
+                        category: "Community Development",
+                        address:{
+                            street:"11 Nasr street",
+                            postalCode: "12345"
+                        },
+                        contact:{
+                            Gmail:"ruraldevinit@gmail.com",
+                            website: "www.ruraldevinit.com",
+                            phone:"01222444489"
+                        },
+                       OrganizationType:"Non-profit"
+                    },
+                    {
+                        name: "Crisis Intervention Center",
+                        category: "Crisis Support",
+                        address:{
+                            street:"15 Nasr street",
+                            postalCode: "12345"
+                        },
+                        contact:{
+                            Gmail:"crisisinitcanter@gmail.com",
+                            website: "www.crisisinitcenter.com",
+                            phone:"01232455589"
+                        },
+                        OrganizationType:"Non-profit"
+                    }
+                ];
+
+                // Function to display the organizations list
+                function displayOrganizations(orgs) {
+                    let html = "";
+                    orgs.forEach(org => {
+                        html += `<tr>
+                                    <td>${org.name}</td>
+                                    <td>${org.category}</td>
+                                    <td>${org.City}</td>
+                                    <td>${org.address.street}, ${org.address.postalCode}</td>
+                                    <td>${org.contact.Gmail}, ${org.contact.website}, ${org.contact.phone}</td>
+                                    <td>${org.OrganizationType}</td>
+                                    <td><button class="delete-button" onclick="deleteOrganization('${org.name}')">Delete</button></td>
+                                </tr>`;
+                    });
+                    document.getElementById("organization-list").innerHTML = html;
+                }
+
+                // Display all organizations initially
+                displayOrganizations(organizations);
+
+                // Function to delete an organization
+                function deleteOrganization(name) {
+                    const index = organizations.findIndex(org => org.name === name);
+                    if (index !== -1) {
+                        organizations.splice(index, 1);
+                        displayOrganizations(organizations);
+                    }
+                }
+
+                // Filter organizations by category
+                document.getElementById("category-filter").addEventListener("change", () => {
+                    const selectedCategory = document.getElementById("category-filter").value;
+                    if (selectedCategory === "") {
+                        displayOrganizations(organizations);
+                    } else {
+                        const filteredOrgs = organizations.filter(org => org.category === selectedCategory);
+                        displayOrganizations(filteredOrgs);
+                    }
+                });
+
+                // Reset filters
+                document.getElementById("reset-filters").addEventListener("click", () => {
+                    document.getElementById("search-input").value = "";
+                    document.getElementById("category-filter").value = "";
+                    displayOrganizations(organizations);
+                });
+
+                // Search organizations by name
+                document.getElementById("search-input").addEventListener("input", () => {
+                    const searchValue = document.getElementById("search-input").value.toLowerCase();
+                    if (searchValue === "") {
+                        displayOrganizations(organizations);
+                    } else {
+                        const filteredOrgs = organizations.filter(org => org.name.toLowerCase().includes(searchValue));
+                        displayOrganizations(filteredOrgs);
+                    }
+                });
+            </script>
+            </tbody>
+        </table>
+    </div>
+
+    <footer class="ftco-footer ftco-section img">
+    	<div class="overlay"></div>
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md-3">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">About Us</h2>
+              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Recent Blog</h2>
+              <div class="block-21 mb-4 d-flex">
+                <a class="blog-img mr-4" style="background-image: url(images/image_1.jpg);"></a>
+                <div class="text">
+                  <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
+                  <div class="meta">
+                    <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div>
+                    <div><a href="#"><span class="icon-person"></span> Admin</a></div>
+                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+                  </div>
+                </div>
+              </div>
+              <div class="block-21 mb-4 d-flex">
+                <a class="blog-img mr-4" style="background-image: url(images/image_2.jpg);"></a>
+                <div class="text">
+                  <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
+                  <div class="meta">
+                    <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div>
+                    <div><a href="#"><span class="icon-person"></span> Admin</a></div>
+                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2">
+             <div class="ftco-footer-widget mb-4 ml-md-4">
+              <h2 class="ftco-heading-2">Site Links</h2>
+              <ul class="list-unstyled">
+                <li><a href="#" class="py-2 d-block">Home</a></li>
+                <li><a href="#" class="py-2 d-block">About</a></li>
+                <li><a href="#" class="py-2 d-block">Donate</a></li>
+                <li><a href="#" class="py-2 d-block">Causes</a></li>
+                <li><a href="#" class="py-2 d-block">Event</a></li>
+                <li><a href="#" class="py-2 d-block">Blog</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="ftco-footer-widget mb-4">
+            	<h2 class="ftco-heading-2">Have a Questions?</h2>
+            	<div class="block-23 mb-3">
+	              <ul>
+	                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
+	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
+	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
+	              </ul>
+	            </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+
+            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.stellar.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="js/jquery.animateNumber.min.js"></script>
+    <script src="js/bootstrap-datepicker.js"></script>
+    <script src="js/jquery.timepicker.min.js"></script>
+    <script src="js/scrollax.min.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+</html>

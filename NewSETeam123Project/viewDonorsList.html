@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Tadamun - View Donor List</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Overpass:300,400,400i,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/ionicons.min.css">
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            padding-top: 80px; /* add top padding to create space between navbar and content */
+        }
+
+        /* Add some top margin to the navbar to align it with the padding */
+        .navbar {
+            margin-top: 20px;
+        }
+
+        /* Style the donor list table */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        /* Style the search input and category filter select elements */
+        #search-input, #category-filter {
+            margin-bottom: 10px;
+            padding: 6px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        /* Style the category link select element */
+        #category-link {
+            margin-right: 10px;
+        }
+
+        /* Style the delete button */
+        .delete-button {
+            background-color: black;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .delete-button:hover {
+            background-color: darkorange;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Tadamun</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+                </ul>
+</div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>View Donor List</h1>
+        <div class="row">
+            <div class="col-md-3">
+                <input type="search" id="search-input" placeholder="Search by name">
+            </div>
+            <div class="col-md-3">
+                <select id="category-filter">
+                    <option value="">All Jobs</option>
+                    <option value="Doctor">Doctor</option>
+                    <option value="Teacher">Teacher</option>
+                    <option value="Other">Other Jobs</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input type="text" id="city-filter" placeholder="Filter by city">
+            </div>
+            <div class="col-md-3">
+                <button id="resetFilter">Reset Filter</button>
+            </div>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Job</th>
+                    <th>City</th>
+                    <th>Address</th>
+                    <th>Contact</th>
+                    <th>Company</th>
+                    <th>Donation Amount</th>
+                    <th>Donation Date</th>
+                    <th>Admin Action</th>
+                </tr>
+            </thead>
+            <tbody id="donor-list">
+                <!-- Dummy data for donors -->
+                <script>
+            const donors = [];
+
+            // Generate random donors
+            for (let i = 0; i < 50; i++) {
+                const job = i < 15 ? "Doctor" : i < 25 ? "Teacher" : "Other Jobs";
+                donors.push({
+                    name: `Donor${i + 1}`,
+                    job: job,
+                    city: `City${Math.floor(Math.random() * 10) + 1}`,
+                    address: {
+                        street: `Street${i + 1}`,
+                        postalCode: `${Math.floor(Math.random() * 100000)}`
+                    },
+                    contact: {
+                        Gmail: `donor${i + 1}@gmail.com`,
+                        website: `www.donor${i + 1}.com`,
+                        phone: `012345678${i + 1}`
+                    },
+                    company: `Company${i + 1}`,
+                    donationAmount: Math.floor(Math.random() * 1000) + 100,
+                    donationDate: `2022-0${Math.floor(Math.random() * 9) + 1}-0${Math.floor(Math.random() * 30) + 1}`
+                });
+            }
+
+            // Function to display the donors list
+            function displayDonors(donors) {
+                let html = "";
+                donors.forEach(donor => {
+                    html += `<tr>
+                                    <td>${donor.name}</td>
+                                    <td>${donor.job}</td>
+                                    <td>${donor.city}</td>
+                                    <td>${donor.address.street}, ${donor.address.postalCode}</td>
+                                    <td>${donor.contact.Gmail}</td>
+                                    <td>${donor.company}</td>
+                                    <td>${donor.donationAmount}</td>
+                                    <td>${donor.donationDate}</td>
+                                    <td><button class="delete-button" onclick="deleteDonor('${donor.name}')">Delete</button></td>
+                                </tr>`;
+                });
+                document.getElementById("donor-list").innerHTML = html;
+            }
+
+            // Function to filter the donorslist by city
+            function filterByCity(city) {
+                let filteredDonors = donors.filter(donor => donor.city === city);
+                displayDonors(filteredDonors);
+            }
+
+            // Function to filter the donors list by job
+            function filterByJob(job) {
+                if (job === "Other") {
+                    let filteredDonors = donors.filter(donor => donor.job !== "Doctor" && donor.job !== "Teacher");
+                    displayDonors(filteredDonors);
+                } else {
+                    let filteredDonors = donors.filter(donor => donor.job === job);
+                    displayDonors(filteredDonors);
+                }
+            }
+
+            // Display all donors by default
+            displayDonors(donors);
+
+            // Filter by city
+            document.getElementById("city-filter").addEventListener("input", function() {
+                filterByCity(this.value);
+            });
+
+            // Filter by job
+            document.getElementById("category-filter").addEventListener("change", function() {
+                filterByJob(this.value);
+            });
+
+            // Filter reset button
+            document.getElementById("resetFilter").addEventListener("click", function() {
+                document.getElementById("city-filter").value = "";
+                document.getElementById("category-filter").selectedIndex = 0;
+                displayDonors(donors);
+            });
+
+            // Function to delete a donor
+            function deleteDonor(name) {
+                let index = -1;
+                donors.forEach((donor, i) => {
+                    if (donor.name === name) {
+                        index = i;
+                    }
+                });
+                if (index !== -1) {
+                    donors.splice(index, 1);
+                    displayDonors(donors);
+                }
+            }
+        </script>
+    </table>
+</div>
+
+<footer class="ftco-footer ftco-section img">
+    <div class="overlay"></div>
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-md-3">
+        <div class="ftco-footer-widget mb-4">
+          <h2 class="ftco-heading-2">About Us</h2>
+          <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+          <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+            <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+            <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+            <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="ftco-footer-widget mb-4">
+          <h2 class="ftco-heading-2">Recent Blog</h2>
+          <div class="block-21 mb-4 d-flex">
+            <a class="blog-img mr-4" style="background-image: url(images/image_1.jpg);"></a>
+            <div class="text">
+              <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
+              <div class="meta">
+                <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div>
+                <div><a href="#"><span class="icon-person"></span> Admin</a></div>
+                <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+              </div>
+            </div>
+          </div>
+          <div class="block-21 mb-4 d-flex">
+            <a class="blog-img mr-4" style="background-image: url(images/image_2.jpg);"></a>
+            <div class="text">
+              <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
+              <div class="meta">
+                <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div>
+                <div><a href="#"><span class="icon-person"></span> Admin</a></div>
+                <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2">
+         <div class="ftco-footer-widget mb-4 ml-md-4">
+          <h2 class="ftco-heading-2">Site Links</h2>
+          <ul class="list-unstyled">
+            <li><a href="#" class="py-2 d-block">Home</a></li>
+            <li><a href="#" class="py-2 d-block">About</a></li>
+            <li><a href="#" class="py-2 d-block">Donate</a></li>
+            <li><a href="#" class="py-2 d-block">Causes</a></li>
+            <li><a href="#" class="py-2 d-block">Event</a></li>
+            <li><a href="#" class="py-2 d-block">Blog</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="ftco-footer-widget mb-4">
+            <h2 class="ftco-heading-2">Have a Questions?</h2>
+            <div class="block-23 mb-3">
+              <ul>
+                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
+                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
+                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
+              </ul>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 text-center">
+
+        <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery-migrate-3.0.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/jquery.waypoints.min.js"></script>
+<script src="js/jquery.stellar.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/aos.js"></script>
+<script src="js/jquery.animateNumber.min.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+<script src="js/jquery.timepicker.min.js"></script>
+<script src="js/scrollax.min.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>
