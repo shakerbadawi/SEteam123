@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requester Home Page</title>
+    <!-- Add CSS styles here -->
+    <style>
+        /* CSS styles for notification bell and menu */
+        .notification-bell {
+            position: fixed;
+            top: 10px;
+            right: 60px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #333;
+        }
+        .menu-icon {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #333;
+        }
+        .notification-count {
+            position: absolute;
+            top: 6px;
+            right: 10px;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+        .notification-menu {
+            position: fixed;
+            top: 40px;
+            right: 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            display: none;
+            z-index: 1;
+        }
+        .notification-menu ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .notification-menu ul li {
+            padding: 5px 0;
+            cursor: pointer;
+        }
+        .notification-menu ul li:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Requester Home Page</h1>
+
+<!-- Buttons for past requests and my requests -->
+<button onclick="viewPastRequests()">Past Requests</button>
+<button onclick="viewMyRequests()">My Requests</button>
+
+<!-- Notification bell icon -->
+<div class="notification-bell" onclick="toggleNotificationMenu()">
+    &#128276; <!-- Bell icon unicode -->
+    <div class="notification-count" id="notificationCount">2</div>
+</div>
+
+<!-- Menu icon -->
+<div class="menu-icon" onclick="toggleMenu()">
+    &#9776; <!-- Menu icon unicode -->
+</div>
+
+<!-- Notification menu -->
+<div class="notification-menu" id="notificationMenu">
+    <ul>
+        <!-- Notification items will be dynamically inserted here -->
+    </ul>
+</div>
+
+<script>
+    // Function to toggle notification menu visibility
+    function toggleNotificationMenu() {
+        const menu = document.getElementById("notificationMenu");
+        menu.style.display = (menu.style.display === "block") ? "none" : "block";
+    }
+
+    // Function to toggle menu visibility
+    function toggleMenu() {
+        alert("Toggle Menu");
+        // Add your logic here to toggle the menu display
+    }
+
+    // Dummy function to display past requests
+    function viewPastRequests() {
+        alert("View Past Requests");
+    }
+
+    // Dummy function to display my requests
+    function viewMyRequests() {
+        alert("View My Requests");
+    }
+</script>
+
+</body>
+</html>

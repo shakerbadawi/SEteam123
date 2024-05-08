@@ -1,0 +1,97 @@
+
+   <!DOCTYPE html>
+   <html lang="en">
+   <head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>User Registration</title>
+   </head>
+   
+   <header>
+    <div class="container_12">
+        <div class="grid_12">
+            <h1>
+                <a href="index.html">
+                    <img src="images/Noor_New_LOGO.png" alt="Online Charity Donation Website">
+                </a>
+            </h1>
+        </div>
+    </div>
+</header>
+   
+   <body>
+   <div>
+       <label for="firstName">First Name:</label>
+       <input type="text" id="firstName" required>
+   </div>
+   <div>
+       <label for="lastName">Last Name:</label>
+       <input type="text" id="lastName" required>
+   </div>
+   <div>
+       <label for="gender">Gender:</label>
+       <select id="gender">
+           <option value="male">Male</option>
+           <option value="female">Female</option>
+           <option value="other">Other</option>
+       </select>
+   </div>
+   <div>
+       <label for="email">Email:</label>
+       <input type="email" id="email" required>
+   </div>
+   <div>
+       <label for="password">Password:</label>
+       <input type="password" id="password" required>
+   </div>
+   <div>
+       <label for="confirmPassword">Confirm Password:</label>
+       <input type="password" id="confirmPassword" required>
+   </div>
+   <div>
+       <label for="mobilePhone">Mobile Phone:</label>
+       <input type="tel" id="mobilePhone" required>
+   </div>
+  
+   
+       <label for="Address"> Address:</label>
+       <input type="text" id="Address" required>
+   </div>
+   <div>
+       <label for="Area">Area:</label>
+       <input type="text" id="Area" required>
+   </div>
+   <div>
+       <label for="Governorate">Governorate:</label>
+       <input type="text" id="Governorate" required>
+       <button onclick="validateForm()" href =donor_login.html >Sign Up</button>
+   </div>
+   
+   
+   <script>
+   function validateForm() {
+       var firstName = document.getElementById("firstName").value;
+       var lastName = document.getElementById("lastName").value;
+       var gender = document.getElementById("gender").value;
+       var email = document.getElementById("email").value;
+       var password = document.getElementById("password").value;
+       var confirmPassword = document.getElementById("confirmPassword").value;
+       var mobilePhone = document.getElementById("mobilePhone").value;
+       var Address = document.getElementById("Address").value;
+       var Area = document.getElementById("Area").value;
+       var Governorate = document.getElementById("Governorate").value;
+   
+       if (password !== confirmPassword) {
+           alert("Passwords do not match.");
+           return;
+       }
+   
+       // Add more validation logic if needed...
+   
+       // If all validation passes, display success message
+       alert("Registration is done successfully!");
+       window.location.href= ("donor_login.html");
+   }
+   </script>
+   </body>
+   </html>

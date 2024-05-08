@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>View Registered Organizations</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">
+                <a href="index.html">
+                    <img src="images/Noor_New_LOGO.png" alt="Online Charity Donation Website">
+                </a>
+            </h1>
+            <nav class="menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="what-we-do.html">What We Do</a></li>
+                    <li><a href="medication-donations.html">Medication and Medical Supplies</a></li>
+                    <li><a href="school-supplies-donations.html">School Supplies Donations</a></li>
+                    <li><a href="refugee-needs.html">Refugee and People Living Below the Poverty Line Needs</a></li>
+                    <li><a href="orphanage-donations.html">Orphanage Donations</a></li>
+                    <li><a href="delivery-pickup.html">Pickup/ Delivery of Donations</a></li>
+                    <li><a href="contact-us.html">Contact Us</a></li>
+                    <li><a href="Delete_accounts.html">Delete accounts</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>View Registered Organizations</h1>
+
+        <div class="filters">
+            <input type="text" id="searchInput" placeholder="Search by organization name...">
+            <select id="filterCategory">
+                <option value="">Filter by Category</option>
+                <option value="Healthcare">Healthcare</option>
+                <option value="Education">Education</option>
+                <option value="Environment">Environment</option>
+                <option value="Community Development">Community Development</option>
+            </select>
+            <button onclick="applyFilters()">Apply Filters</button>
+            <button onclick="resetFilters()">Reset Filters</button>
+        </div>
+
+        <div id="registeredOrganizations" class="organizations">
+            <!-- Registered organizations will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <script>
+        const registeredOrganizations = [
+            { name: "Charity Foundation", category: "Healthcare", contactPerson: "John Doe", email: "john@example.com", phone: "1234567890", registrationDate: "2024-05-02" },
+            { name: "Community Support Group", category: "Community Development", contactPerson: "Jane Smith", email: "jane@example.com", phone: "9876543210", registrationDate: "2024-05-01" },
+            // Add more organizations
+        ];
+
+        function displayRegisteredOrganizations(orgs) {
+            const registeredOrganizationsDiv = document.getElementById("registeredOrganizations");
+            registeredOrganizationsDiv.innerHTML = ''; // Clear previous list
+
+            orgs.forEach(org => {
+                const orgDiv = document.createElement("div");
+                orgDiv.classList.add("organization");
+                orgDiv.innerHTML = `
+                    <p><strong>Name:</strong> ${org.name}</p>
+                    <p><strong>Category:</strong> ${org.category}</p>
+                    <p><strong>Contact Person:</strong> ${org.contactPerson}</p>
+                    <p><strong>Email:</strong> ${org.email}</p>
+                    <p><strong>Phone:</strong> ${org.phone}</p>
+                    <p><strong>Registration Date:</strong> ${org.registrationDate}</p>
+                    <hr>
+                `;
+                registeredOrganizationsDiv.appendChild(orgDiv);
+            });
+        }
+
+        function applyFilters() {
+            const searchInput = document.getElementById("searchInput").value.toLowerCase();
+            const filterCategory = document.getElementById("filterCategory").value.toLowerCase();
+
+            let filteredOrgs = registeredOrganizations;
+
+            if (searchInput !== "") {
+                filteredOrgs = filteredOrgs.filter(org => org.name.toLowerCase().includes(searchInput));
+            }
+
+            if (filterCategory !== "") {
+                filteredOrgs = filteredOrgs.filter(org => org.category.toLowerCase() === filterCategory);
+            }
+
+            displayRegisteredOrganizations(filteredOrgs);
+        }
+
+        function resetFilters() {
+            document.getElementById("searchInput").value = "";
+            document.getElementById("filterCategory").value = "";
+            displayRegisteredOrganizations(registeredOrganizations);
+        }
+
+        displayRegisteredOrganizations(registeredOrganizations);
+    </script>
+</body>
+
+</html>

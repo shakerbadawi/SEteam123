@@ -3,84 +3,25 @@
  <html lang="ar" dir="rtl">
  <head>
  <title>Home</title>
- <meta charset="utf-8">
- <meta name = "format-detection" content = "telephone=no" />
- <link rel="icon" href="images/favicon.ico">
- <link rel="shortcut icon" href="images/favicon.ico" />
- <link rel="stylesheet" href="css/form.css">
- <link rel="stylesheet" href="css/thumbs.css">
- <link rel="stylesheet" href="css/style.css">
- <script src="js/jquery.js"></script>
- <script src="js/jquery-migrate-1.2.1.js"></script>
- <script src="js/script.js"></script>
- <script src="js/superfish.js"></script>
- <script src="js/sForm.js"></script>
- <script src="js/jquery.ui.totop.js"></script>
- <script src="js/jquery.equalheights.js"></script>
- <script src="js/jquery.easing.1.3.js"></script>
- <script src="js/jquery.iosslider.min.js"></script>
- <script>
- $(document).ready(function(){
- $().UItoTop({ easingType: 'easeOutQuart' });
- });
- </script>
- <!--[if lt IE 8]>
- <div style=' clear: both; text-align:center; position: relative;'>
- <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
- <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
- </a>
- </div>
- <![endif]-->
- <!--[if lt IE 9]>
- <script src="js/html5shiv.js"></script>
- <link rel="stylesheet" media="screen" href="css/ie.css">
- <![endif]-->
  </head>
  <body class="page1" id="top">
- <!--=================================header=================================-->
  <header>
-	
-	
- <div class="container_12">
- <div class="grid_12">
- <h1>
- <a href="index.html">
  <img src="images/Noor_New_LOGO.png" alt="Online Charity Donation Website">
- </a>
- 
- </h1>
- <div class="menu_block ">
- <a href="New_User_Registeration.html" class="donate">Sign Up</a>
- <div class="clear"></div>
- <nav class="horizontal-nav full-width horizontalNav-notprocessed">
- <ul class="sf-menu">
- <li class="current"><a href="index.html">Home</a></li>
- <li><a href="what-we-do.html">What We Do</a></li>
- 
- <li><a href="medication-donations.html">Medication and Medical Supplies</a></li>
- <li><a href="school-supplies-donations.html">School Supplies Donations</a></li>
- <li><a href="refugee-needs.html">Refugee and People Living Below the Poverty Line Needs</a></li>
- <li><a href="orphanage-donations.html">Orphanage Donations</a></li>
- <li><a href="delivery-pickup.html">Pickup/ Delivery of Donations</a></li>
- <li><a href="contact-us.html">Contact Us</a></li>
- </ul>
- </nav>
- <div class="clear"></div>
- </div>
- </div>
- </div>
- </header>
- <!--==============================Content=================================-->
  <div class="content">
- <div class="container_12">
- <div class="grid_6">
-<!-- Add the button here -->
-<button onclick="redirectToAdminLogin()">Admin Login</button>
-<button onclick="redirectToRequesterLogin()">Requester Login</button>
-<button onclick="redirectToDonorLogin()">Donor Login</button>
-<button onclick="redirectToVolunteerLogin()">Volunteer Login</button>
-
-<script>
+    <div class="container_12">
+    <div class="grid_6">   <h1>Home Page</h1>
+   <h3>new to here?</h3> <button onclick ="redirecttosignup()">signup</button>
+   <br>
+   <br>
+   <h3>Already have an account?</h3>
+   <button onclick="redirectToAdminLogin()">Login as admin</button>
+   <button onclick="redirectToRequesterLogin()">Login as requester</button>
+   <button onclick="redirectToDonorLogin()">Login as donor</button>
+   <button onclick="redirectToVolunteerLogin()">Login as voulenteer</button>
+   <script>
+    function redirecttosignup() {
+        window.location.href = "Sign_Up.html"; // Redirects to signup.html
+    }
     function redirectToAdminLogin() {
         window.location.href = "admin_login.html"; // Replace "admin_login.html" with the actual URL of your admin login page
     }
@@ -97,89 +38,18 @@
         window.location.href = "volunteer_login.html"; // Redirects to volunteer_login.html
     }
 </script>
- <h2>Find Donation Cases</h2>
- <form action="search-results.html" method="get">
- <input type="text" name="search" placeholder="Search for donation cases...">
- <button type="submit">Search</button>
- </form>
- <ul class="list">
- <li>
- <h3>Clothing Donations</h3>
- <p>
- Find clothing donation cases and donate clothes to those in need.
- </p>
- <a href="clothing-donations.html" class="btn">View Cases</a>
- </li>
- <li>
- <h3>Medical Supplies Donations</h3>
- <p>
- Find medical supplies donation cases and donate medical supplies to those in need.
- </p>
- <a href="medical-supplies-donations.html" class="btn">View Cases</a>
- </li>
- <li>
- <h3>School Supplies Donations</h3>
- <p>
- Find school supplies donation cases and donate school supplies to those in need.
- </p>
- <a href="school-supplies-donations.html" class="btn">View Cases</a>
- </li>
- <li>
- <h3>Refugee and People Living Below the Poverty Line Needs</h3>
- <p>
- Find refugee and people living below the poverty line needs and donate to those in need.
- </p>
- <a href="refugee-needs.html" class="btn">View Cases</a>
- </li>
- <li>
- <h3>Orphanage Donations</h3>
- <p>
- Find orphanage donation cases and donate to orphanages in need.
- </p>
- <a href="orphanage-donations.html" class="btn">View Cases</a>
- </li>
- </ul>
- </div>
- <div class="grid_6">
- <h2>Make a Donation</h2>
- <p>
- Make a non-monetary donation by selecting the type of donation you would like to make.
- </p>
- <ul class="list">
- <li>
- <input type="radio" name="donation-type" id="clothing-donation">
- <label for="clothing-donation">Clothing Donation</label>
- </li>
- <li>
- <input type="radio" name="donation-type" id="medical-supplies-donation">
- <label for="medical-supplies-donation">Medical Supplies Donation</label>
- </li>
- <li>
- <input type="radio" name="donation-type" id="school-supplies-donation">
- <label for="school-supplies-donation">School Supplies Donation</label>
- </li>
- <li>
- <input type="radio" name="donation-type" id="refugee-needs-donation">
- <label for="refugee-needs-donation">Refugee and People Living Below the Poverty Line Needs Donation</label>
- </li>
- <li>
- <input type="radio" name="donation-type" id="orphanage-donation">
- <label for="orphanage-donation">Orphanage Donation</label>
- </li>
- </ul>
- <a href="#" class="btn">Make a Donation</a>
- </div>
- </div>
- </div>
- <!--==============================footer=================================-->
- <footer>
- <div class="container_12">
- <div class="grid_12">
- <div class="copy">
- Noor Online Charity Donation Website &copy; 2023 | <a href="privacy-policy.html">Privacy Policy</a>
- </div>
- </div>
- </div>
- </footer>
+ 
+ 
+ 
+
+<br>
+</br>
+ <li><a href="AboutUs.html">What We Do</a></li>
+ <li><a href="contact-us.html">Contact Us</a></li>
+
+ </nav>
+
+ 
+ </header>
  </body>
 </html>

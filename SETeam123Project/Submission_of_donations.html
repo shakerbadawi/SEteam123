@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submission of Donation Posts</title>
+    <style>
+        /* Add your CSS styles here */
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: bold;
+        }
+        .form-group input[type="text"],
+        .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .form-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .form-group .other-category {
+            display: none;
+        }
+        .form-group .other-category input[type="text"] {
+            display: block;
+            margin-top: 5px;
+        }
+        .form-group button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<header>
+    <div class="container_12">
+        <div class="grid_12">
+            <h1>
+                <a href="index.html">
+                    <img src="images/Noor_New_LOGO.png" alt="Online Charity Donation Website">
+                </a>
+            </h1>
+        </div>
+    </div>
+</header>
+
+<body>
+
+<div class="form-container">
+    <h2>Submission of Donation Posts</h2>
+    <form id="donationForm">
+        <div class="form-group">
+            <label for="donationText">Donation Post</label>
+            <textarea id="donationText" name="donationText" rows="5" placeholder="Type your donation post here"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="category">Item Category</label>
+            <select id="category" name="category">
+                <option value="Healthcare">Healthcare</option>
+                <option value="Child Welfare">Child Welfare</option>
+                <option value="Community Development">Community Development</option>
+                <option value="Environment">Environment</option>
+                <option value="Education">Education</option>
+                <option value="Food Security">Food Security</option>
+                <option value="Crisis Support">Crisis Support</option>
+                <option value="Disability Rights">Disability Rights</option>
+                <option value="Housing & Homelessness">Housing & Homelessness</option>
+                <option value="Social Services">Social Services</option>
+                <option value="Humanitarian">Humanitarian</option>
+                <option value="Other">Other</option>
+            </select>
+            <div class="other-category">
+                <label for="otherCategory">Other Category</label>
+                <input type="text" id="otherCategory" name="otherCategory" placeholder="Enter other category">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name">
+        </div>
+        <div class="form-group">
+            <label for="age">Age</label>
+            <input type="text" id="age" name="age" placeholder="Your age">
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email" placeholder="Your email">
+        </div>
+        <div class="form-group">
+            <label for="address">Address</label>
+            <textarea id="address" name="address" rows="3" placeholder="Your address"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="mobile">Mobile Number</label>
+            <input type="text" id="mobile" name="mobile" placeholder="Your mobile number">
+        </div>
+        <div class="form-group">
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    // Add event listener for category select
+    const categorySelect = document.getElementById('category');
+    const otherCategoryInput = document.getElementById('otherCategory');
+    categorySelect.addEventListener('change', function() {
+        if (this.value === 'Other') {
+            otherCategoryInput.style.display = 'block';
+        } else {
+            otherCategoryInput.style.display = 'none';
+        }
+    });
+
+    // Add event listener for form submission
+    const donationForm = document.getElementById('donationForm');
+    donationForm.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+        // Collect form data
+        const formData = new FormData(donationForm);
+        // Log the form data (you can replace this with your submission logic)
+        for (const [key, value] of formData.entries()) {
+            console.log(`${key}: ${value}`);
+        }
+        // You can send the form data to your server for further processing here
+        alert('Form submitted successfully!');
+        // Clear the form after submission
+        donationForm.reset();
+    });
+</script>
+
+</body>
+</html>
