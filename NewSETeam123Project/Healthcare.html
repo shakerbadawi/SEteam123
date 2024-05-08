@@ -1,8 +1,7 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Tadamun - Receive Notification for Chosen Donation Posts</title>
+    <title>Tadamun - Admin System</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,700" rel="stylesheet">
@@ -53,76 +52,108 @@
             border-radius: 4px;
         }
 
-        /* Reset filters button */
-        #reset-filters {
-            background-color: black;
-            color: white;
-            margin-top: 10px;
-            padding: 6px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            cursor: pointer;
+        /* Style the category link select element */
+        #category-link {
+            margin-right: 10px;
         }
-        #reset-filters:hover {
-            background-color: darkorange;
-        }
-
-        /* Style the delete button */
-        .delete-button {
-            background-color: black;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        .delete-button:hover {
-            background-color: darkorange;
-        }
-
-        
     </style>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-      <div class="container">
-          <a class="navbar-brand" href="index.html">Tadamun</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="oi oi-menu"></span> Menu
-          </button>
-          <div class="collapse navbar-collapse" id="ftco-nav">
-              <ul class="navbar-nav ml-auto">
-                  <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
-                  <li class="nav-item">
-                      <a href="#" class="nav-link">
-                          <span id="notificationBell" class="oi oi-bell"></span>
-                          <span id="notificationCount" class="notification-count">1</span>
-                      </a>
-                  </li>
-              </ul>
-          </div>
-      </div>
-  </nav>
 
-  <!-- Your existing content -->
+<!-- Display all organizations -->
+<div class="container">
+    <h1>Healthcare</h1>
+    <div id="organizations"></div>
+</div>
 
-  <script>
-      // Function to update the notification count
-      function updateNotificationCount(count) {
-          const notificationCount = document.getElementById('notificationCount');
-          notificationCount.textContent = count;
-          // Add flashing effect
-          notificationCount.classList.add('flash');
-          setTimeout(() => {
-              notificationCount.classList.remove('flash');
-          }, 1000); // Flash for 1 second
-      }
+<script>
+    // Dummy data for organizations
+    const organizations = [
+        {
+                      name: "Charity Foundation",
+                    category: "Healthcare",
+                    City: "Cairo",
+                    address:{
+                        street:"12 thawra street",
+                        postalCode: "12345"
+                    },
+                    contact:{
+                        Gmail:"charityfoundation@gmail.com",
+                        website: "www.charityfoundation.com",
+                        phone:"01234567899"
+                    },
+                    OrganizationType:"Non-profit"
+                },
+                {
+                    name: "Medical Relief Society",
+                    category: "Healthcare",
+                    City: "Cairo",
+                    address:{
+                        street:"6 Nasr street",
+                        postalCode: "12345"
+                    },
+                    contact:{
+                        Gmail:"medreliefsociety@gmail.com",
+                        website: "www.medreliefsocity.com",
+                        phone:"01233356789"
+                    },
+                    OrganizationType:"Non-profit"
+                },
+                {
+                    name: "Global Aid Network",
+                    category: "HealthCare",
+                    City: "Cairo",
+                    address:{
+                        street:"15 thawra street",
+                        postalCode: "12345"
+                    },
+                    contact:{
+                        Gmail:"globalaidnetwork@gmail.com",
+                        website: "www.globalaidnetwork.com",
+                        phone:"01234566789"
+                    },
+                    OrganizationType:"Non-profit"
+                }
+    ];
 
-      // Example usage: Update notification count
-      updateNotificationCount(1);
-  </script>
+    // Function to create HTML markup for organizations
+    function createOrganizationHTML(organization) {
+        return `
+            <div class="organization">
+                <h3>${organization.name}</h3>
+                <p><strong>Category:</strong> ${organization.category}</p>
+                <p><strong>City:</strong> ${organization.City}</p>
+                <p><strong>Address:</strong> ${organization.address.street}</p>
+                <p><strong>Postal Code:</strong> ${organization.address.postalCode}</p>
+                <p><strong>Contact:</strong> ${organization.contact.phone}</p>
+                <p><strong>Gmail:</strong>${organization.contact.Gmail}</p>
+                <p><strong>Website:</strong> <a href="http://${organization.contact.website}" target="_blank">${organization.contact.website}</a></p>
+                <p><strong>Type:</strong> ${organization.OrganizationType}</p>
+            </div>
+        `;
+    }
+
+    // Function to display organizations on the page
+    function displayOrganizations() {
+    const organizationsContainer = document.getElementById("organizations");
+    let organizationsHTML = "";
+    organizations.forEach(organization => {
+        organizationsHTML += createOrganizationHTML(organization);
+    });
+    organizationsContainer.innerHTML = organizationsHTML;
+}
+    function displayOrganizations() {
+        const organizationsContainer = document.getElementById("organizations");
+        let organizationsHTML = "";
+        organizations.forEach(organization => {
+            organizationsHTML += createOrganizationHTML(organization);
+        });
+        organizationsContainer.innerHTML = organizationsHTML;
+    }
+
+    // Call the function to display organizations
+    displayOrganizations();
+</script>
 
 <footer class="ftco-footer ftco-section img">
     <div class="overlay"></div>
@@ -217,8 +248,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="js/bootstrap-datepicker.js"></script>
 <script src="js/jquery.timepicker.min.js"></script>
 <script src="js/scrollax.min.js"></script>
-<script src="js/main.js"></script> 
-
+<script src="js/main.js"></script>
 
 </body>
 </html>

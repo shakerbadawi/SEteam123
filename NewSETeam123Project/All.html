@@ -1,73 +1,63 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
- <head>
- <title>All Organizations</title>
- <meta charset="utf-8">
- <meta name = "format-detection" content = "telephone=no" />
- <link rel="icon" href="images/favicon.ico">
- <link rel="shortcut icon" href="images/favicon.ico" />
- <link rel="stylesheet" href="css/form.css">
- <link rel="stylesheet" href="css/thumbs.css">
- <link rel="stylesheet" href="css/style.css">
- <script src="js/jquery.js"></script>
- <script src="js/jquery-migrate-1.2.1.js"></script>
- <script src="js/script.js"></script>
- <script src="js/superfish.js"></script>
- <script src="js/sForm.js"></script>
- <script src="js/jquery.ui.totop.js"></script>
- <script src="js/jquery.equalheights.js"></script>
- <script src="js/jquery.easing.1.3.js"></script>
- <script src="js/jquery.iosslider.min.js"></script>
- <script>
- $(document).ready(function(){
- $().UItoTop({ easingType: 'easeOutQuart' });
- });
- </script>
- <!--[if lt IE 8]>
- <div style=' clear: both; text-align:center; position: relative;'>
- <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
- <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
- </a>
- </div>
- <![endif]-->
- <!--[if lt IE 9]>
- <script src="js/html5shiv.js"></script>
- <link rel="stylesheet" media="screen" href="css/ie.css">
- <![endif]-->
- </head>
- <body class="page1" id="top">
- <!--=================================header=================================-->
+<html lang="en">
+<head>
+    <title>Tadamun - Admin System</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Overpass:300,400,400i,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/ionicons.min.css">
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            padding-top: 80px; /* add top padding to create space between navbar and content */
+        }
 
-	
-	
- <div class="container_12">
- <div class="grid_12">
- <h1>
- <a href="index.html">
- <img src="images/Noor_New_LOGO.png" alt="Online Charity Donation Website">
- </a>
- 
- </h1>
- <div class="menu_block ">
- <div class="clear"></div>
- <nav class="horizontal-nav full-width horizontalNav-notprocessed">
- <ul class="sf-menu">
- <li class="current"><a href="index.html">Home</a></li>
- <li><a href="what-we-do.html">What We Do</a></li>
- 
- <li><a href="medication-donations.html">Medication and Medical Supplies</a></li>
- <li><a href="school-supplies-donations.html">School Supplies Donations</a></li>
- <li><a href="refugee-needs.html">Refugee and People Living Below the Poverty Line Needs</a></li>
- <li><a href="orphanage-donations.html">Orphanage Donations</a></li>
- <li><a href="delivery-pickup.html">Pickup/ Delivery of Donations</a></li>
- <li><a href="contact-us.html">Contact Us</a></li>
- </ul>
- </nav>
- <div class="clear"></div>
- </div>
- </div>
- </div>
- </header>
+        /* Add some top margin to the navbar to align it with the padding */
+        .navbar {
+            margin-top: 20px;
+        }
+
+        /* Style the organization list table */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        /* Style the search input and category filter select elements */
+        #search-input, #category-filter {
+            margin-bottom: 10px;
+            padding: 6px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        /* Style the category link select element */
+        #category-link {
+            margin-right: 10px;
+        }
+    </style>
+</head>
 <!-- Display all organizations -->
 <div class="container">
     <h1>All Organizations</h1>
@@ -124,6 +114,8 @@
                 {
                     name: "Global Aid Network",
                     category: "Humanitarian",
+                    City: "Cairo",
+
                     address:{
                         street:"15 thawra street",
                         postalCode: "12345"
@@ -138,6 +130,8 @@
                 {
                     name: "Children's Shelter",
                     category: "Child Welfare",
+                    City: "Cairo",
+
                     address:{
                         street:"16 thawra street",
                         postalCode: "12345"
@@ -152,6 +146,8 @@
                 {
                     name: "Elderly Care Association",
                     category: "Social Services",
+                    City: "Cairo",
+
                     address:{
                         street:"17 thawra street",
                         postalCode: "12345"
@@ -166,6 +162,8 @@
                 {
                     name: "Environmental Conservation Society",
                     category: "Environment",
+                    City: "Cairo",
+
                     address:{
                         street:"18 thawra street",
                         postalCode: "12345"
@@ -180,6 +178,8 @@
                 {
                     name: "Youth Empowerment Initiative",
                     category: "Youth Development",
+                    City: "Cairo",
+
                     address:{
                         street:"19 thawra street",
                         postalCode: "12345"
@@ -194,6 +194,8 @@
                 {
                     name: "Animal Rescue Organization",
                     category: "Animal Welfare",
+                    City: "Cairo",
+
                     address:{
                         street:"20 thawra street",
                         postalCode: "12345"
@@ -208,6 +210,8 @@
                 {
                     name: "Art and Culture Foundation",
                     category: "Arts & Culture",
+                    City: "Cairo",
+
                     address:{
                         street:"21 thawra street",
                         postalCode: "12345"
@@ -222,6 +226,8 @@
                 {
                     name: "Sports for All",
                     category: "Sports & Recreation",
+                    City: "Cairo",
+
                     address:{
                         street:"22 thawra street",
                         postalCode: "12345"
@@ -236,6 +242,8 @@
                 {
                     name: "Tech for Good",
                     category: "Technology",
+                    City: "Cairo",
+
                     address:{
                         street:"23 thawra street",
                         postalCode: "12345"
@@ -250,6 +258,8 @@
                 {
                     name: "Women's Rights Coalition",
                     category: "Gender Equality",
+                    City: "Cairo",
+
                     address:{
                         street:"24 thawra street",
                         postalCode: "12345"
@@ -264,6 +274,8 @@
                 {
                     name: "Food Bank Association",
                     category: "Food Security",
+                    City: "Cairo",
+
                     address:{
                         street:"25 thawra street",
                         postalCode: "12345"
@@ -278,6 +290,8 @@
                 {
                     name: "Education for All",
                     category: "Literacy",
+                    City: "Cairo",
+
                     address:{
                         street:"5 Nasr street",
                         postalCode: "12345"
@@ -292,6 +306,8 @@
                 {
                     name: "Medical Relief Society",
                     category: "Healthcare",
+                    City: "Cairo",
+
                     address:{
                         street:"6 Nasr street",
                         postalCode: "12345"
@@ -306,6 +322,8 @@
                 {
                     name: "Disability Support Network",
                     category: "Disability Rights",
+                    City: "Cairo",
+
                     address:{
                         street:"7 Nasr street",
                         postalCode: "12345"
@@ -320,6 +338,8 @@
                 {
                     name: "Homeless Shelter",
                     category: "Housing & Homelessness",
+                    City: "Cairo",
+
                     address:{
                         street:"9 Nasr street",
                         postalCode: "12345"
@@ -334,6 +354,8 @@
                 {
                     name: "Rural Development Initiative",
                     category: "Community Development",
+                    City: "Cairo",
+
                     address:{
                         street:"11 Nasr street",
                         postalCode: "12345"
@@ -348,6 +370,8 @@
                 {
                     name: "Crisis Intervention Center",
                     category: "Crisis Support",
+                    City: "Cairo",
+
                     address:{
                         street:"15 Nasr street",
                         postalCode: "12345"
@@ -398,6 +422,101 @@
     // Call the function to display organizations
     displayOrganizations();
 </script>
+
+<footer class="ftco-footer ftco-section img">
+    <div class="overlay"></div>
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-md-3">
+        <div class="ftco-footer-widget mb-4">
+          <h2 class="ftco-heading-2">About Us</h2>
+          <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+          <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+            <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+            <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+            <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="ftco-footer-widget mb-4">
+          <h2 class="ftco-heading-2">Recent Blog</h2>
+          <div class="block-21 mb-4 d-flex">
+            <a class="blog-img mr-4" style="background-image: url(images/image_1.jpg);"></a>
+            <div class="text">
+              <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
+              <div class="meta">
+                <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div>
+                <div><a href="#"><span class="icon-person"></span> Admin</a></div>
+                <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+              </div>
+            </div>
+          </div>
+          <div class="block-21 mb-4 d-flex">
+            <a class="blog-img mr-4" style="background-image: url(images/image_2.jpg);"></a>
+            <div class="text">
+              <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
+              <div class="meta">
+                <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div>
+                <div><a href="#"><span class="icon-person"></span> Admin</a></div>
+                <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2">
+         <div class="ftco-footer-widget mb-4 ml-md-4">
+          <h2 class="ftco-heading-2">Site Links</h2>
+          <ul class="list-unstyled">
+            <li><a href="#" class="py-2 d-block">Home</a></li>
+            <li><a href="#" class="py-2 d-block">About</a></li>
+            <li><a href="#" class="py-2 d-block">Donate</a></li>
+            <li><a href="#" class="py-2 d-block">Causes</a></li>
+            <li><a href="#" class="py-2 d-block">Event</a></li>
+            <li><a href="#" class="py-2 d-block">Blog</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="ftco-footer-widget mb-4">
+            <h2 class="ftco-heading-2">Have a Questions?</h2>
+            <div class="block-23 mb-3">
+              <ul>
+                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
+                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
+                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
+              </ul>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 text-center">
+
+        <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery-migrate-3.0.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/jquery.waypoints.min.js"></script>
+<script src="js/jquery.stellar.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/aos.js"></script>
+<script src="js/jquery.animateNumber.min.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+<script src="js/jquery.timepicker.min.js"></script>
+<script src="js/scrollax.min.js"></script>
+<script src="js/main.js"></script>
 
 </body>
 </html>
