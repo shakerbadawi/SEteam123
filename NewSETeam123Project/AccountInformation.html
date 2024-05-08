@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Tadamun - Donate</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Overpass:300,400,400i,600,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+    
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-dark" id="ftco-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">Tadamun</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="oi oi-menu"></span> Menu
+        </button>
+
+        <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="causes.html" class="nav-link">Causes</a></li>
+                <li class="nav-item active"><a href="donate.html" class="nav-link">Donate</a></li>
+                <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+                <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li class="nav-item"><a href="event.html" class="nav-link">Events</a></li>
+                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    <!-- END nav -->
+    <h1>Account Information</h1>
+
+    <div id="profilePicture">
+        <!-- Display profile picture here -->
+        <img src="images/person_1.jpg" alt="Profile Picture" style="height: 80pt; width:80pt ; ">
+        <!-- Edit and delete buttons for profile picture -->
+        <a href="#" onclick="editProfilePicture()" style="padding: 10px 20px; background-color: black; color: #fff; border: none; border-radius: 5px; text-decoration: none; cursor: pointer;">Change Picture</a>
+        <a href="#" onclick="deleteProfilePicture()" style="padding: 10px 20px; background-color: black; color: #fff; border: none; border-radius: 5px; text-decoration: none; cursor: pointer;">Delete Picture</a>
+    </div>
+
+    <div id="profileName">
+        <!-- Display profile name here -->
+        <p id="profileNameText">Name: John Doe</p>
+        <!-- Edit button for profile name -->
+        <a href="#" onclick="editProfileName()" style="padding: 10px 20px; background-color: black; color: #fff; border: none; border-radius: 5px; text-decoration: none; cursor: pointer;">Edit Name</a>
+    </div>
+
+    <div id="accountDetails">
+        <!-- Display other account details here -->
+        <form id="updateForm">
+            <br>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" value="john@example.com"><br><br>
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password"><br><br>
+            <label for="confirmPassword">Confirm Password:</label><br>
+            <input type="password" id="confirmPassword" name="confirmPassword"><br><br>
+            <button type="submit" style="padding: 10px 20px; background-color: black; color: #fff; border: none; border-radius: 5px; cursor: pointer;">Update Account</button>
+        </form>
+    </div>
+
+    <script>
+        function editProfilePicture() {
+            // Implement edit profile picture functionality
+            // This function could open a modal or redirect to a page for uploading a new picture
+            console.log("Edit profile picture");
+        }
+
+        function deleteProfilePicture() {
+            // Implement delete profile picture functionality
+            // This function could prompt the user for confirmation before deleting the picture
+            console.log("Delete profile picture");
+        }
+
+        function editProfileName() {
+            // Prompt the user for a new name
+            const newName = prompt("Enter new name:");
+            if (newName !== null) {
+                // Update the displayed name
+                document.getElementById("profileNameText").textContent = "Name: " + newName;
+            }
+        }
+
+        // Handle form submission for updating account details
+        document.getElementById("updateForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Retrieve form data
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+
+            // Validate form data (e.g., check if password and confirm password match)
+            if (!password || !confirmPassword) {
+                alert("Please enter a password and confirm it.");
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                alert("Passwords do not match. Please try again.");
+                return;
+            }
+
+            // Perform update account functionality (e.g., send data to server)
+            console.log("Update account details");
+
+            // Issue success message
+            alert("Account updated successfully!");
+        });
+    </script>
+</body>
+</html>

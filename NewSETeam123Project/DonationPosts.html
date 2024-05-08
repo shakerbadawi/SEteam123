@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Tadamun - Donate</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Overpass:300,400,400i,600,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+    
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    
+  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-dark" id="ftco-navbar">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Tadamun</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="oi oi-menu"></span> Menu
+      </button>
+
+      <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="causes.html" class="nav-link">Causes</a></li>
+          <li class="nav-item active"><a href="donate.html" class="nav-link">Donate</a></li>
+          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+          <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+          <li class="nav-item"><a href="event.html" class="nav-link">Events</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+    <!-- END nav -->
+    <h1>All Submissions</h1>
+
+    <div id="submissionsContainer">
+    </div>
+
+    <script>
+        let submissions = [
+            { id: 1, name: "John Doe", category: "Clothes", details: "10 T-shirts, 5 Pairs of Jeans" },
+            { id: 2, name: "Jane Smith", category: "Food", details: "Canned food, Pasta, Rice" },
+            { id: 3, name: "Michael Johnson", category: "Toys", details: "Action Figures, Dolls, Board Games" }
+        ];
+
+        function displaySubmissions() {
+            const submissionsContainer = document.getElementById("submissionsContainer");
+            submissionsContainer.innerHTML = ''; // Clear previous content
+
+            submissions.forEach(submission => {
+                const submissionDiv = document.createElement("div");
+                submissionDiv.innerHTML = `
+                    <h2>${submission.name}</h2>
+                    <p><strong>Category:</strong> ${submission.category}</p>
+                    <p><strong>Details:</strong> ${submission.details}</p>
+                    <button onclick="editSubmission(${submission.id})">Edit</button>
+                    <button onclick="deleteSubmission(${submission.id})">Delete</button>
+                    <hr>
+                `;
+                submissionsContainer.appendChild(submissionDiv);
+            });
+        }
+
+        // Function to edit a submission
+        function editSubmission(id) {
+            const submission = submissions.find(submission => submission.id === id);
+            if (submission) {
+                // Example: Prompt for new details and update submission
+                const newDetails = prompt("Enter new details:");
+                if (newDetails !== null) {
+                    if (newDetails.trim() === "") {
+                        alert("Details cannot be empty.");
+                    } else {
+                        submission.details = newDetails;
+                        displaySubmissions();
+                    }
+                }
+            }
+        }
+
+        // Function to delete a submission
+        function deleteSubmission(id) {
+            submissions = submissions.filter(submission => submission.id !== id);
+            displaySubmissions();
+        }
+
+        // Display submissions on page load
+        displaySubmissions();
+    </script>
+</body>
+</html>
