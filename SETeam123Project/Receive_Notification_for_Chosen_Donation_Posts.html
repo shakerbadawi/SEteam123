@@ -3,47 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Receive Notification for Chosen Donation Posts</title>
+    <title>Receive Donation Post Notifications</title>
+    <!-- Add CSS styles here -->
     <style>
-        /* Add your CSS styles here */
-        .notification-area {
-            max-width: 500px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f3f3f3;
+        /* CSS styles for notification display */
+        .notification {
             border: 1px solid #ccc;
             border-radius: 5px;
-            margin-top: 20px;
-        }
-        .notification {
-            margin-bottom: 10px;
             padding: 10px;
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        .notification h3 {
+            margin-top: 0;
+            color: #007bff;
+        }
+        .notification p {
+            margin: 5px 0;
         }
     </style>
 </head>
 <body>
 
-<h2>Receive Notification for Chosen Donation Posts</h2>
-
-<div class="notification-area" id="notificationArea">
-    <!-- Notifications will appear here -->
-</div>
+<!-- Notification display area -->
+<div id="notifications"></div>
 
 <script>
-    // Function to add a new notification
-    function addNotification(message) {
-        const notificationArea = document.getElementById('notificationArea');
-        const notification = document.createElement('div');
-        notification.classList.add('notification');
-        notification.textContent = message;
-        notificationArea.appendChild(notification);
+    // Dummy data for notification
+    const notification = {
+        postTitle: "Donation Post Title",
+        donorName: "John Doe",
+        contactInfo: "john@example.com",
+        pickupInstructions: "Contact the donor to coordinate pickup."
+    };
+
+    // Function to display notification
+    function displayNotification(notification) {
+        const notificationsContainer = document.getElementById("notifications");
+
+        // Create notification HTML
+        const notificationHTML = `
+            <div class="notification">
+                <h3>Donation Post Chosen by Donor</h3>
+                <p><strong>Post Title:</strong> ${notification.postTitle}</p>
+                <p><strong>Donor Name:</strong> ${notification.donorName}</p>
+                <p><strong>Contact Info:</strong> ${notification.contactInfo}</p>
+                <p><strong>Pickup Instructions:</strong> ${notification.pickupInstructions}</p>
+            </div>
+        `;
+
+        // Append notification HTML to container
+        notificationsContainer.innerHTML = notificationHTML;
     }
 
-    // Example usage: Add a notification
-    addNotification('A donation post has been chosen by a donor. Please coordinate pickup.');
+    // Trigger notification when donation post is chosen by a donor (dummy trigger)
+    // You would replace this with your actual logic to detect when a donation post is chosen
+    function triggerNotification() {
+        // Simulate getting notification data
+        const chosenDonationPost = {
+            postTitle: "Donation Post Title",
+            donorName: "John Doe",
+            contactInfo: "john@example.com",
+            pickupInstructions: "Contact the donor to coordinate pickup."
+        };
+
+        // Display the notification
+        displayNotification(chosenDonationPost);
+    }
+
+    // Call the function to trigger the notification (dummy call)
+    triggerNotification();
 </script>
 
 </body>
