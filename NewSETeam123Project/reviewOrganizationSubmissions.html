@@ -1,0 +1,488 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Tadamun - Review Organization Submissions</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Overpass:300,400,400i,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/ionicons.min.css">
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            padding-top: 80px; /* add top padding to create space between navbar and content */
+        }
+
+        /* Add some top margin to the navbar to align it with the padding */
+        .navbar {
+            margin-top: 20px;
+        }
+
+        /* Style the organization list table */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        /* Style the search input and category filter select elements */
+        #search-input, #category-filter {
+            margin-bottom: 10px;
+            padding: 6px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        /* Reset filters button */
+        #reset-filters {
+            background-color: black;
+            color: white;
+            margin-top: 10px;
+            padding: 6px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #reset-filters:hover {
+            background-color: darkorange;
+        }
+
+        /* Style the delete button */
+        .delete-button {
+            background-color: black;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .delete-button:hover {
+            background-color: darkorange;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Tadamun</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <body>
+        <h1>Review Organization Submissions:</h1>
+
+        <div id="submissionList">
+            <!-- Submission details will be dynamically inserted here -->
+        </div>
+
+        <script>
+            // Dummy data for organization submissions
+            const submissions = [
+                {
+                    organizationName: "Charity Foundation",
+                    category: "Healthcare",
+                    contactPerson: "John Doe",
+                    email: "john@example.com",
+                    phone: "1234567890",
+                    documents: ["document1.pdf", "document2.pdf"],
+                    submissionDate: "2024-05-02"
+                },
+                {
+                    organizationName: "Community Support Group",
+                    category: "Community Development",
+                    contactPerson: "Jane Smith",
+                    email: "jane@example.com",
+                    phone: "9876543210",
+                    documents: ["document3.pdf"],
+                    submissionDate: "2024-05-01"
+                },
+                {
+                    organizationName: "Hope for All",
+                    category: "Humanitarian",
+                    contactPerson: "Michael Johnson",
+                    email: "michael@example.com",
+                    phone: "3456789012",
+                    documents: ["document4.pdf", "document5.pdf"],
+                    submissionDate: "2024-05-03"
+                },
+                {
+                    organizationName: "Education Empowerment",
+                    category: "Education",
+                    contactPerson: "Alice Brown",
+                    email: "alice@example.com",
+                    phone: "6789012345",
+                    documents: ["document6.pdf", "document7.pdf"],
+                    submissionDate: "2024-05-05"
+                },
+                {
+                    organizationName: "Healthcare Alliance",
+                    category: "Healthcare",
+                    contactPerson: "Robert Wilson",
+                    email: "robert@example.com",
+                    phone: "8901234567",
+                    documents: ["document8.pdf"],
+                    submissionDate: "2024-05-06"
+                },
+                {
+                    organizationName: "Community Development Network",
+                    category: "Community Development",
+                    contactPerson: "Emily Green",
+                    email: "emily@example.com",
+                    phone: "7890123456",
+                    documents: ["document9.pdf", "document10.pdf"],
+                    submissionDate: "2024-05-07"
+                },
+                {
+                    organizationName: "Disability Support Association",
+                    category: "Disability Rights",
+                    contactPerson: "David White",
+                    email: "david@example.com",
+                    phone: "5678901234",
+                    documents: ["document11.pdf"],
+                    submissionDate: "2024-05-08"
+                },
+                {
+                    organizationName: "Environmental Conservation Society",
+                    category: "Environment",
+                    contactPerson: "Sarah Black",
+                    email: "sarah@example.com",
+                    phone: "4567890123",
+                    documents: ["document12.pdf", "document13.pdf"],
+                    submissionDate: "2024-05-09"
+                },
+                {
+                    organizationName: "Food Security Foundation",
+                    category: "Food Security",
+                    contactPerson: "Peter Brown",
+                    email: "peter@example.com",
+                    phone: "3456789012",
+                    documents: ["document14.pdf"],
+                    submissionDate: "2024-05-10"
+                },
+                {
+                    organizationName: "Animal Welfare Association",
+                    category: "Animal Welfare",
+                    contactPerson: "Lisa Johnson",
+                    email: "lisa@example.com",
+                    phone: "2345678901",
+                    documents: ["document15.pdf", "document16.pdf"],
+                    submissionDate: "2024-05-11"
+                },
+                {
+                    organizationName: "Women's Rights Coalition",
+                    category: "Social Services",
+                    contactPerson: "Daniel Smith",
+                    email: "daniel@example.com",
+                    phone: "1234567890",
+                    documents: ["document17.pdf"],
+                    submissionDate: "2024-05-12"
+                },
+                {
+                    organizationName: "Child Welfare Foundation",
+                    category: "Child Welfare",
+                    contactPerson: "Emma Johnson",
+                    email: "emma@example.com",
+                    phone: "0123456789",
+                    documents: ["document18.pdf", "document19.pdf"],
+                    submissionDate: "2024-05-13"
+                },
+                {
+                    organizationName: "Housing Support Group",
+                    category: "Housing & Homelessness",
+                    contactPerson: "Michael Smith",
+                    email: "michael@example.com",
+                    phone: "9876543210",
+                    documents: ["document20.pdf"],
+                    submissionDate: "2024-05-14"
+                },
+                // Add 7 more submissions
+                {
+                    organizationName: "Education for All",
+                    category: "Education",
+                    contactPerson: "Sophia Lee",
+                    email: "sophia@example.com",
+                    phone: "5678901234",
+                    documents: ["document21.pdf", "document22.pdf"],
+                    submissionDate: "2024-05-15"
+                },
+                {
+                    organizationName: "Healthcare Volunteers",
+                    category: "Healthcare",
+                    contactPerson: "Ethan Wilson",
+                    email: "ethan@example.com",
+                    phone: "4567890123",
+                    documents: ["document23.pdf"],
+                    submissionDate: "2024-05-16"
+                },
+                {
+                    organizationName: "Community Empowerment Initiative",
+                    category: "Community Development",
+                    contactPerson: "Olivia Brown",
+                    email: "olivia@example.com",
+                    phone: "3456789012",
+                    documents: ["document24.pdf", "document25.pdf"],
+                    submissionDate: "2024-05-17"
+                },
+                {
+                    organizationName: "Humanitarian Aid Society",
+                    category: "Humanitarian",
+                    contactPerson: "Lucas Johnson",
+                    email: "lucas@example.com",
+                    phone: "2345678901",
+                    documents: ["document26.pdf"],
+                    submissionDate: "2024-05-18"
+                },
+                {
+                    organizationName: "Environmental Preservation Group",
+                    category: "Environment",
+                    contactPerson: "Ava Smith",
+                    email: "ava@example.com",
+                    phone: "1234567890",
+                    documents: ["document27.pdf", "document28.pdf"],
+                    submissionDate: "2024-05-19"
+                },
+                {
+                    organizationName: "Food Distribution Network",
+                    category: "Food Security",
+                    contactPerson: "Logan Lee",
+                    email: "logan@example.com",
+                    phone: "0123456789",
+                    documents: ["document29.pdf"],
+                    submissionDate: "2024-05-20"
+                },
+                {
+                    organizationName: "Animal Rescue Foundation",
+                    category: "Animal Welfare",
+                    contactPerson: "Chloe Wilson",
+                    email: "chloe@example.com",
+                    phone: "7890123456",
+                    documents: ["document30.pdf", "document31.pdf"],
+                    submissionDate: "2024-05-21"
+                },
+                {
+                    organizationName: "Women's Health Initiative",
+                    category: "Social Services",
+                    contactPerson: "Mia Johnson",
+                    email: "mia@example.com",
+                    phone: "6789012345",
+                    documents: ["document32.pdf"],
+                    submissionDate: "2024-05-22"
+                },
+                {
+                    organizationName: "Child Protection Agency",
+                    category: "Child Welfare",
+                    contactPerson: "Noah Brown",
+                    email: "noah@example.com",
+                    phone: "5678901234",
+                    documents: ["document33.pdf", "document34.pdf"],
+                    submissionDate: "2024-05-23"
+                },
+                {
+                    organizationName: "Homeless Shelter Foundation",
+                    category: "Housing & Homelessness",
+                    contactPerson: "Ella Smith",
+                    email: "ella@example.com",
+                    phone: "4567890123",
+                    documents: ["document35.pdf"],
+                    submissionDate: "2024-05-24"
+                }
+                // Add more submissions as needed
+            ];
+
+            // Function to generate and display organization submissions
+            function displaySubmissions() {
+                const submissionList = document.getElementById("submissionList");
+                submissionList.innerHTML = ''; // Clear previous list
+
+                submissions.forEach(submission => {
+                    const submissionDiv = document.createElement("div");
+                    submissionDiv.innerHTML = `
+                        <p>Organization Name: ${submission.organizationName}</p>
+                        <p>Category: ${submission.category}</p>
+                        <p>Contact Person: ${submission.contactPerson}</p>
+                        <p>Email: ${submission.email}</p>
+                        <p>Phone: ${submission.phone}</p>
+                        <p>Submission Date: ${submission.submissionDate}</p>
+                        <p>Documents:</p>
+                        <ul>
+                            ${submission.documents.map(doc => `<li>${doc}</li>`).join('')}
+                        </ul>
+                        <button onclick="acceptSubmission('${submission.organizationName}')">Accept</button>
+                        <button onclick="rejectSubmission('${submission.organizationName}')">Reject</button>
+                        <button onclick="downloadSubmission('${submission.organizationName}')" disabled>Download</button>
+                        <hr>
+                    `;
+                    submissionList.appendChild(submissionDiv);
+                });
+            }
+
+            // Function to accept a submission
+            function acceptSubmission(organizationName) {
+                // Implement logic to accept the submission
+                console.log(`Submission from ${organizationName} accepted.`);
+                enableDownloadButton(organizationName);
+            }
+
+            // Function to reject a submission
+            function rejectSubmission(organizationName) {
+                // Implement logic to reject the submission
+                console.log(`Submission from ${organizationName} rejected.`);
+                deleteSubmission(organizationName);
+            }
+
+            // Function to delete a submission
+            function deleteSubmission(organizationName) {
+                // Implement logic to delete the submission
+                console.log(`Submission from ${organizationName} deleted.`);
+                // For demonstration purposes, removing the submission from the list
+                submissions.splice(submissions.findIndex(submission => submission.organizationName === organizationName), 1);
+                displaySubmissions();
+            }
+
+            // Function to enable download button
+            function enableDownloadButton(organizationName) {
+                const downloadButton = document.querySelector(`[onclick="downloadSubmission('${organizationName}')"`);
+                downloadButton.disabled = false;
+            }
+
+            // Function to download submission details
+            function downloadSubmission(organizationName) {
+                // Implement logic to download submission details
+                console.log(`Downloading submission details for ${organizationName}`);
+            }
+
+            // Display submissions on page load
+            displaySubmissions();
+        </script>
+
+<footer class="ftco-footer ftco-section img">
+    <div class="overlay"></div>
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-md-3">
+        <div class="ftco-footer-widget mb-4">
+          <h2 class="ftco-heading-2">About Us</h2>
+          <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+          <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+            <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+            <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+            <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="ftco-footer-widget mb-4">
+          <h2 class="ftco-heading-2">Recent Blog</h2>
+          <div class="block-21 mb-4 d-flex">
+            <a class="blog-img mr-4" style="background-image: url(images/image_1.jpg);"></a>
+            <div class="text">
+              <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
+              <div class="meta">
+                <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div>
+                <div><a href="#"><span class="icon-person"></span> Admin</a></div>
+                <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+              </div>
+            </div>
+          </div>
+          <div class="block-21 mb-4 d-flex">
+            <a class="blog-img mr-4" style="background-image: url(images/image_2.jpg);"></a>
+            <div class="text">
+              <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
+              <div class="meta">
+                <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div>
+                <div><a href="#"><span class="icon-person"></span> Admin</a></div>
+                <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2">
+         <div class="ftco-footer-widget mb-4 ml-md-4">
+          <h2 class="ftco-heading-2">Site Links</h2>
+          <ul class="list-unstyled">
+            <li><a href="#" class="py-2 d-block">Home</a></li>
+            <li><a href="#" class="py-2 d-block">About</a></li>
+            <li><a href="#" class="py-2 d-block">Donate</a></li>
+            <li><a href="#" class="py-2 d-block">Causes</a></li>
+            <li><a href="#" class="py-2 d-block">Event</a></li>
+            <li><a href="#" class="py-2 d-block">Blog</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="ftco-footer-widget mb-4">
+            <h2 class="ftco-heading-2">Have a Questions?</h2>
+            <div class="block-23 mb-3">
+              <ul>
+                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
+                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
+                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
+              </ul>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 text-center">
+
+        <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery-migrate-3.0.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/jquery.waypoints.min.js"></script>
+<script src="js/jquery.stellar.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/aos.js"></script>
+<script src="js/jquery.animateNumber.min.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+<script src="js/jquery.timepicker.min.js"></script>
+<script src="js/scrollax.min.js"></script>
+<script src="js/main.js"></script>
+
+
+    </body>
+
+</html>
