@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Tadamun - Donate</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit-no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Overpass:300,400,400i,600,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/ionicons.min.css">
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-dark" id="ftco-navbar">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Tadamun</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="oi oi-menu"></span> Menu
+      </button>
+
+      <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="causes.html" class="nav-link">Causes</a></li>
+          <li class="nav-item active"><a href="donate.html" class="nav-link">Donate</a></li>
+          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+          <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+          <li class="nav-item"><a href="event.html" class="nav-link">Events</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+</nav>
+<!-- END nav -->
+
+<h1>All Submissions</h1>
+
+<div>
+    <label for="categoryFilter">Filter by Category:</label>
+    <select id="categoryFilter" onchange="filterSubmissions()">
+        <option value="">All</option>
+        <option value="Health sector donations">Health sector donations</option>
+        <option value="School supplies donations">School supplies donations</option>
+        <option value="Refugee and people living below the poverty line needs">Refugee and people living below the poverty line needs</option>
+        <option value="Orphanage donations">Orphanage donations</option>
+        <option value="Pickup/ delivery of donations">Pickup/ delivery of donations</option>
+    </select>
+
+    <label for="searchInput">Search by Details:</label>
+    <input type="text" id="searchInput" onkeyup="filterSubmissions()" placeholder="Type to search...">
+</div>
+
+<div id="submissionsContainer"></div>
+
+<script>
+    // Updated list with relevant categories
+    let submissions = [
+        { id: 1, name: "Hospital XYZ", category: "Health sector donations", details: "Blood, Masks, Ventilators" },
+        { id: 2, name: "School ABC", category: "School supplies donations", details: "Notebooks, Pens, Backpacks" },
+        { id: 3, name: "Charity DEF", category: "Refugee and people living below the poverty line needs", details: "Food, Clothing, Bedding" },
+        { id: 4, name: "Orphanage GHI", category: "Orphanage donations", details: "Toys, Clothes, Educational Materials" },
+        { id: 5, name: "Volunteer JKL", category: "Pickup/ delivery of donations", details: "Transport Donations to Local Shelters" }
+    ];
+
+    // Mapping specific keywords to predefined categories
+    const searchTermsToCategory = {
+        "health": "Health sector donations",
+        "school": "School supplies donations",
+        "refugee": "Refugee and people living below the poverty line needs",
+        "people": "Refugee and people living below the poverty line needs",
+        "below the poverty": "Refugee and people living below the poverty line needs",
+        "people living below the poverty": "Refugee and people living below the poverty line needs",
+        "orphanage": "Orphanage donations",
+        "pickup": "Pickup/ delivery of donations",
+        "delivery": "Pickup/ delivery of donations"
+    };
+
+    function filterSubmissions() {
+        const categoryFilter = document.getElementById("categoryFilter").value.toLowerCase();
+        const searchInput = document.getElementById("searchInput").value.toLowerCase();
+        const submissionsContainer = document.getElementById("submissionsContainer");
+        submissionsContainer.innerHTML = ''; // Clear previous content
+
+        // Determine which category to apply based on search terms
+        let searchCategory = "";
+        Object.keys(searchTermsToCategory).forEach(term => {
+            if (searchInput.includes(term)) {
+                searchCategory = searchTermsToCategory[term].toLowerCase();
+            }
+        });
+
+        // Filter submissions based on both category and mapped search terms
+        submissions
+            .filter(submission => 
+                (categoryFilter === "" || submission.category.toLowerCase() === categoryFilter) &&
+                (searchCategory === "" || submission.category.toLowerCase() === searchCategory)
+            )
+            .forEach(submission => {
+                const submissionDiv = document.createElement("div");
+                submissionDiv.innerHTML = `
+                    <h2>${submission.name}</h2>
+                    <p><strong>Category:</strong> ${submission.category}</p>
+                    <p><strong>Details:</strong> ${submission.details}</p>
+                    <hr>
+                `;
+                submissionsContainer.appendChild(submissionDiv);
+            });
+    }
+
+    // Display filtered submissions on page load
+    filterSubmissions();
+</script>
+</body>
+</html>
