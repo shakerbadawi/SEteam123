@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Tadamun - View Details of Fulfilled Donation Posts</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Overpass:300,400,400i,600,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+    
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-dark" id="ftco-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">Tadamun</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="oi oi-menu"></span> Menu
+        </button>
+
+        <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+              <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+              <li class="nav-item"><a href="causes.html" class="nav-link">Causes</a></li>
+              <li class="nav-item"><a href="donate.html" class="nav-link">Donate</a></li>
+              <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+              <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+              <li class="nav-item"><a href="event.html" class="nav-link">Events</a></li>
+              <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<h1>View Details of Fulfilled Donation Posts</h1>
+
+<!-- Access the fulfilled donation posts section -->
+<div id="fulfilledPosts">
+    <!-- Fulfilled donation posts will be displayed here -->
+</div>
+
+<script>
+    // Sample data representing fulfilled donation posts
+    let fulfilledDonationPosts = [
+        { id: 1, donor: "John Doe", category: "Clothes", details: "10 T-shirts, 5 Pairs of Jeans", acknowledged: false, donorType: "teacher", contact: "john@example.com" },
+        { id: 2, donor: "Jane Smith", category: "Food", details: "Canned food, Pasta, Rice", acknowledged: false, donorType: "doctor", contact: "jane@example.com" },
+        { id: 3, donor: "Michael Johnson", category: "Toys", details: "Action Figures, Dolls, Board Games", acknowledged: false, donorType: "teacher", contact: "michael@example.com" }
+        // Add more fulfilled donation posts as needed
+    ];
+
+    // Function to display details of fulfilled donation posts
+    function displayFulfilledDonationPosts() {
+        const fulfilledPostsContainer = document.getElementById("fulfilledPosts");
+        fulfilledPostsContainer.innerHTML = ''; // Clear previous content
+
+        fulfilledDonationPosts.forEach(post => {
+            const postDiv = document.createElement("div");
+            postDiv.innerHTML = `
+                <h2>Donor: ${post.donor}</h2>
+                <p><strong>Category:</strong> ${post.category}</p>
+                <p><strong>Details:</strong> ${post.details}</p>
+                <p><strong>Donor Type:</strong> ${post.donorType}</p>
+                <p><strong>Contact:</strong> ${post.contact}</p>
+                
+                <!-- Acknowledge donor contribution button -->
+                <button onclick="acknowledgeContribution(${post.id})" ${post.acknowledged ? 'disabled' : ''}>
+                    ${post.acknowledged ? 'Acknowledged' : 'Acknowledge Contribution'}
+                </button>
+                
+                <button onclick="deleteFulfilledDonationPost(${post.id})">Delete</button>
+                <hr>
+            `;
+            fulfilledPostsContainer.appendChild(postDiv);
+        });
+    }
+
+    // Function to acknowledge donor contributions
+    function acknowledgeContribution(postId) {
+        const post = fulfilledDonationPosts.find(post => post.id === postId);
+        if (post) {
+            post.acknowledged = true;
+            displayFulfilledDonationPosts(); // Update the display
+            // You can add additional actions here, such as sending a notification to the donor
+            alert(`Donor contribution acknowledged for post ${postId}.`);
+        }
+    }
+
+    // Function to view donor details for fulfilled teaching or medical posts
+    function viewDonorDetails(postId) {
+        const post = fulfilledDonationPosts.find(post => post.id === postId);
+        if (post) {
+            if (post.donorType === "teacher") {
+                alert(`Donor is a teacher. Donor Name: ${post.donor}\nContact: ${post.contact}`);
+            } else if (post.donorType === "doctor") {
+                alert(`Donor is a doctor. Donor Name: ${post.donor}\nContact: ${post.contact}`);
+            } else {
+                alert(`Donor details not available for this post.`);
+            }
+        }
+    }
+
+    // Function to delete fulfilled donation posts
+    function deleteFulfilledDonationPost(postId) {
+        fulfilledDonationPosts = fulfilledDonationPosts.filter(post => post.id !== postId);
+        displayFulfilledDonationPosts(); // Update the display
+        // You can add additional actions here, such as notifying the user about successful deletion
+        alert(`Fulfilled donation post ${postId} has been deleted.`);
+    }
+
+    // Display details of fulfilled donation posts on page load
+    displayFulfilledDonationPosts();
+</script>
+
+</body>
+</html>
