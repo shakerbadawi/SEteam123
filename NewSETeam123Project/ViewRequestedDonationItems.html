@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View List of Clothes Donation Requests</title>
+    
+    <!-- External CSS styles -->
+    <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Overpass:300,400,400i,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/ionicons.min.css">
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-dark" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Tadamun</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="causes.html" class="nav-link">Causes</a></li>
+                    <li class="nav-item"><a href="donate.html" class="nav-link">Donate</a></li>
+                    <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+                    <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+                    <li class="nav-item"><a href="event.html" class="nav-link">Events</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main content -->
+    <div class="container">
+        <h1 class="mt-5">View List of Clothes Donation Requests</h1>
+
+        <!-- Category dropdown menu -->
+        <div class="mt-4">
+            <label for="categorySelect">Select Category:</label>
+            <select id="categorySelect" onchange="handleCategoryChange()">
+                <option value="">-- Select Category --</option>
+                <option value="clothes">Clothes</option>
+                <option value="toys">Toys</option>
+                <option value="food">Food</option>
+                <!-- Add more category options as needed -->
+            </select>
+            <button onclick="searchByCategory()">Search</button>
+        </div>
+
+        <!-- Filter dropdowns for age, gender, and season -->
+        <div id="filterDropdowns" class="mt-4" style="display: none;">
+            <label for="ageSelect">Age:</label>
+            <select id="ageSelect">
+                <option value="">-- Select Age --</option>
+                <option value="child">Child</option>
+                <option value="teen">Teen</option>
+                <option value="adult">Adult</option>
+                <!-- Add more age options as needed -->
+            </select>
+
+            <label for="genderSelect">Gender:</label>
+            <select id="genderSelect">
+                <option value="">-- Select Gender --</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <!-- Add more gender options as needed -->
+            </select>
+
+            <label for="seasonSelect">Season:</label>
+            <select id="seasonSelect">
+                <option value="">-- Select Season --</option>
+                <option value="summer">Summer</option>
+                <option value="winter">Winter</option>
+                <!-- Add more season options as needed -->
+            </select>
+            <button onclick="filterClothes()">Apply Filters</button>
+        </div>
+
+        <div id="requestedItems" class="mt-4">
+            <!-- Requested donation items will be displayed here -->
+        </div>
+    </div>
+
+    <!-- External JavaScript libraries -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.3.2/jquery-migrate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.sticky/1.0.4/jquery.sticky.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.animateNumber/0.0.14/jquery.animateNumber.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-countdown/2.2.0/jquery.countdown.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.sticky/1.0.4/jquery.sticky.min.js"></script>
+
+    <!-- Your custom JavaScript -->
+    <script>
+        // Sample data representing requested donation items
+        const requestedItems = [
+            { id: 1, itemName: "Clothes", description: "New or gently used clothes for all ages", requester: "Local Shelter", age: "child", gender: "male", season: "winter" },
+            { id: 2, itemName: "Clothes", description: "Winter jackets and warm clothing", requester: "Community Center", age: "teen", gender: "female", season: "winter" },
+            { id: 3, itemName: "Clothes", description: "Children's clothing for ages 3-10", requester: "Orphanage", age: "child", gender: "female", season: "summer" },
+            { id: 4, itemName: "Food", description: "Canned food, rice, pasta, etc.", requester: "Food Bank" },
+            { id: 5, itemName: "Food", description: "Fresh fruits and vegetables", requester: "Community Kitchen" },
+            { id: 6, itemName: "Food", description: "Non-perishable items for emergency relief", requester: "Red Cross" },
+            { id: 7, itemName: "Toys", description: "Toys for toddlers", requester: "Orphanage" }
+
+        ];
+
+        // Function to display requested donation items
+        function displayRequestedItems(items) {
+            const requestedItemsContainer = document.getElementById("requestedItems");
+            requestedItemsContainer.innerHTML = '';
+
+            items.forEach(item => {
+                const itemDiv = document.createElement("div");
+                itemDiv.classList.add("item");
+                itemDiv.innerHTML = `
+                    <h3>${item.itemName}</h3>
+                    <p><strong>Description:</strong> ${item.description}</p>
+                    <p><strong>Requested by:</strong> ${item.requester}</p>
+                    <p><strong>Age:</strong> ${item.age}</p>
+                    <p><strong>Gender:</strong> ${item.gender}</p>
+                    <p><strong>Season:</strong> ${item.season}</p>
+                `;
+                requestedItemsContainer.appendChild(itemDiv);
+            });
+        }
+
+        // Function to filter clothes by age, gender, and season
+        function filterClothes() {
+            const ageSelect = document.getElementById("ageSelect");
+            const genderSelect = document.getElementById("genderSelect");
+            const seasonSelect = document.getElementById("seasonSelect");
+
+            const selectedAge = ageSelect.value.toLowerCase();
+            const selectedGender = genderSelect.value.toLowerCase();
+            const selectedSeason = seasonSelect.value.toLowerCase();
+
+            const filteredClothes = requestedItems.filter(item => {
+                if (selectedAge && item.age && item.age.toLowerCase() !== selectedAge) {
+                    return false;
+                }
+                if (selectedGender && item.gender && item.gender.toLowerCase() !== selectedGender) {
+                    return false;
+                }
+                if (selectedSeason && item.season && item.season.toLowerCase() !== selectedSeason) {
+                    return false;
+                }
+                return true;
+            });
+
+            displayRequestedItems(filteredClothes);
+        }
+
+        // Function to handle category dropdown change
+        function handleCategoryChange() {
+            const categorySelect = document.getElementById("categorySelect");
+            const selectedCategory = categorySelect.value.toLowerCase();
+            const filterDropdowns = document.getElementById("filterDropdowns");
+
+            if (selectedCategory === "clothes") {
+                filterDropdowns.style.display = "block";
+            } else {
+                filterDropdowns.style.display = "none";
+            }
+        }
+
+        // Function to search donation items by category
+        // Function to search donation items by category
+function searchByCategory() {
+    const categorySelect = document.getElementById("categorySelect");
+    const selectedCategory = categorySelect.value.toLowerCase();
+    if (selectedCategory === "") {
+        displayRequestedItems(requestedItems);
+    } else if (selectedCategory === "clothes") {
+        // Filter only clothes items
+        const filteredItems = requestedItems.filter(item => item.itemName.toLowerCase() === "clothes");
+        displayRequestedItems(filteredItems);
+    } else {
+        // For other categories, display all items
+        const filteredItems = requestedItems.filter(item => item.itemName.toLowerCase() === selectedCategory);
+        displayRequestedItems(filteredItems);
+    }
+}
+
+
+        // Display all requested items on page load
+        displayRequestedItems(requestedItems);
+    </script>
+</body>
+</html>
