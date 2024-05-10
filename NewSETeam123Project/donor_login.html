@@ -83,14 +83,14 @@
             <input type="text" id="username" name="username" required>
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
-            <button type="submit" onclick="redirectToDonorPage()">Login</button>
+            <button type="submit" onclick="redirectToDonorHome()">Login</button>
         </form>
         <p id="errorMessage" class="error-message"></p>
     </div>
     
     <script>
-        function redirectToDonorDashboard() {
-            window.location.href = "donor_Page.html"; // Replace "donor_dashboard.html" with the actual URL of your donor dashboard page
+        function redirectToDonorHome() {
+            window.location.href = "Donor_home.html"; // Replace "donor_dashboard.html" with the actual URL of your donor dashboard page
         }
     </script>
     
@@ -104,7 +104,7 @@
             if (username === "donor" && password === "password") {
                 // Redirect to donor dashboard or perform necessary actions
                 alert("Login successful! Redirecting to donor dashboard...");
-                window.location.href = "donor_dashboard.html"; // Replace "donor_dashboard.html" with actual URL
+                window.location.href = "Donor_home.html"; // Replace "donor_dashboard.html" with actual URL
             } else {
                 // Show error message
                 document.getElementById("errorMessage").innerText = "Invalid username or password. Please try again.";

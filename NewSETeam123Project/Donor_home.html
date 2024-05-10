@@ -74,6 +74,56 @@
 
     </style>
 
+<div class="container">
+  <h2>Donor Home</h2>
+  <ul>
+      <li><a href="view_donation_requests.html">View Organizations List</a></li>
+      <li><a href="ViewRequestedDonationItems.html" onclick="viewDonorsList()">View Donors List</a></li>
+  </ul>
+</div>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+      <div class="container">
+          <a class="navbar-brand" href="index.html">Tadamun</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="oi oi-menu"></span> Menu
+          </button>
+          <div class="collapse navbar-collapse" id="ftco-nav">
+              <ul class="navbar-nav ml-auto">
+                  <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+                  <li class="nav-item">
+                      <a href="#" class="nav-link">
+                          <span id="notificationBell" class="oi oi-bell"></span>
+                          <span id="notificationCount" class="notification-count">1</span>
+                      </a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </nav>
+
+  <!-- Your existing content -->
+
+  <script>
+      // Function to update the notification count
+      function updateNotificationCount(count) {
+          const notificationCount = document.getElementById('notificationCount');
+          notificationCount.textContent = count;
+          // Add flashing effect
+          notificationCount.classList.add('flash');
+          setTimeout(() => {
+              notificationCount.classList.remove('flash');
+          }, 1000); // Flash for 1 second
+      }
+
+      // Example usage: Update notification count
+      updateNotificationCount(1);
+  </script>
+
+
+
+
 <footer class="ftco-footer ftco-section img">
     <div class="overlay"></div>
   <div class="container">

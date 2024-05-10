@@ -47,7 +47,7 @@
 
     <!-- Main content -->
     <div class="container">
-        <h1 class="mt-5">View List of Clothes Donation Requests</h1>
+        <h1 class="mt-5">View List of Donation Requests</h1>
 
         <!-- Category dropdown menu -->
         <div class="mt-4">
@@ -57,6 +57,8 @@
                 <option value="clothes">Clothes</option>
                 <option value="toys">Toys</option>
                 <option value="food">Food</option>
+                <option value="School Supplies">School Supplies</option>
+                
                 <!-- Add more category options as needed -->
             </select>
             <button onclick="searchByCategory()">Search</button>
@@ -89,6 +91,7 @@
                 <!-- Add more season options as needed -->
             </select>
             <button onclick="filterClothes()">Apply Filters</button>
+
         </div>
 
         <div id="requestedItems" class="mt-4">
@@ -119,7 +122,9 @@
             { id: 4, itemName: "Food", description: "Canned food, rice, pasta, etc.", requester: "Food Bank" },
             { id: 5, itemName: "Food", description: "Fresh fruits and vegetables", requester: "Community Kitchen" },
             { id: 6, itemName: "Food", description: "Non-perishable items for emergency relief", requester: "Red Cross" },
-            { id: 7, itemName: "Toys", description: "Toys for toddlers", requester: "Orphanage" }
+            { id: 7, itemName: "Toys", description: "Toys for toddlers", requester: "Orphanage", age: "child", gender: "female", season: "summer" },
+            { id: 7, itemName: "Toys", description: "Toys for toddlers", requester: "Orphanage", age: "teen", gender: "male", season: "summer" }
+
 
         ];
 
@@ -169,6 +174,7 @@
             displayRequestedItems(filteredClothes);
         }
 
+        
         // Function to handle category dropdown change
         function handleCategoryChange() {
             const categorySelect = document.getElementById("categorySelect");
@@ -177,9 +183,11 @@
 
             if (selectedCategory === "clothes") {
                 filterDropdowns.style.display = "block";
-            } else {
-                filterDropdowns.style.display = "none";
             }
+            else if (selectedCategory === "toys") {
+                filterDropdowns.style.display = "block";
+            }
+            
         }
 
         // Function to search donation items by category
@@ -193,7 +201,13 @@ function searchByCategory() {
         // Filter only clothes items
         const filteredItems = requestedItems.filter(item => item.itemName.toLowerCase() === "clothes");
         displayRequestedItems(filteredItems);
-    } else {
+    }
+    else if (selectedCategory === "toys") {
+        // Filter only clothes items
+        const filteredItems = requestedItems.filter(item => item.itemName.toLowerCase() === "clothes");
+        displayRequestedItems(filteredItems);
+    }
+     else {
         // For other categories, display all items
         const filteredItems = requestedItems.filter(item => item.itemName.toLowerCase() === selectedCategory);
         displayRequestedItems(filteredItems);

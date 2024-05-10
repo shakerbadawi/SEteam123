@@ -77,13 +77,13 @@
 
 <div class="container">
     <div>
-        <label for="name-filter">Filter by Name:</label>
-        <input type="text" id="name-filter" placeholder="Enter name">
-        <button onclick="applyNameFilter()">Apply</button>
+        <label for="name-filterD">Filter by Name:</label>
+        <input type="text" id="name-filterD" placeholder="Enter name">
+        <button onclick="applyNameFilterD()">Apply</button>
     </div>
     <div>
-        <label for="category-filter">Filter by Category:</label>
-        <select id="category-filter">
+        <label for="category-filterD">Filter by Category:</label>
+        <select id="category-filterD">
             <option value="All">All</option>
             <option value="Doctors">Doctors</option>
             <option value="Teachers">Teachers</option>
@@ -98,9 +98,9 @@
             <option value="Food Security">Food Security</option>
             <option value="Disability Rights">Disability Rights</option>
         </select>
-        <button onclick="applyCategoryFilter()">Apply</button>
+        <button onclick="applyCategoryFilterD()">Apply</button>
     </div>
-    <button id="resetFilter">Reset Filters</button>
+    <button id="resetFilterD">Reset Filters</button>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -334,15 +334,15 @@
     }
 
     // Function to filter donors by name
-    function applyNameFilter() {
-        const name = document.getElementById("name-filter").value.toLowerCase();
+    function applyNameFilterD() {
+        const name = document.getElementById("name-filterD").value.toLowerCase();
         const filteredDonors = donors.filter(donor => donor.name.toLowerCase().includes(name));
         displayDonors(filteredDonors);
     }
 
     // Function to filter donors by category
-    function applyCategoryFilter() {
-        const category = document.getElementById("category-filter").value;
+    function applyCategoryFilterD() {
+        const category = document.getElementById("category-filterD").value;
         if (category === "All") {
             displayDonors(donors);
         } else {
@@ -352,9 +352,9 @@
     }
 
     // Function to reset filters
-    document.getElementById("resetFilter").addEventListener("click", function() {
-        document.getElementById("name-filter").value = "";
-        document.getElementById("category-filter").selectedIndex = 0;
+    document.getElementById("resetFilterD").addEventListener("click", function() {
+        document.getElementById("name-filterD").value = "";
+        document.getElementById("category-filterD").selectedIndex = 0;
         displayDonors(donors);
     });
 
@@ -362,15 +362,17 @@
     displayDonors(donors);
 </script>
 
+
+
 <div class="container">
     <div>
-        <label for="name-filter">Filter by Name:</label>
-        <input type="text" id="name-filter" placeholder="Enter name">
-        <button onclick="applyNameFilter()">Apply</button>
+        <label for="name-filterO">Filter by Name:</label>
+        <input type="text" id="name-filterO" placeholder="Enter name">
+        <button onclick="applyNameFilterO()">Apply</button>
     </div>
     <div>
-        <label for="category-filter">Filter by Category:</label>
-        <select id="category-filter">
+        <label for="category-filterO">Filter by Category:</label>
+        <select id="category-filterO">
             <option value="All">All</option>
             <option value="Doctors">Doctors</option>
             <option value="Teachers">Teachers</option>
@@ -385,9 +387,9 @@
             <option value="Food Security">Food Security</option>
             <option value="Disability Rights">Disability Rights</option>
         </select>
-        <button onclick="applyCategoryFilter()">Apply</button>
+        <button onclick="applyCategoryFilterO()">Apply</button>
     </div>
-    <button id="resetFilter">Reset Filters</button>
+    <button id="resetFilterO">Reset Filters</button>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -745,15 +747,15 @@ City: "Cairo",
     }
 
     // Function to filter organizations by name
-    function applyNameFilter() {
-        const name = document.getElementById("name-filter").value.toLowerCase();
+    function applyNameFilterO() {
+        const name = document.getElementById("name-filterO").value.toLowerCase();
         const filteredOrganizations = organizations.filter(org => org.name.toLowerCase().includes(name));
         displayOrganizations(filteredOrganizations);
     }
 
     // Function to filter organizations by category
-    function applyCategoryFilter() {
-        const category = document.getElementById("category-filter").value;
+    function applyCategoryFilterO() {
+        const category = document.getElementById("category-filterO").value;
         if (category === "All") {
             displayOrganizations(organizations);
         } else {
@@ -763,9 +765,9 @@ City: "Cairo",
     }
 
     // Function to reset filters
-    document.getElementById("resetFilter").addEventListener("click", function() {
-        document.getElementById("name-filter").value = "";
-        document.getElementById("category-filter").selectedIndex = 0;
+    document.getElementById("resetFilterO").addEventListener("click", function() {
+        document.getElementById("name-filterO").value = "";
+        document.getElementById("category-filterO").selectedIndex = 0;
         displayOrganizations(organizations);
     });
 
