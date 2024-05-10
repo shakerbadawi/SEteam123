@@ -1,8 +1,9 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Tadamun - Receive Notification for Chosen Donation Posts</title>
+    <title>Tadamun - Admin Sign Up</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,700" rel="stylesheet">
@@ -53,23 +54,13 @@
             border-radius: 4px;
         }
 
-        /* Reset filters button */
-        #reset-filters {
-            background-color: black;
-            color: white;
-            margin-top: 10px;
-            padding: 6px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        #reset-filters:hover {
-            background-color: darkorange;
+        /* Style the category link select element */
+        #category-link {
+            margin-right: 10px;
         }
 
-        /* Style the delete button */
-        .delete-button {
-            background-color: black;
+        .Change-Password-button {
+            background-color: darkorange;
             color: white;
             border: none;
             padding: 5px 10px;
@@ -78,51 +69,43 @@
             margin-top: 10px;
         }
 
-        .delete-button:hover {
-            background-color: darkorange;
+        .Change-Password-button:hover {
+            background-color: white;
+            color: darkorange;
         }
 
-        
     </style>
-</head>
+    
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-      <div class="container">
-          <a class="navbar-brand" href="index.html">Tadamun</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="oi oi-menu"></span> Menu
-          </button>
-          <div class="collapse navbar-collapse" id="ftco-nav">
-              <ul class="navbar-nav ml-auto">
-                  <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
-                  <li class="nav-item">
-                      <a href="#" class="nav-link">
-                          <span id="notificationBell" class="oi oi-bell"></span>
-                          <span id="notificationCount" class="notification-count">1</span>
-                      </a>
-                  </li>
-              </ul>
-          </div>
-      </div>
-  </nav>
+    <div class="container">
+        <h2>View Estimated Time of Arrival of the Driver</h2>
+        <p>Your drivier will ariive at :</p>
+        <div id="etaDisplay">
+            <p>ETA: <span id="eta">--:--</span></p>
+            <!-- You can dynamically update the ETA here -->
+        </div>
+    </div>
 
-  <!-- Your existing content -->
+    <!-- Include necessary JavaScript files -->
+    <script src="path/to/jquery.min.js"></script>
+    <script src="path/to/bootstrap.min.js"></script>
+    <script>
+        // Function to update the estimated time of arrival
+        function updateETA(eta) {
+            const etaElement = document.getElementById('eta');
+            etaElement.textContent = eta;
+        }
 
-  <script>
-      // Function to update the notification count
-      function updateNotificationCount(count) {
-          const notificationCount = document.getElementById('notificationCount');
-          notificationCount.textContent = count;
-          // Add flashing effect
-          notificationCount.classList.add('flash');
-          setTimeout(() => {
-              notificationCount.classList.remove('flash');
-          }, 1000); // Flash for 1 second
-      }
+        // Example usage: Update ETA (replace '00:00' with actual ETA)
+        updateETA('02:39');
+    </script>
 
-      // Example usage: Update notification count
-      updateNotificationCount(1);
-  </script>
+    </br>
+</br>
+</br>
+</br>
+</br>
+</br>
 
 <footer class="ftco-footer ftco-section img">
     <div class="overlay"></div>
@@ -217,8 +200,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="js/bootstrap-datepicker.js"></script>
 <script src="js/jquery.timepicker.min.js"></script>
 <script src="js/scrollax.min.js"></script>
-<script src="js/main.js"></script> 
-
+<script src="js/main.js"></script>
 
 </body>
 </html>
+
