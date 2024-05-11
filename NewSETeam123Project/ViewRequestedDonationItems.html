@@ -47,7 +47,7 @@
 
     <!-- Main content -->
     <div class="container">
-        <h1 class="mt-5">View List of Donation Requests</h1>
+        <h1 class="mt-5">View List of Clothes Donation Requests</h1>
 
         <!-- Category dropdown menu -->
         <div class="mt-4">
@@ -55,10 +55,11 @@
             <select id="categorySelect" onchange="handleCategoryChange()">
                 <option value="">-- Select Category --</option>
                 <option value="clothes">Clothes</option>
-                <option value="toys">Toys</option>
+                <option value="toys">Toys</option> 
                 <option value="food">Food</option>
-                <option value="School Supplies">School Supplies</option>
-                
+                <option value="medical supplies">medical supplies</option>
+                <option value="school supplies">school supplies</option>
+                <option value="blood donations">blood donations</option>
                 <!-- Add more category options as needed -->
             </select>
             <button onclick="searchByCategory()">Search</button>
@@ -91,9 +92,9 @@
                 <!-- Add more season options as needed -->
             </select>
             <button onclick="filterClothes()">Apply Filters</button>
-
         </div>
 
+        <!-- Requested donation items container -->
         <div id="requestedItems" class="mt-4">
             <!-- Requested donation items will be displayed here -->
         </div>
@@ -122,10 +123,10 @@
             { id: 4, itemName: "Food", description: "Canned food, rice, pasta, etc.", requester: "Food Bank" },
             { id: 5, itemName: "Food", description: "Fresh fruits and vegetables", requester: "Community Kitchen" },
             { id: 6, itemName: "Food", description: "Non-perishable items for emergency relief", requester: "Red Cross" },
-            { id: 7, itemName: "Toys", description: "Toys for toddlers", requester: "Orphanage", age: "child", gender: "female", season: "summer" },
-            { id: 7, itemName: "Toys", description: "Toys for toddlers", requester: "Orphanage", age: "teen", gender: "male", season: "summer" }
-
-
+            { id: 7, itemName: "Toys", description: "Toys for toddlers", requester: "Orphanage" },
+            { id: 7, itemName: "medical supplies", description: "medical supplies", requester: "Hospital" },
+            { id: 7, itemName: "school supplies", description: "school supplies", requester: "school" },
+            { id: 7, itemName: "blood donations", description: "blood donation", requester: "Hospital" }
         ];
 
         // Function to display requested donation items
@@ -140,16 +141,29 @@
                     <h3>${item.itemName}</h3>
                     <p><strong>Description:</strong> ${item.description}</p>
                     <p><strong>Requested by:</strong> ${item.requester}</p>
-                    <p><strong>Age:</strong> ${item.age}</p>
-                    <p><strong>Gender:</strong> ${item.gender}</p>
-                    <p><strong>Season:</strong> ${item.season}</p>
                 `;
+
+                // Add age, gender, and season fields only for clothes items
+                if (item.itemName.toLowerCase() === 'clothes') {
+                    itemDiv.innerHTML += `
+                        <p><strong>Age:</strong> ${item.age}</p>
+                        <p><strong>Gender:</strong> ${item.gender}</p>
+                        <p><strong>Season:</strong> ${item.season}</p>
+                        <button onclick="viewClothingDetails(${item.id})">View Details</button>
+                        <button onclick="selectQuantity(${item.id})">Select Quantity</button>
+                    `;
+                }
+
                 requestedItemsContainer.appendChild(itemDiv);
             });
         }
 
         // Function to filter clothes by age, gender, and season
         function filterClothes() {
+            // Filter requested items to only include clothes
+            const clothesItems = requestedItems.filter(item => item.itemName.toLowerCase() === 'clothes');
+
+            // Retrieve selected filters
             const ageSelect = document.getElementById("ageSelect");
             const genderSelect = document.getElementById("genderSelect");
             const seasonSelect = document.getElementById("seasonSelect");
@@ -158,7 +172,8 @@
             const selectedGender = genderSelect.value.toLowerCase();
             const selectedSeason = seasonSelect.value.toLowerCase();
 
-            const filteredClothes = requestedItems.filter(item => {
+            // Apply age, gender, and season filters to clothes items
+            const filteredClothes = clothesItems.filter(item => {
                 if (selectedAge && item.age && item.age.toLowerCase() !== selectedAge) {
                     return false;
                 }
@@ -171,10 +186,10 @@
                 return true;
             });
 
+            // Display filtered clothes items
             displayRequestedItems(filteredClothes);
         }
 
-        
         // Function to handle category dropdown change
         function handleCategoryChange() {
             const categorySelect = document.getElementById("categorySelect");
@@ -183,37 +198,57 @@
 
             if (selectedCategory === "clothes") {
                 filterDropdowns.style.display = "block";
+            } else {
+                filterDropdowns.style.display = "none";
             }
-            else if (selectedCategory === "toys") {
-                filterDropdowns.style.display = "block";
-            }
-            
         }
 
         // Function to search donation items by category
-        // Function to search donation items by category
-function searchByCategory() {
-    const categorySelect = document.getElementById("categorySelect");
-    const selectedCategory = categorySelect.value.toLowerCase();
-    if (selectedCategory === "") {
-        displayRequestedItems(requestedItems);
-    } else if (selectedCategory === "clothes") {
-        // Filter only clothes items
-        const filteredItems = requestedItems.filter(item => item.itemName.toLowerCase() === "clothes");
-        displayRequestedItems(filteredItems);
-    }
-    else if (selectedCategory === "toys") {
-        // Filter only clothes items
-        const filteredItems = requestedItems.filter(item => item.itemName.toLowerCase() === "clothes");
-        displayRequestedItems(filteredItems);
-    }
-     else {
-        // For other categories, display all items
-        const filteredItems = requestedItems.filter(item => item.itemName.toLowerCase() === selectedCategory);
-        displayRequestedItems(filteredItems);
-    }
-}
+        function searchByCategory() {
+            const categorySelect = document.getElementById("categorySelect");
+            const selectedCategory = categorySelect.value.toLowerCase();
+            if (selectedCategory === "") {
+                displayRequestedItems(requestedItems);
+            } else if (selectedCategory === "clothes") {
+                // Filter only clothes items
+                const filteredItems = requestedItems.filter(item => item.itemName.toLowerCase() === "clothes");
+                displayRequestedItems(filteredItems);
+            } else {
+                // For other categories, display all items
+                const filteredItems = requestedItems.filter(item => item.itemName.toLowerCase() === selectedCategory);
+                displayRequestedItems(filteredItems);
+            }
+        }
 
+        // Function to view details of a clothing item
+        function viewClothingDetails(itemId) {
+            // Find the requested item by ID
+            const item = requestedItems.find(item => item.id === itemId);
+            if (item) {
+                // Implement the logic to display details of the clothing item
+                alert(`Details of Clothing Item:
+                Type: ${item.itemName}
+                Age: ${item.age}
+                Gender: ${item.gender}
+                Season: ${item.season}
+                Material: ${item.material}
+                Quantity Requested: ${item.quantity}`);
+            } else {
+                alert("Clothing item not found!");
+            }
+        }
+
+        // Function to select quantity for clothing donations
+        function selectQuantity(itemId) {
+            // Implement the logic to allow donors to select the quantity
+            const quantity = prompt("Enter quantity to donate:");
+            if (quantity !== null && !isNaN(quantity) && parseInt(quantity) > 0) {
+                alert(`You have chosen to donate ${quantity} items.`);
+                // Implement further logic as needed, such as updating the UI or processing the donation
+            } else {
+                alert("Invalid quantity! Please enter a valid number.");
+            }
+        }
 
         // Display all requested items on page load
         displayRequestedItems(requestedItems);
