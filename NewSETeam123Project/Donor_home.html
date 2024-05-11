@@ -21,12 +21,12 @@
     <link rel="stylesheet" href="css/style.css">
     <style>
         body {
-            padding-top: 80px; /* add top padding to create space between navbar and content */
+            padding-top: 0px; /* add top padding to create space between navbar and content */
         }
 
         /* Add some top margin to the navbar to align it with the padding */
         .navbar {
-            margin-top: 20px;
+            margin-top: 0px;
         }
 
         /* Style the organization list table */
@@ -75,17 +75,7 @@
 
     </style>
 
-
-<div class="container">
-  <h2>Donor Home</h2>
-  <ul>
-      <li><a href="view_donation_requests.html">View Organizations List</a></li>
-      <li><a href="ViewRequestedDonationItems.html" onclick="viewDonorsList()">View Donors List</a></li>
-      <li><a href="Track_Driver.html" onclick="viewDonorsList()">Driver Tracking</a></li>
-      <li><a href="Hospital_Location.html">View The Nearest Hospital</a></li>
-  </ul>
-</div>
-
+</head>
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
@@ -124,7 +114,52 @@
         <li><a href="Track_Driver.html" onclick="viewDonorsList()">Driver Tracking</a></li>
     </ul>
   </div>
-  
+
+  <!-- Registration blocks start -->
+  <section class="ftco-counter ftco-intro" id="section-counter">
+      <div class="container">
+          <div class="row no-gutters">
+              <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+                  <div class="block-18 color-3 align-items-stretch">
+                      <div class="text">
+                          <h3 class="mb-4">Admin Registration</h3>
+                          <p>Your help has the power to make a significant impact.</p>
+                          <p><a href="Admin_signup.html" class="btn btn-white px-3 py-2 mt-2">Sign Up</a></p>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+                  <div class="block-18 color-1 align-items-stretch">
+                      <div class="text">
+                          <h3 class="mb-4">Donor Registration</h3>
+                          <p>Your help has the power to make a significant impact.</p>
+                          <p><a href="donor_signup.html" class="btn btn-white px-3 py-2 mt-2">Sign Up</a></p>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+                  <div class="block-18 color-2 align-items-stretch">
+                      <div class="text">
+                          <h3 class="mb-4">Organization Registration</h3>
+                          <p>Your help has the power to make a significant impact.</p>
+                          <p><a href="organization_signup.html" class="btn btn-white px-3 py-2 mt-2">Sign Up</a></p>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+                  <div class="block-18 color-3 align-items-stretch">
+                      <div class="text">
+                          <h3 class="mb-4">Volunteer</h3>
+                          <p>Your help has the power to make a significant impact.</p>
+                          <p><a href="vo_role_sel.html" class="btn btn-white px-3 py-2 mt-2">Participate</a></p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+  <!-- Registration blocks end -->
+
   <!-- Your existing content -->
 
   <script>
@@ -142,16 +177,6 @@
       // Example usage: Update notification count
       updateNotificationCount(1);
   </script>
-</body>
-
-
-
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
 
 <footer class="ftco-footer ftco-section img">
     <div class="overlay"></div>
@@ -231,3 +256,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     </div>
   </div>
 </footer>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
