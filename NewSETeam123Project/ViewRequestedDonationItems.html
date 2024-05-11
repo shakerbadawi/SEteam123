@@ -117,17 +117,18 @@
     <script>
         // Sample data representing requested donation items
         const requestedItems = [
-            { id: 1, itemName: "Clothes", description: "New or gently used clothes for all ages", requester: "Local Shelter", age: "child", gender: "male", season: "winter" },
-            { id: 2, itemName: "Clothes", description: "Winter jackets and warm clothing", requester: "Community Center", age: "teen", gender: "female", season: "winter" },
-            { id: 3, itemName: "Clothes", description: "Children's clothing for ages 3-10", requester: "Orphanage", age: "child", gender: "female", season: "summer" },
-            { id: 4, itemName: "Food", description: "Canned food, rice, pasta, etc.", requester: "Food Bank" },
-            { id: 5, itemName: "Food", description: "Fresh fruits and vegetables", requester: "Community Kitchen" },
-            { id: 6, itemName: "Food", description: "Non-perishable items for emergency relief", requester: "Red Cross" },
-            { id: 7, itemName: "Toys", description: "Toys for toddlers", requester: "Orphanage" },
-            { id: 7, itemName: "medical supplies", description: "medical supplies", requester: "Hospital" },
-            { id: 7, itemName: "school supplies", description: "school supplies", requester: "school" },
-            { id: 7, itemName: "blood donations", description: "blood donation", requester: "Hospital" }
-        ];
+    { id: 1, itemName: "Clothes", description: "New or gently used clothes for all ages", requester: "Local Shelter", age: "child", gender: "male", season: "winter", material: "cotton", quantity: 50 },
+    { id: 2, itemName: "Clothes", description: "Winter jackets and warm clothing", requester: "Community Center", age: "teen", gender: "female", season: "winter", material: "wool", quantity: 30 },
+    { id: 3, itemName: "Clothes", description: "Children's clothing for ages 3-10", requester: "Orphanage", age: "child", gender: "female", season: "summer", material: "synthetic", quantity: 20 },
+    { id: 4, itemName: "Food", description: "Canned food, rice, pasta, etc.", requester: "Food Bank" },
+    { id: 5, itemName: "Food", description: "Fresh fruits and vegetables", requester: "Community Kitchen" },
+    { id: 6, itemName: "Food", description: "Non-perishable items for emergency relief", requester: "Red Cross" },
+    { id: 7, itemName: "Toys", description: "Toys for toddlers", requester: "Orphanage" },
+    { id: 8, itemName: "Medical Supplies", description: "Medical supplies for clinics", requester: "Clinic", material: "plastic", quantity: 100 },
+    { id: 9, itemName: "School Supplies", description: "School supplies for students", requester: "School", material: "paper", quantity: 200 },
+    { id: 10, itemName: "Blood Donations", description: "Blood donations for hospital", requester: "Hospital" }
+];
+
 
         // Function to display requested donation items
         function displayRequestedItems(items) {
@@ -222,21 +223,22 @@
 
         // Function to view details of a clothing item
         function viewClothingDetails(itemId) {
-            // Find the requested item by ID
-            const item = requestedItems.find(item => item.id === itemId);
-            if (item) {
-                // Implement the logic to display details of the clothing item
-                alert(`Details of Clothing Item:
-                Type: ${item.itemName}
-                Age: ${item.age}
-                Gender: ${item.gender}
-                Season: ${item.season}
-                Material: ${item.material}
-                Quantity Requested: ${item.quantity}`);
-            } else {
-                alert("Clothing item not found!");
-            }
-        }
+    // Find the requested item by ID
+    const item = requestedItems.find(item => item.id === itemId);
+    if (item) {
+        // Display details of the clothing item
+        alert(`Details of Clothing Item:
+        Type: ${item.itemName}
+        Age: ${item.age}
+        Gender: ${item.gender}
+        Season: ${item.season}
+        Material: ${item.material}
+        Quantity Requested: ${item.quantity}`);
+    } else {
+        alert("Clothing item not found!");
+    }
+}
+
 
         // Function to select quantity for clothing donations
         function selectQuantity(itemId) {
