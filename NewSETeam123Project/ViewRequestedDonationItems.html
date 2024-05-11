@@ -91,27 +91,11 @@
                 <option value="winter">Winter</option>
                 <!-- Add more season options as needed -->
             </select>
-        </div>
+            <button onclick="filterClothes()">Apply Filters</button>
 
-        <!-- Filter dropdown for school supplies type -->
-        <div id="schoolSuppliesFilters" class="mt-4" style="display: none;">
-            <label for="schoolSuppliesType">Type:</label>
-            <select id="schoolSuppliesType">
-                <option value="">-- Select Type --</option>
-                <option value="books">Books</option>
-                <option value="stationary">Stationary</option>
-                <!-- Add more type options as needed -->
-            </select>
-            <button onclick="filterSchoolSupplies()">Apply Filters</button>
         </div>
-
-        <!-- Requested donation items container -->
-        <div id="requestedItems" class="mt-4">
-            <!-- Requested donation items will be displayed here -->
-        </div>
-    </div>
-     <!-- Filter dropdowns for age, gender, and category -->
-<div id="filterDropdown" class="mt-4" style="display: none;">
+  <!-- Filter dropdowns for age, gender, and category -->
+  <div id="filterDropdown" class="mt-4" style="display: none;">
     <label for="ageSelect">Age:</label>
     <select id="ageSelect">
         <option value="">-- Select Age --</option>
@@ -143,6 +127,24 @@
     <!-- Button to apply filters -->
     <button onclick="filterToys()">Apply Filters</button>
 </div>
+        <!-- Filter dropdown for school supplies type -->
+        <div id="schoolSuppliesFilters" class="mt-4" style="display: none;">
+            <label for="schoolSuppliesType">Type:</label>
+            <select id="schoolSuppliesType">
+                <option value="">-- Select Type --</option>
+                <option value="books">Books</option>
+                <option value="stationary">Stationary</option>
+                <!-- Add more type options as needed -->
+            </select>
+            <button onclick="filterSchoolSupplies()">Apply Filters</button>
+        </div>
+
+        <!-- Requested donation items container -->
+        <div id="requestedItems" class="mt-4">
+            <!-- Requested donation items will be displayed here -->
+        </div>
+    </div>
+   
 
 
     <!-- External JavaScript libraries -->
@@ -171,33 +173,18 @@
             { id: 7, itemName: "Toys", description: "Toys for toddlers", requester: "Orphanage",age: "child", gender: "female", category : "board games", picture: "https://images-cdn.ubuy.co.in/6530f76ce01f7d18441208f0-jumanji-the-game-real-wooden-box-edition.jpg", quantity: 200 },
             { id: 8, itemName: "Medical Supplies", description: "Medical supplies for clinics", requester: "Clinic", material: "plastic", quantity: 100 },
             { id: 9, itemName: "School Supplies", description: "School supplies for students", requester: "School", type: "stationary", quantity: 200 },
-            {
-    id: 10,
-    itemName: "School Supplies",
-    description: "Textbooks for students",
-    requester: "School",
-    type: "books",
-    quantity: 150,
-    title: "The Computer Science Book",
-    author: "Tom Johnson",
-    language: "English",
-    edition: "3rd Edition",
-    summary: "This textbook provides an introduction to fundamental concepts in computer science, including programming, algorithms, and data structures. It covers a wide range of topics suitable for beginners and intermediate learners.",
-    picture: "https://thecomputersciencebook.com/images/cover-new.jpg" // URL or path to the picture of the book 
-}, 
-
-            { id: 11, itemName: "Blood Donations", description: "Blood donations for hospital", requester: "Hospital" },
-            
-    { id: 12, itemName: "Toys", description: "Toys for toddlers", requester: "Orphanage", age: "child", gender: "female", category: "board games", picture: "https://images-cdn.ubuy.co.in/6530f76ce01f7d18441208f0-jumanji-the-game-real-wooden-box-edition.jpg", quantity: 200},
-    { id: 13, itemName: "Toys", description: "Toys for teenagers", requester: "Youth Center", age: "teen", gender: "male", category: "stuffed toys", picture: "https://m.media-amazon.com/images/I/71BwHy5itBL._AC_UF894,1000_QL80_.jpg", quantity: 200 },
-    { id: 14, itemName: "Toys", description: "Dolls for young girls", requester: "Children's Home", age: "child", gender: "female", category: "dolls", picture: "https://theclearancebin.weebly.com/uploads/1/2/3/0/1230872/3458305_orig.jpg", quantity: 200 },
-    { id: 15, itemName: "Toys", description: "Sports equipment for kids", requester: "Community Center", age: "child", gender: "male", category: "sports", picture: "https://www.clorox.com/wp-content/uploads/2021/10/how-to-clean-and-disinfect-sports-equipment.jpg?width=1040&height=585&fit=crop", quantity: 200},
-    { id: 16, itemName: "Toys", description: "Remote-controlled cars", requester: "Toy Drive Organization", age: "teen", gender: "male", category: "cars", picture: "https://i5.walmartimages.com/seo/Hot-Wheels-Set-of-20-Toy-Sports-Race-Cars-in-1-64-Scale-Collectible-Vehicles-Styles-May-Vary_3ecf516f-e716-45aa-8498-7ea640765d95.0cb2531529ba34feaa3ca5ed5db4c00b.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF", quantity: 200},
-    { id: 17, itemName: "Toys", description: "Outdoor toys for children", requester: "Recreation Center", age: "child", gender: "female", category: "outdoor", picture: "https://images.agoramedia.com/wte3.0/gcms//intex-rainbow-ring-inflatable-play-pool.jpg", quantity: 200 },
-    { id: 18, itemName: "Toys", description: "Educational toys for preschoolers", requester: "Preschool", age: "child", gender: "female", category: "board games", picture: "https://images-cdn.ubuy.co.in/6530f76ce01f7d18441208f0-jumanji-the-game-real-wooden-box-edition.jpg", quantity: 200 },
-    { id: 19, itemName: "Toys", description: "Soft toys for infants", requester: "Maternity Hospital", age: "child", gender: "male", category: "stuffed toys", picture: "https://m.media-amazon.com/images/I/71BwHy5itBL._AC_UF894,1000_QL80_.jpg", quantity: 200 },
-    { id: 20, itemName: "Toys", description: "Toy cars for boys", requester: "Children's Home", age: "child", gender: "male", category: "cars", picture: "https://i5.walmartimages.com/seo/Hot-Wheels-Set-of-20-Toy-Sports-Race-Cars-in-1-64-Scale-Collectible-Vehicles-Styles-May-Vary_3ecf516f-e716-45aa-8498-7ea640765d95.0cb2531529ba34feaa3ca5ed5db4c00b.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF", quantity: 200 },
-    { id: 21, itemName: "Toys", description: "Outdoor playsets", requester: "Family Shelter", age: "child", gender: "female", category: "outdoor", picture: "https://images.agoramedia.com/wte3.0/gcms//intex-rainbow-ring-inflatable-play-pool.jpg", quantity: 200}
+            { id: 10, itemName: "School Supplies", description: "Textbooks for students", requester: "School",type: "books",quantity: 150,title: "The Computer Science Book",author: "Tom Johnson",language: "English",edition: "3rd Edition",summary: "This textbook provides an introduction to fundamental concepts in computer science, including programming, algorithms, and data structures. It covers a wide range of topics suitable for beginners and intermediate learners.",picture: "https://thecomputersciencebook.com/images/cover-new.jpg"}, 
+            { id: 11, itemName: "Blood Donations", description: "Blood donations for hospital", requester: "Hospital" },       
+            { id: 12, itemName: "Toys", description: "Toys for toddlers", requester: "Orphanage", age: "child", gender: "female", category: "board games", picture: "https://images-cdn.ubuy.co.in/6530f76ce01f7d18441208f0-jumanji-the-game-real-wooden-box-edition.jpg", quantity: 200},
+            { id: 13, itemName: "Toys", description: "Toys for teenagers", requester: "Youth Center", age: "teen", gender: "male", category: "stuffed toys", picture: "https://m.media-amazon.com/images/I/71BwHy5itBL._AC_UF894,1000_QL80_.jpg", quantity: 200 },
+            { id: 14, itemName: "Toys", description: "Dolls for young girls", requester: "Children's Home", age: "child", gender: "female", category: "dolls", picture: "https://theclearancebin.weebly.com/uploads/1/2/3/0/1230872/3458305_orig.jpg", quantity: 200 },
+            { id: 15, itemName: "Toys", description: "Sports equipment for kids", requester: "Community Center", age: "child", gender: "male", category: "sports", picture: "https://www.clorox.com/wp-content/uploads/2021/10/how-to-clean-and-disinfect-sports-equipment.jpg?width=1040&height=585&fit=crop", quantity: 200},
+            { id: 16, itemName: "Toys", description: "Remote-controlled cars", requester: "Toy Drive Organization", age: "teen", gender: "male", category: "cars", picture: "https://i5.walmartimages.com/seo/Hot-Wheels-Set-of-20-Toy-Sports-Race-Cars-in-1-64-Scale-Collectible-Vehicles-Styles-May-Vary_3ecf516f-e716-45aa-8498-7ea640765d95.0cb2531529ba34feaa3ca5ed5db4c00b.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF", quantity: 200},
+            { id: 17, itemName: "Toys", description: "Outdoor toys for children", requester: "Recreation Center", age: "child", gender: "female", category: "outdoor", picture: "https://images.agoramedia.com/wte3.0/gcms//intex-rainbow-ring-inflatable-play-pool.jpg", quantity: 200 },
+            { id: 18, itemName: "Toys", description: "Educational toys for preschoolers", requester: "Preschool", age: "child", gender: "female", category: "board games", picture: "https://images-cdn.ubuy.co.in/6530f76ce01f7d18441208f0-jumanji-the-game-real-wooden-box-edition.jpg", quantity: 200 },
+            { id: 19, itemName: "Toys", description: "Soft toys for infants", requester: "Maternity Hospital", age: "child", gender: "male", category: "stuffed toys", picture: "https://m.media-amazon.com/images/I/71BwHy5itBL._AC_UF894,1000_QL80_.jpg", quantity: 200 },
+            { id: 20, itemName: "Toys", description: "Toy cars for boys", requester: "Children's Home", age: "child", gender: "male", category: "cars", picture: "https://i5.walmartimages.com/seo/Hot-Wheels-Set-of-20-Toy-Sports-Race-Cars-in-1-64-Scale-Collectible-Vehicles-Styles-May-Vary_3ecf516f-e716-45aa-8498-7ea640765d95.0cb2531529ba34feaa3ca5ed5db4c00b.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF", quantity: 200 },
+            { id: 21, itemName: "Toys", description: "Outdoor playsets", requester: "Family Shelter", age: "child", gender: "female", category: "outdoor", picture: "https://images.agoramedia.com/wte3.0/gcms//intex-rainbow-ring-inflatable-play-pool.jpg", quantity: 200}
 ];
 
         
@@ -299,6 +286,7 @@ requestedItemsContainer.appendChild(itemDiv);
 }
 
 function filterToys() {
+    console.log("filterToys function is being called"); // Add this line to log a message
     const ageSelect = document.getElementById("ageSelect");
     const selectedAge = ageSelect.value.toLowerCase();
     const genderSelect = document.getElementById("genderSelect");
@@ -318,6 +306,30 @@ function filterToys() {
     // Display filtered toys
     displayRequestedItems(filteredToys);
 }
+ 
+function filterClothes() {
+    const ageSelect = document.getElementById("ageSelect");
+    const selectedAge = ageSelect.value.toLowerCase();
+    const genderSelect = document.getElementById("genderSelect");
+    const selectedGender = genderSelect.value.toLowerCase();
+    const seasonSelect = document.getElementById("seasonSelect");
+    const selectedSeason = seasonSelect.value.toLowerCase();
+
+    // Filter clothes based on selected options
+    const filteredClothes = requestedItems.filter(item => {
+        if (item.itemName.toLowerCase() !== 'clothes') return false; // Filter only clothes
+        if (selectedAge && item.age && item.age.toLowerCase() !== selectedAge) return false;
+        if (selectedGender && item.gender && item.gender.toLowerCase() !== selectedGender) return false;
+        if (selectedSeason && item.season && item.season.toLowerCase() !== selectedSeason) return false;
+        return true;
+    });
+
+    // Display filtered clothes
+    displayRequestedItems(filteredClothes);
+}
+
+
+
         // Function to search donation items by category
         function searchByCategory() {
             const categorySelect = document.getElementById("categorySelect");
