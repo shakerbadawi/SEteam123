@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Tadamun - Donate</title>
+    <title>Doctor</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -51,59 +51,52 @@
     </div>
 </nav>
     <!-- END nav -->
-    <!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Volunteer Role Selection</title>
+<title>The Hospital Location </title>
+<style>
+  /* Style the map container */
+  #map {
+    height: 400px; /* Adjust the height as needed */
+    width: 80%; /* Adjust the width as needed */
+    margin: 20px auto; /* Center the map horizontally */
+    border: 1px solid #ccc; /* Add a border for better visibility */
+    border-radius: 5px; /* Add border radius for better appearance */
+  }
+</style>
 </head>
+
 <body>
-    <h2>Volunteer Role Selection</h2>
-    <div>
-        <label for="volunteerRole">Select Your Volunteer Role:</label>
-        <select id="volunteerRole">
-            <option value="regularDonor">Regular Donor</option>
-            <option value="teacher">Teacher</option>
-            <option value="doctor">Doctor</option>
-            <!-- Add more options as needed -->
-        </select>
-    </div>
-    <button id="submitButton">Submit</button>
+<h2>The Hospital Location</h2>
+<div id="map"></div>
 
-    <script>
-        // Get the selected volunteer role
-        var volunteerRoleSelect = document.getElementById("volunteerRole");
-        var selectedVolunteerRole = volunteerRoleSelect.options[volunteerRoleSelect.selectedIndex].value;
+<script>
+  // Initialize and add the map
+  function initMap() {
+    // Location coordinates for the organization
+    var organizationLocation = { lat: 37.7749, lng: -122.4194 }; // Example coordinates for San Francisco
+    
+    // Create a new map centered at the organization location
+    var map = new google.maps.Map(document.getElementById("map"), {
+      center: organizationLocation,
+      zoom: 12 // Adjust the zoom level as needed
+    });
+    
+    // Add a marker for the organization location
+    var marker = new google.maps.Marker({
+      position: organizationLocation,
+      map: map,
+      title: "tadamon" // Replace with your organization name
+    });
+  }
+</script>
 
-        // Function to handle form submission
-        function submitForm() {
-            if (selectedVolunteerRole === "teacher") {
-                window.location.href = "teacher_page.html"; // Redirect to teacher page
-            } else if (selectedVolunteerRole === "doctor") {
-                window.location.href = "doctor_page.html"; // Redirect to doctor page
-            } else if (selectedVolunteerRole === "regularDonor") {
-                window.location.href = "donor_signup.html"; // Redirect to regular donor page
-            }
-            // Add more conditions for other roles if needed
-
-            return false; // Prevent the default form submission behavior
-        }
-
-        // Add event listener to the submit button
-        var submitButton = document.getElementById("submitButton");
-        submitButton.addEventListener("click", submitForm);
-
-        // Add event listener to handle changes in selection
-        volunteerRoleSelect.addEventListener("change", function() {
-            selectedVolunteerRole = volunteerRoleSelect.options[volunteerRoleSelect.selectedIndex].value;
-            console.log("Selected Volunteer Role:", selectedVolunteerRole);
-            // You can add further actions here based on the selected role
-        });
-    </script>
-</br>
-</br>
-</br>
+<!-- Include the Google Maps JavaScript API with your API key -->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap"></script>
+</body>
 </br>
 </br>
 </br>
@@ -189,3 +182,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 </footer>
 
 
+
+</html>
+
+</html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Tadamun - Donate</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Overpass:300,400,400i,600,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+    
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-dark" id="ftco-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">Tadamun</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="oi oi-menu"></span> Menu
+        </button>
+
+        <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="causes.html" class="nav-link">Causes</a></li>
+                <li class="nav-item active"><a href="donate.html" class="nav-link">Donate</a></li>
+                <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+                <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li class="nav-item"><a href="event.html" class="nav-link">Events</a></li>
+                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    <!-- END nav -->
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Volunteer Role Selection</title>
+</head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teaching Posts</title>
+    <!-- Add your CSS stylesheets here -->
+</head>
+
+<body>
+    <!-- Navigation bar -->
+    <nav>
+        <!-- Your navigation bar content here -->
+    </nav>
+
+    <!-- Main content -->
+    <div class="container">
+        <h1>View Medical Cases</h1>
+        
+        <!-- Filter options -->
+        <div>
+            <label for="medicalSpecialty">Medical Specialty:</label>
+            <select id="medicalSpecialty">
+                <option value="">All</option>
+                <option value="Cardiology">Cardiology</option>
+                <option value="Neurology">Neurology</option>
+                <option value="Surgery">Surgery</option>
+                <option value="Dermatology">Dermatology</option>
+                <option value="Anesthesiology">Anesthesiology</option>
+                <!-- Add more options for medical specialties -->
+            </select>
+
+            <label for="organizationName">Organization Name:</label>
+            <input type="text" id="organizationName">
+
+            <label for="area">Area:</label>
+            <input type="text" id="area">
+
+            <label for="governorate">Governorate:</label>
+            <select id="governorate">
+                <option value="">All</option>
+                <option value="Cairo">Cairo</option>
+                <option value="Alexandria">Alexandria</option>
+                <option value="Giza">Giza</option>
+                <!-- Add more options for governorates -->
+            </select>
+
+            <button onclick="filterMedicalCases()">Filter</button>
+        </div>
+        
+        <!-- List of medical cases -->
+        <div id="medicalCases">
+            <!-- Dummy medical cases -->
+            <div class="medical-case Cardiology"  data-organization="Heart Care Clinic" data-area="Dokki" data-governorate="Cairo">
+                <h2>Cardiology Case</h2>
+                <p>Patient Name: John Doe</p>
+                <p>Age: 45</p>
+                <p>Gender: Male</p>
+                <p>Weight: 75 kg</p>
+                <p>Location: Dokki, Cairo</p>
+                <p>Address: 123 Street, Dokki</p>
+                <p>Organization: Heart Care Clinic</p>
+                <p>Medical Specialty: Cardiology</p>
+                <p>Case Description: Lorem ipsum dolor sit amet...</p>
+                <a href="Doctor_Location.html" class="redirect-button">Check Location</a>
+                <button onclick="deletePost(this)">Submit</button>
+            </div>
+            <div class="medical-case Dermatology" data-organization="Heart Care Clinic" data-area="Dokki" data-governorate="Cairo">
+                <h2>Dermatology Case</h2>
+                <p>Patient Name: John Doe</p>
+                <p>Age: 45</p>
+                <p>Gender: Male</p>
+                <p>Weight: 75 kg</p>
+                <p>Location: Dokki, Cairo</p>
+                <p>Address: 123 Street, Dokki</p>
+                <p>Organization: Heart Care Clinic</p>
+                <p>Medical Specialty: Dermatology</p>
+                <p>Case Description: Lorem ipsum dolor sit amet...</p>
+                <a href="Doctor_Location.html" class="redirect-button">Check Location</a>
+                <button onclick="deletePost(this)">Submit</button>
+            </div>
+            
+            <div class="medical-case Surgery" data-organization="Bone Health Center" data-area="Mohandessin" data-governorate="Giza">
+                <h2>Surgery Case</h2>
+                <p>Patient Name: Jane Smith</p>
+                <p>Age: 35</p>
+                <p>Gender: Female</p>
+                <p>Weight: 65 kg</p>
+                <p>Location: Mohandessin, Giza</p>
+                <p>Address: 456 Street, Mohandessin</p>
+                <p>Organization: Bone Health Center</p>
+                <p>Medical Specialty: Surgery</p>
+                <p>Case Description: Lorem ipsum dolor sit amet...</p>
+                <a href="Doctor_Location.html" class="redirect-button">Check Location</a>
+                <button onclick="deletePost(this)">Submit</button>
+            </div>
+            
+            <div class="medical-case Neurology" data-organization="Brain Clinic" data-area="Zamalek" data-governorate="Alexandria">
+                <h2>Neurology Case</h2>
+                <p>Patient Name: Michael Johnson</p>
+                <p>Age: 50</p>
+                <p>Gender: Male</p>
+                <p>Weight: 70 kg</p>
+                <p>Location: Miami, Alexandria</p>
+                <p>Address: 789 Street, Zamalek</p>
+                <p>Organization: Brain Clinic</p>
+                <p>Medical Specialty: Neurology</p>
+                <p>Case Description: Lorem ipsum dolor sit amet...</p>
+                <a href="Doctor_Location.html" class="redirect-button">Check Location</a>
+                <button onclick="deletePost(this)">Submit</button>
+            </div>
+            
+            <div class="medical-case Anesthesiology" data-organization="Child Health Hospital" data-area="Maadi" data-governorate="Cairo">
+                <h2>Anesthesiology Case</h2>
+                <p>Patient Name: Sarah Williams</p>
+                <p>Age: 8</p>
+                <p>Gender: Female</p>
+                <p>Weight: 25 kg</p>
+                <p>Location: Maadi, Cairo</p>
+                <p>Address: 101 Street, Maadi</p>
+                <p>Organization: Child Health Hospital</p>
+                <p>Medical Specialty: Anesthesiology</p>
+                <p>Case Description: Lorem ipsum dolor sit amet...</p>
+                <a href="Doctor_Location.html" class="redirect-button">Check Location</a>
+                <button onclick="deletePost(this)">Submit</button>
+            </div>
+            
+            
+    <div id="medicalCaseModal" class="modal">
+        <!-- Modal content goes here -->
+    </div>
+    <script>
+    function filterMedicalCases() {
+            var medicalSpecialty = document.getElementById('medicalSpecialty').value;
+            var organizationName = document.getElementById('organizationName').value.toLowerCase();
+            var area = document.getElementById('area').value.toLowerCase();
+            var governorate = document.getElementById('governorate').value;
+            var medicalCases = document.querySelectorAll('.medical-case');
+
+            medicalCases.forEach(function(post) {
+                var caseMedicalSpecialty = post.classList.contains(medicalSpecialty) || medicalSpecialty === '';
+                var caseOrganizationName = post.getAttribute('data-organization').toLowerCase().includes(organizationName) || organizationName === '';
+                var caseArea = post.getAttribute('data-area').toLowerCase().includes(area) || area === '';
+                var caseGovernorate = post.getAttribute('data-governorate') === governorate || governorate === '';
+
+                if (caseMedicalSpecialty && caseOrganizationName && caseArea && caseGovernorate) {
+                    post.style.display = 'block';
+                } else {
+                    post.style.display = 'none';
+                }
+            });
+        }
+        function deletePost(button) {
+            // Get the parent post element
+            var post = button.parentNode;
+            // Remove the post from the DOM
+            post.parentNode.removeChild(post);
+            // Show success message
+            alert("Post Fulfilled successfully!");
+        }
+    
+    </script>
+</body>
+
+</br>
+</br>
+</br>
+</br>
+
+<footer class="ftco-footer ftco-section img">
+    <div class="overlay"></div>
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-md-3">
+        <div class="ftco-footer-widget mb-4">
+          <h2 class="ftco-heading-2">About Us</h2>
+          <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+          <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+            <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+            <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+            <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="ftco-footer-widget mb-4">
+          <h2 class="ftco-heading-2">Recent Blog</h2>
+          <div class="block-21 mb-4 d-flex">
+            <a class="blog-img mr-4" style="background-image: url(images/image_1.jpg);"></a>
+            <div class="text">
+              <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
+              <div class="meta">
+                <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div>
+                <div><a href="#"><span class="icon-person"></span> Admin</a></div>
+                <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+              </div>
+            </div>
+          </div>
+          <div class="block-21 mb-4 d-flex">
+            <a class="blog-img mr-4" style="background-image: url(images/image_2.jpg);"></a>
+            <div class="text">
+              <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
+              <div class="meta">
+                <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div>
+                <div><a href="#"><span class="icon-person"></span> Admin</a></div>
+                <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2">
+         <div class="ftco-footer-widget mb-4 ml-md-4">
+          <h2 class="ftco-heading-2">Site Links</h2>
+          <ul class="list-unstyled">
+            <li><a href="#" class="py-2 d-block">Home</a></li>
+            <li><a href="#" class="py-2 d-block">About</a></li>
+            <li><a href="#" class="py-2 d-block">Donate</a></li>
+            <li><a href="#" class="py-2 d-block">Causes</a></li>
+            <li><a href="#" class="py-2 d-block">Event</a></li>
+            <li><a href="#" class="py-2 d-block">Blog</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="ftco-footer-widget mb-4">
+            <h2 class="ftco-heading-2">Have a Questions?</h2>
+            <div class="block-23 mb-3">
+              <ul>
+                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
+                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
+                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
+              </ul>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 text-center">
+
+        <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+</html>

@@ -58,52 +58,164 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Volunteer Role Selection</title>
 </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teaching Posts</title>
+    <!-- Add your CSS stylesheets here -->
+</head>
 <body>
-    <h2>Volunteer Role Selection</h2>
-    <div>
-        <label for="volunteerRole">Select Your Volunteer Role:</label>
-        <select id="volunteerRole">
-            <option value="regularDonor">Regular Donor</option>
-            <option value="teacher">Teacher</option>
-            <option value="doctor">Doctor</option>
-            <!-- Add more options as needed -->
-        </select>
+    <!-- Navigation bar -->
+    <nav>
+        <!-- Your navigation bar content here -->
+    </nav>
+
+    <!-- Main content -->
+    <div class="container">
+        <h1>Teaching Posts</h1>
+        
+        <!-- Filter options -->
+        <div>
+            <label for="subject">Subject:</label>
+            <select id="subject">
+                <option value="">All</option>
+                <option value="math">Math</option>
+                <option value="science">Science</option>
+                <option value="arabic">Arabic</option>
+                <option value="english">English</option>
+                <!-- Add more options for subjects -->
+            </select>
+
+            <label for="area">Area:</label>
+            <input type="text" id="area">
+
+            <label for="governorate">Governorate:</label>
+            <select id="governorate">
+                <option value="">All</option>
+                <option value="Cairo">Cairo</option>
+                <option value="Alex">Alex</option>
+                <!-- Add more options for governorates -->
+            </select>
+
+            <button onclick="filterTeachingPosts()">Filter</button>
+        </div>
+        
+        <!-- List of teaching posts -->
+        <div id="teachingPosts">
+            <!-- Dummy teaching posts -->
+            <div class="teaching-post" data-subject="math" data-area="New Cairo" data-governorate="Cairo">
+
+                <h2>Math Teacher Needed</h2>
+                <p>Organization: ABC School</p>
+                <p>Location: Cairo</p>
+                <p>Area: New Cairo</p>
+                <p>Subjects: Math</p>
+                <p>Number of Students: 2</p>
+                <a href="Teacher_Location.html" class="redirect-button">Check Location</a>
+                <button onclick="deletePost(this)">Submit</button>
+            </div>
+             <div class="teaching-post" data-subject="science" data-area="Masr el gedida" data-governorate="Cairo">
+
+                <h2>Science Teacher Needed</h2>
+                <p>Organization: XYZ Foundation</p>
+                <p>Location: Cairo</p>
+                <p>Area: Masr el gedida</p>
+                <p>Subjects: Science</p>
+                <p>Number of Students: 5</p>
+                <a href="Teacher_Location.html" class="redirect-button">Check Location</a>
+                <button onclick="deletePost(this)">Submit</button>
+            </div>
+                        <div class="teaching-post" data-subject="math" data-area="Kafr Abdu" data-governorate="Alex">
+
+                <h2>Math Teacher Needed</h2>
+                <p>Organization: NMC School</p>
+                <p>Location: Alex</p>
+                <p>Area: Kafr Abdu</p>
+                <p>Subjects: Math</p>
+                <p>Number of Students: 12</p>
+                <a href="Teacher_Location.html" class="redirect-button">Check Location</a>
+                <button onclick="deletePost(this)">Submit</button>
+            </div>
+            <div class="teaching-post" data-subject="science" data-area="Miami" data-governorate="Alex">
+
+                <h2>Science Teacher Needed</h2>
+                <p>Organization: SDG School</p>
+                <p>Location: Alex</p>
+                <p>Area: Miami</p>
+                <p>Subjects: Science</p>
+                <p>Number of Students: 10</p>
+                <a href="Teacher_Location.html" class="redirect-button">Check Location</a>
+                <button onclick="deletePost(this)">Submit</button>
+            </div>
+            <div class="teaching-post" data-subject="arabic" data-area="Nasr City" data-governorate="Cairo">
+
+                <h2>Arabic Teacher Needed</h2>
+                <p>Organization: XYZ Foundation</p>
+                <p>Location: Cairo</p>
+                <p>Area: Nasr City</p>
+                <p>Subjects: Arabic</p>
+                <p>Number of Students: 20</p>
+                <a href="Teacher_Location.html" class="redirect-button">Check Location</a>
+                <button onclick="deletePost(this)">Submit</button>
+            </div>
+                        <div class="teaching-post" data-subject="english" data-area="Nasr City" data-governorate="Cairo">
+
+                <h2>English Teacher Needed</h2>
+                <p>Organization: XYZ Foundation</p>
+                <p>Location: Cairo</p>
+                <p>Area: Nasr City</p>
+                <p>Subjects: English</p>
+                <p>Number of Students: 15</p>
+                <a href="Teacher_Location.html" class="redirect-button">Check Location</a>
+                <button onclick="deletePost(this)">Submit</button>
+            </div>
+
+            <!-- Add more dummy teaching posts as needed -->
+        </div>
     </div>
-    <button id="submitButton">Submit</button>
 
+    <!-- Modal for displaying teaching post details -->
+    <div id="teachingPostModal" class="modal">
+        <!-- Modal content goes here -->
+    </div>
+
+    <!-- Add your JavaScript script for filtering and displaying teaching posts -->
     <script>
-        // Get the selected volunteer role
-        var volunteerRoleSelect = document.getElementById("volunteerRole");
-        var selectedVolunteerRole = volunteerRoleSelect.options[volunteerRoleSelect.selectedIndex].value;
+        function filterTeachingPosts() {
+            var subject = document.getElementById('subject').value;
+            var area = document.getElementById('area').value.toLowerCase();
+            var governorate = document.getElementById('governorate').value;
+            var teachingPosts = document.querySelectorAll('.teaching-post');
 
-        // Function to handle form submission
-        function submitForm() {
-            if (selectedVolunteerRole === "teacher") {
-                window.location.href = "teacher_page.html"; // Redirect to teacher page
-            } else if (selectedVolunteerRole === "doctor") {
-                window.location.href = "doctor_page.html"; // Redirect to doctor page
-            } else if (selectedVolunteerRole === "regularDonor") {
-                window.location.href = "donor_signup.html"; // Redirect to regular donor page
-            }
-            // Add more conditions for other roles if needed
+            teachingPosts.forEach(function(post) {
+                var postSubject = post.getAttribute('data-subject');
+                var postArea = post.getAttribute('data-area').toLowerCase();
+                var postGovernorate = post.getAttribute('data-governorate');
 
-            return false; // Prevent the default form submission behavior
+                var subjectMatch = subject === '' || subject === postSubject;
+                var areaMatch = area === '' || postArea.includes(area);
+                var governorateMatch = governorate === '' || governorate === postGovernorate;
+
+                if (subjectMatch && areaMatch && governorateMatch) {
+                    post.style.display = 'block';
+                } else {
+                    post.style.display = 'none';
+                }
+            });
         }
 
-        // Add event listener to the submit button
-        var submitButton = document.getElementById("submitButton");
-        submitButton.addEventListener("click", submitForm);
-
-        // Add event listener to handle changes in selection
-        volunteerRoleSelect.addEventListener("change", function() {
-            selectedVolunteerRole = volunteerRoleSelect.options[volunteerRoleSelect.selectedIndex].value;
-            console.log("Selected Volunteer Role:", selectedVolunteerRole);
-            // You can add further actions here based on the selected role
-        });
+        function deletePost(button) {
+            // Get the parent post element
+            var post = button.parentNode;
+            // Remove the post from the DOM
+            post.parentNode.removeChild(post);
+            // Show success message
+            alert("Post Fulfilled successfully!");
+        }
     </script>
-</br>
-</br>
-</br>
+</body>
 </br>
 </br>
 </br>
@@ -189,3 +301,5 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 </footer>
 
 
+
+</html>

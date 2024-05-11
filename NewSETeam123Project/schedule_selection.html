@@ -100,32 +100,39 @@
         </div>
     </nav>
 
-<body>
-    <header>
-        <h1>Schedule Selection for Donation Pickup</h1>
-    </header>
-    <main>
-
-        <section>
-            <h3>Choose Pickup Time Slot:</h3>
-            <form action="#" method="post" onsubmit="return submitForm()">
-                <label for="pickupDate">Pickup Date:</label>
-                <input type="date" id="pickupDate" name="pickupDate" required>
-                <br>
-                <label for="pickupTime">Pickup Time:</label>
-                <input type="time" id="pickupTime" name="pickupTime" required>
-                <br>
-                <button type="submit">Schedule Pickup</button>
-            </form>
-        </section>
-    </main>
-
-    <script>
-        function submitForm() {
-            alert('Submission successful!');
-            return false; // Prevent the default form submission behavior
-        }
-    </script>
+    <body>
+      <header>
+          <h1>Schedule Selection for Donation Pickup</h1>
+      </header>
+      <main>
+  
+          <section>
+              <h3>Choose Pickup Time Slot:</h3>
+              <form action="#" method="post" onsubmit="return submitForm()">
+                  <label for="pickupDate">Pickup Date:</label>
+                  <input type="date" id="pickupDate" name="pickupDate" required>
+                  <br>
+                  <label for="pickupTime">Pickup Time:</label>
+                  <input type="time" id="pickupTime" name="pickupTime" required>
+                  <br>
+                  <label for="transportationType">Choose Transportation Type:</label>
+                  <select id="transportationType" name="transportationType" required>
+                      <option value="truck">Truck</option>
+                      <option value="car">Car</option>
+                      <option value="motorcycle">Motorcycle</option>
+                  </select>
+                  <br>
+                  <button type="submit">Schedule Pickup</button>
+              </form>
+          </section>
+      </main>
+  
+      <script>
+          function submitForm() {
+              alert('Submission successful!');
+              return false; // Prevent the default form submission behavior
+          }
+      </script> 
     <footer class="ftco-footer ftco-section img">
         <div class="overlay"></div>
       <div class="container">
