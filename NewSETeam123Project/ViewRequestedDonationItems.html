@@ -243,6 +243,11 @@ else if (item.itemName.toLowerCase() === 'toys') {
         <h3>${item.itemName}</h3>
         <p><strong>Description:</strong> ${item.description}</p>
         <p><strong>Requested by:</strong> ${item.requester}</p>
+        <p><strong>Age:</strong> ${item.age}</p>
+        <p><strong>Gender:</strong> ${item.gender}</p>
+        <p><strong>Category:</strong> ${item.category}</p>
+
+
         <button onclick="selectQuantity(${item.id})">Select Quantity</button>
     `;
     
@@ -286,7 +291,6 @@ requestedItemsContainer.appendChild(itemDiv);
 }
 
 function filterToys() {
-    console.log("filterToys function is being called"); // Add this line to log a message
     const ageSelect = document.getElementById("ageSelect");
     const selectedAge = ageSelect.value.toLowerCase();
     const genderSelect = document.getElementById("genderSelect");
@@ -344,12 +348,18 @@ function filterClothes() {
                 // Filter only school supplies items
                 const filteredItems = requestedItems.filter(item => item.itemName.toLowerCase() === "school supplies");
                 displayRequestedItems(filteredItems);
-            } else {
+            }else if (selectedCategory === "toys") {
+                // Filter only school supplies items
+                const filteredItems = requestedItems.filter(item => item.itemName.toLowerCase() === "toys");
+                displayRequestedItems(filteredItems);
+            }
+             else {
                 // For other categories, display all items
                 const filteredItems = requestedItems.filter(item => item.itemName.toLowerCase() === selectedCategory);
                 displayRequestedItems(filteredItems);
             }
         }
+        
         function selectQuantity(itemId) {
             // Implement the logic to allow donors to select the quantity
             const quantity = prompt("Enter quantity to donate:");
