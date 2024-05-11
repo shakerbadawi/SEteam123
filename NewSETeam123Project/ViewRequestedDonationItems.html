@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View List of Clothes Donation Requests</title>
+    <title>View List of Donation Requests</title>
     
     <!-- External CSS styles -->
     <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,700" rel="stylesheet">
@@ -47,7 +47,7 @@
 
     <!-- Main content -->
     <div class="container">
-        <h1 class="mt-5">View List of Clothes Donation Requests</h1>
+        <h1 class="mt-5">View List of Donation Requests</h1>
 
         <!-- Category dropdown menu -->
         <div class="mt-4">
@@ -57,9 +57,9 @@
                 <option value="clothes">Clothes</option>
                 <option value="toys">Toys</option> 
                 <option value="food">Food</option>
-                <option value="medical supplies">medical supplies</option>
-                <option value="school supplies">school supplies</option>
-                <option value="blood donations">blood donations</option>
+                <option value="medical supplies">Medical Supplies</option>
+                <option value="school supplies">School Supplies</option>
+                <option value="blood donations">Blood Donations</option>
                 <!-- Add more category options as needed -->
             </select>
             <button onclick="searchByCategory()">Search</button>
@@ -91,7 +91,18 @@
                 <option value="winter">Winter</option>
                 <!-- Add more season options as needed -->
             </select>
-            <button onclick="filterClothes()">Apply Filters</button>
+        </div>
+
+        <!-- Filter dropdown for school supplies type -->
+        <div id="schoolSuppliesFilters" class="mt-4" style="display: none;">
+            <label for="schoolSuppliesType">Type:</label>
+            <select id="schoolSuppliesType">
+                <option value="">-- Select Type --</option>
+                <option value="books">Books</option>
+                <option value="stationary">Stationary</option>
+                <!-- Add more type options as needed -->
+            </select>
+            <button onclick="filterSchoolSupplies()">Apply Filters</button>
         </div>
 
         <!-- Requested donation items container -->
@@ -99,6 +110,40 @@
             <!-- Requested donation items will be displayed here -->
         </div>
     </div>
+     <!-- Filter dropdowns for age, gender, and category -->
+<div id="filterDropdown" class="mt-4" style="display: none;">
+    <label for="ageSelect">Age:</label>
+    <select id="ageSelect">
+        <option value="">-- Select Age --</option>
+        <option value="child">Child</option>
+        <option value="teen">Teen</option>
+        <option value="adult">Adult</option>
+        <!-- Add more age options as needed -->
+    </select>
+
+    <label for="genderSelect">Gender:</label>
+    <select id="genderSelect">
+        <option value="">-- Select Gender --</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <!-- Add more gender options as needed -->
+    </select>
+
+    <label for="categorySelect">Category:</label>
+    <select id="categorySelect">
+        <option value="">-- Select Category --</option>
+        <option value="board games">Board Games</option>
+        <option value="stuffed toys">Stuffed Toys</option>
+        <option value="dolls">Dolls</option>
+        <option value="sports">Sports</option>
+        <option value="cars">Cars</option>
+        <option value="outdoor">Outdoor</option>
+        <!-- Add more category options as needed -->
+    </select>
+    <!-- Button to apply filters -->
+    <button onclick="filterToys()">Apply Filters</button>
+</div>
+
 
     <!-- External JavaScript libraries -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -117,19 +162,47 @@
     <script>
         // Sample data representing requested donation items
         const requestedItems = [
-    { id: 1, itemName: "Clothes", description: "New or gently used clothes for all ages", requester: "Local Shelter", age: "child", gender: "male", season: "winter", material: "cotton", quantity: 50 },
-    { id: 2, itemName: "Clothes", description: "Winter jackets and warm clothing", requester: "Community Center", age: "teen", gender: "female", season: "winter", material: "wool", quantity: 30 },
-    { id: 3, itemName: "Clothes", description: "Children's clothing for ages 3-10", requester: "Orphanage", age: "child", gender: "female", season: "summer", material: "synthetic", quantity: 20 },
-    { id: 4, itemName: "Food", description: "Canned food, rice, pasta, etc.", requester: "Food Bank" },
-    { id: 5, itemName: "Food", description: "Fresh fruits and vegetables", requester: "Community Kitchen" },
-    { id: 6, itemName: "Food", description: "Non-perishable items for emergency relief", requester: "Red Cross" },
-    { id: 7, itemName: "Toys", description: "Toys for toddlers", requester: "Orphanage" },
-    { id: 8, itemName: "Medical Supplies", description: "Medical supplies for clinics", requester: "Clinic", material: "plastic", quantity: 100 },
-    { id: 9, itemName: "School Supplies", description: "School supplies for students", requester: "School", material: "paper", quantity: 200 },
-    { id: 10, itemName: "Blood Donations", description: "Blood donations for hospital", requester: "Hospital" }
+            { id: 1, itemName: "Clothes", description: "New or gently used clothes for all ages", requester: "Local Shelter", age: "child", gender: "male", season: "winter", material: "cotton", quantity: 50 },
+            { id: 2, itemName: "Clothes", description: "Winter jackets and warm clothing", requester: "Community Center", age: "teen", gender: "female", season: "winter", material: "wool", quantity: 30 },
+            { id: 3, itemName: "Clothes", description: "Children's clothing for ages 3-10", requester: "Orphanage", age: "child", gender: "female", season: "summer", material: "synthetic", quantity: 20 },
+            { id: 4, itemName: "Food", description: "Canned food, rice, pasta, etc.", requester: "Food Bank" },
+            { id: 5, itemName: "Food", description: "Fresh fruits and vegetables", requester: "Community Kitchen" },
+            { id: 6, itemName: "Food", description: "Non-perishable items for emergency relief", requester: "Red Cross" },
+            { id: 7, itemName: "Toys", description: "Toys for toddlers", requester: "Orphanage",age: "child", gender: "female", category : "board games", picture: "https://images-cdn.ubuy.co.in/6530f76ce01f7d18441208f0-jumanji-the-game-real-wooden-box-edition.jpg", quantity: 200 },
+            { id: 8, itemName: "Medical Supplies", description: "Medical supplies for clinics", requester: "Clinic", material: "plastic", quantity: 100 },
+            { id: 9, itemName: "School Supplies", description: "School supplies for students", requester: "School", type: "stationary", quantity: 200 },
+            {
+    id: 10,
+    itemName: "School Supplies",
+    description: "Textbooks for students",
+    requester: "School",
+    type: "books",
+    quantity: 150,
+    title: "The Computer Science Book",
+    author: "Tom Johnson",
+    language: "English",
+    edition: "3rd Edition",
+    summary: "This textbook provides an introduction to fundamental concepts in computer science, including programming, algorithms, and data structures. It covers a wide range of topics suitable for beginners and intermediate learners.",
+    picture: "https://thecomputersciencebook.com/images/cover-new.jpg" // URL or path to the picture of the book 
+}, 
+
+            { id: 11, itemName: "Blood Donations", description: "Blood donations for hospital", requester: "Hospital" },
+            
+    { id: 12, itemName: "Toys", description: "Toys for toddlers", requester: "Orphanage", age: "child", gender: "female", category: "board games", picture: "https://images-cdn.ubuy.co.in/6530f76ce01f7d18441208f0-jumanji-the-game-real-wooden-box-edition.jpg", quantity: 200},
+    { id: 13, itemName: "Toys", description: "Toys for teenagers", requester: "Youth Center", age: "teen", gender: "male", category: "stuffed toys", picture: "https://m.media-amazon.com/images/I/71BwHy5itBL._AC_UF894,1000_QL80_.jpg", quantity: 200 },
+    { id: 14, itemName: "Toys", description: "Dolls for young girls", requester: "Children's Home", age: "child", gender: "female", category: "dolls", picture: "https://theclearancebin.weebly.com/uploads/1/2/3/0/1230872/3458305_orig.jpg", quantity: 200 },
+    { id: 15, itemName: "Toys", description: "Sports equipment for kids", requester: "Community Center", age: "child", gender: "male", category: "sports", picture: "https://www.clorox.com/wp-content/uploads/2021/10/how-to-clean-and-disinfect-sports-equipment.jpg?width=1040&height=585&fit=crop", quantity: 200},
+    { id: 16, itemName: "Toys", description: "Remote-controlled cars", requester: "Toy Drive Organization", age: "teen", gender: "male", category: "cars", picture: "https://i5.walmartimages.com/seo/Hot-Wheels-Set-of-20-Toy-Sports-Race-Cars-in-1-64-Scale-Collectible-Vehicles-Styles-May-Vary_3ecf516f-e716-45aa-8498-7ea640765d95.0cb2531529ba34feaa3ca5ed5db4c00b.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF", quantity: 200},
+    { id: 17, itemName: "Toys", description: "Outdoor toys for children", requester: "Recreation Center", age: "child", gender: "female", category: "outdoor", picture: "https://images.agoramedia.com/wte3.0/gcms//intex-rainbow-ring-inflatable-play-pool.jpg", quantity: 200 },
+    { id: 18, itemName: "Toys", description: "Educational toys for preschoolers", requester: "Preschool", age: "child", gender: "female", category: "board games", picture: "https://images-cdn.ubuy.co.in/6530f76ce01f7d18441208f0-jumanji-the-game-real-wooden-box-edition.jpg", quantity: 200 },
+    { id: 19, itemName: "Toys", description: "Soft toys for infants", requester: "Maternity Hospital", age: "child", gender: "male", category: "stuffed toys", picture: "https://m.media-amazon.com/images/I/71BwHy5itBL._AC_UF894,1000_QL80_.jpg", quantity: 200 },
+    { id: 20, itemName: "Toys", description: "Toy cars for boys", requester: "Children's Home", age: "child", gender: "male", category: "cars", picture: "https://i5.walmartimages.com/seo/Hot-Wheels-Set-of-20-Toy-Sports-Race-Cars-in-1-64-Scale-Collectible-Vehicles-Styles-May-Vary_3ecf516f-e716-45aa-8498-7ea640765d95.0cb2531529ba34feaa3ca5ed5db4c00b.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF", quantity: 200 },
+    { id: 21, itemName: "Toys", description: "Outdoor playsets", requester: "Family Shelter", age: "child", gender: "female", category: "outdoor", picture: "https://images.agoramedia.com/wte3.0/gcms//intex-rainbow-ring-inflatable-play-pool.jpg", quantity: 200}
 ];
 
+        
 
+        // Function to display requested donation items
         // Function to display requested donation items
         function displayRequestedItems(items) {
             const requestedItemsContainer = document.getElementById("requestedItems");
@@ -153,57 +226,98 @@
                         <button onclick="viewClothingDetails(${item.id})">View Details</button>
                         <button onclick="selectQuantity(${item.id})">Select Quantity</button>
                     `;
-                }
 
-                requestedItemsContainer.appendChild(itemDiv);
-            });
-        }
+                } else if (item.itemName.toLowerCase() === 'school supplies') {
+    // Toys should only display Description and Requested by
+    itemDiv.innerHTML = `
+        <h3>${item.itemName}</h3>
+        <p><strong>Description:</strong> ${item.description}</p>
+        <p><strong>Requested by:</strong> ${item.requester}</p>
+        <button onclick="selectQuantity(${item.id})">Select Quantity</button>
+    `;
+    if (item.type === "stationary") {
+        const button = document.createElement("button");
+        button.textContent = "View Stationary Details";
+        button.onclick = () => viewStationaryDetails(item.id);
+        itemDiv.appendChild(button);
+    }
 
-        // Function to filter clothes by age, gender, and season
-        function filterClothes() {
-            // Filter requested items to only include clothes
-            const clothesItems = requestedItems.filter(item => item.itemName.toLowerCase() === 'clothes');
+    else{
+        const button = document.createElement("button");
+        button.textContent = "View Book Details";
+        button.onclick = () => viewBookDetails(item.id);
+        itemDiv.appendChild(button); 
+    } 
 
-            // Retrieve selected filters
-            const ageSelect = document.getElementById("ageSelect");
-            const genderSelect = document.getElementById("genderSelect");
-            const seasonSelect = document.getElementById("seasonSelect");
+}
+else if (item.itemName.toLowerCase() === 'toys') {
+    // Toys should only display Description and Requested by
+    itemDiv.innerHTML = `
+        <h3>${item.itemName}</h3>
+        <p><strong>Description:</strong> ${item.description}</p>
+        <p><strong>Requested by:</strong> ${item.requester}</p>
+        <button onclick="selectQuantity(${item.id})">Select Quantity</button>
+    `;
+    
+    const button = document.createElement("button");
+    button.textContent = "View Toy Details";
+    button.onclick = () => viewToyDetails(item.id);
+    itemDiv.appendChild(button);
+}
+requestedItemsContainer.appendChild(itemDiv);
+});
+}
 
-            const selectedAge = ageSelect.value.toLowerCase();
-            const selectedGender = genderSelect.value.toLowerCase();
-            const selectedSeason = seasonSelect.value.toLowerCase();
-
-            // Apply age, gender, and season filters to clothes items
-            const filteredClothes = clothesItems.filter(item => {
-                if (selectedAge && item.age && item.age.toLowerCase() !== selectedAge) {
-                    return false;
-                }
-                if (selectedGender && item.gender && item.gender.toLowerCase() !== selectedGender) {
-                    return false;
-                }
-                if (selectedSeason && item.season && item.season.toLowerCase() !== selectedSeason) {
-                    return false;
-                }
-                return true;
-            });
-
-            // Display filtered clothes items
-            displayRequestedItems(filteredClothes);
-        }
 
         // Function to handle category dropdown change
         function handleCategoryChange() {
-            const categorySelect = document.getElementById("categorySelect");
-            const selectedCategory = categorySelect.value.toLowerCase();
-            const filterDropdowns = document.getElementById("filterDropdowns");
+    const categorySelect = document.getElementById("categorySelect");
+    const selectedCategory = categorySelect.value.toLowerCase();
+    const filterDropdowns = document.getElementById("filterDropdowns");
+    const schoolSuppliesFilters = document.getElementById("schoolSuppliesFilters");
+    const filterDropdown = document.getElementById("filterDropdown");
+    if (selectedCategory === "clothes") {
+        filterDropdowns.style.display = "block";
+        filterDropdown.style.display = "none";
+        schoolSuppliesFilters.style.display = "none";
+    } else if (selectedCategory === "school supplies") {
+        filterDropdowns.style.display = "none";
+        filterDropdown.style.display = "none";
+        schoolSuppliesFilters.style.display = "block";
+    } else if (selectedCategory === "toys") {
+        // For toys, display the filter dropdowns
+        filterDropdown.style.display = "block";
+        filterDropdowns.style.display = "none";
+        schoolSuppliesFilters.style.display = "none";
+        
+    } else {
+        // For other categories, hide both filter dropdowns
+        filterDropdowns.style.display = "none";
+        schoolSuppliesFilters.style.display = "none";
+        filterDropdown.style.display = "none";
+    }
+}
 
-            if (selectedCategory === "clothes") {
-                filterDropdowns.style.display = "block";
-            } else {
-                filterDropdowns.style.display = "none";
-            }
-        }
+function filterToys() {
+    const ageSelect = document.getElementById("ageSelect");
+    const selectedAge = ageSelect.value.toLowerCase();
+    const genderSelect = document.getElementById("genderSelect");
+    const selectedGender = genderSelect.value.toLowerCase();
+    const categorySelect = document.getElementById("categorySelect");
+    const selectedCategory = categorySelect.value.toLowerCase();
 
+    // Filter toys based on selected options
+    const filteredToys = requestedItems.filter(item => {
+        if (item.itemName.toLowerCase() !== 'toys') return false; // Filter only toys
+        if (selectedAge && item.age.toLowerCase() !== selectedAge) return false;
+        if (selectedGender && item.gender.toLowerCase() !== selectedGender) return false;
+        if (selectedCategory && item.category.toLowerCase() !== selectedCategory) return false;
+        return true;
+    });
+
+    // Display filtered toys
+    displayRequestedItems(filteredToys);
+}
         // Function to search donation items by category
         function searchByCategory() {
             const categorySelect = document.getElementById("categorySelect");
@@ -214,14 +328,45 @@
                 // Filter only clothes items
                 const filteredItems = requestedItems.filter(item => item.itemName.toLowerCase() === "clothes");
                 displayRequestedItems(filteredItems);
+            } else if (selectedCategory === "school supplies") {
+                // Filter only school supplies items
+                const filteredItems = requestedItems.filter(item => item.itemName.toLowerCase() === "school supplies");
+                displayRequestedItems(filteredItems);
             } else {
                 // For other categories, display all items
                 const filteredItems = requestedItems.filter(item => item.itemName.toLowerCase() === selectedCategory);
                 displayRequestedItems(filteredItems);
             }
         }
+        function selectQuantity(itemId) {
+            // Implement the logic to allow donors to select the quantity
+            const quantity = prompt("Enter quantity to donate:");
+            if (quantity !== null && !isNaN(quantity) && parseInt(quantity) > 0) {
+                alert(`You have chosen to donate ${quantity} items.`);
+                // Implement further logic as needed, such as updating the UI or processing the donation
+            } else {
+                alert("Invalid quantity! Please enter a valid number.");
+            }
+        }
+        // Function to filter school supplies by type
+        function filterSchoolSupplies() {
+            const typeSelect = document.getElementById("schoolSuppliesType");
+            const selectedType = typeSelect.value.toLowerCase();
 
-        // Function to view details of a clothing item
+            // Filter requested items to only include school supplies
+            const schoolSuppliesItems = requestedItems.filter(item => item.itemName.toLowerCase() === 'school supplies');
+
+            // Apply type filter to school supplies items
+            const filteredSchoolSupplies = schoolSuppliesItems.filter(item => {
+                if (selectedType && item.type && item.type.toLowerCase() !== selectedType) {
+                    return false;
+                }
+                return true;
+            });
+
+            // Display filtered school supplies items
+            displayRequestedItems(filteredSchoolSupplies);
+        }
         function viewClothingDetails(itemId) {
     // Find the requested item by ID
     const item = requestedItems.find(item => item.id === itemId);
@@ -237,23 +382,105 @@
     } else {
         alert("Clothing item not found!");
     }
+} function viewStationaryDetails(itemId) {
+    // Find the requested item by ID
+    const item = requestedItems.find(item => item.id === itemId);
+    if (item) {
+        // Display details of the clothing item
+        alert(`Details of Stationary Item:
+        Type: ${item.itemName}
+        Material: ${item.type}
+        Quantity Requested: ${item.quantity}`);
+    } else {
+        alert("Stationary item not found!");
+    }}
+    function viewBookDetails(itemId) {
+    const item = requestedItems.find(item => item.id === itemId);
+    if (item) {
+        // Create a modal dialog
+        const modalContent = `
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">${item.title}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Author:</strong> ${item.author}</p>
+                        <p><strong>language:</strong> ${item.language}</p> 
+                        <p><strong>edition:</strong> ${item.edition}</p>
+                        <p><strong>Summary:</strong> ${item.summary}</p>
+                        <p><strong>quantity requested:</strong> ${item.quantity}</p>
+                        <img src="${item.picture}" alt="Book Image" style="max-width: 100%; height: auto;">
+                    </div>
+                </div>
+            </div>
+        `;
+
+        // Create a modal container
+        const modalContainer = document.createElement('div');
+        modalContainer.classList.add('modal');
+        modalContainer.innerHTML = modalContent;
+
+        // Append the modal container to the body
+        document.body.appendChild(modalContainer);
+
+        // Show the modal
+        $(modalContainer).modal('show');
+
+        // Remove the modal from the DOM when it's closed
+        $(modalContainer).on('hidden.bs.modal', function () {
+            $(this).remove();
+        });
+    } else {
+        alert("Book item not found!");
+    }
 }
+function viewToyDetails(itemId) {
+    const item = requestedItems.find(item => item.id === itemId);
+    if (item) {
+        // Create a modal dialog
+        const modalContent = `
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">${item.itemName}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>age:</strong> ${item.age}</p>
+                        <p><strong>gender:</strong> ${item.gender}</p> 
+                        <p><strong>category:</strong> ${item.category}</p>
+                        <p><strong>quantity requested:</strong> ${item.quantity}</p>
+                        <img src="${item.picture}" alt="Book Image" style="max-width: 100%; height: auto;">
+                    </div>
+                </div>
+            </div>
+        `;
 
+        // Create a modal container
+        const modalContainer = document.createElement('div');
+        modalContainer.classList.add('modal');
+        modalContainer.innerHTML = modalContent;
 
-        // Function to select quantity for clothing donations
-        function selectQuantity(itemId) {
-            // Implement the logic to allow donors to select the quantity
-            const quantity = prompt("Enter quantity to donate:");
-            if (quantity !== null && !isNaN(quantity) && parseInt(quantity) > 0) {
-                alert(`You have chosen to donate ${quantity} items.`);
-                // Implement further logic as needed, such as updating the UI or processing the donation
-            } else {
-                alert("Invalid quantity! Please enter a valid number.");
-            }
-        }
+        // Append the modal container to the body
+        document.body.appendChild(modalContainer);
 
-        // Display all requested items on page load
-        displayRequestedItems(requestedItems);
+        // Show the modal
+        $(modalContainer).modal('show');
+
+        // Remove the modal from the DOM when it's closed
+        $(modalContainer).on('hidden.bs.modal', function () {
+            $(this).remove();
+        });
+    } else {
+        alert("Book item not found!");
+    }
+}
     </script>
 </body>
 </html>
