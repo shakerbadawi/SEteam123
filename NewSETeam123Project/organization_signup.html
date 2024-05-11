@@ -229,6 +229,16 @@
             var organizationAddress = document.getElementById("organizationAddress").value;
             var organizationArea = document.getElementById("organizationArea").value;
             var organizationGovernorate = document.getElementById("organizationGovernorate").value;
+
+            
+            var fields = ["firstName", "lastName", "gender", "email", "password", "confirmPassword", "mobilePhone", "organizationName", "organizationType", "organizationAddress", "organizationArea", "organizationGovernorate"];
+            for (var i = 0; i < fields.length; i++) {
+                var fieldValue = document.getElementById(fields[i]).value;
+                if (fieldValue.trim() === "") {
+                    alert("Please fill in all fields.");
+                    return;
+                }
+            }
         
             if (password !== confirmPassword) {
                 alert("Passwords do not match.");

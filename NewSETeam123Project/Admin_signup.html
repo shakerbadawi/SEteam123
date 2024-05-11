@@ -223,6 +223,20 @@ function validateForm() {
    var Area = document.getElementById("Area").value;
    var Governorate = document.getElementById("Governorate").value;
 
+
+   var fields = ["firstName", "lastName", "gender", "email", "password", "confirmPassword", "mobilePhone", "Address", "Area", "Governorate"];
+            for (var i = 0; i < fields.length; i++) {
+                var fieldValue = document.getElementById(fields[i]).value;
+                if (fieldValue.trim() === "") {
+                    alert("Please fill in all fields.");
+                    event.preventDefault(); // Prevent form submission
+                    return;
+                }
+            }
+
+
+
+
    if (password !== confirmPassword) {
        alert("Passwords do not match.");
        return;
