@@ -76,17 +76,17 @@
     </nav>
 
 <body>
-    <div class="container">
-        <h2>Login for Donors:</h2>
-        <form id="loginForm">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            <button type="submit" onclick="redirectToDonorHome()">Login</button>
-        </form>
-        <p id="errorMessage" class="error-message"></p>
-    </div>
+  <div class="container">
+    <h2>Login for Donors:</h2>
+    <form id="loginForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <button type="submit" onclick="redirectToOrganizationPage()">Login</button>
+    </form>
+    <p id="errorMessage" class="error-message"></p>
+</div>
     
     <script>
         function redirectToDonorHome() {
