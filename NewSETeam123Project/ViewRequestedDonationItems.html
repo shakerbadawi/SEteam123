@@ -96,8 +96,8 @@
         </div>
   <!-- Filter dropdowns for age, gender, and category -->
   <div id="filterDropdown" class="mt-4" style="display: none;">
-    <label for="ageSelect">Age:</label>
-    <select id="ageSelect">
+    <label for="ageSelecttoy">Age:</label>
+    <select id="ageSelecttoy">
         <option value="">-- Select Age --</option>
         <option value="child">Child</option>
         <option value="teen">Teen</option>
@@ -105,8 +105,8 @@
         <!-- Add more age options as needed -->
     </select>
 
-    <label for="genderSelect">Gender:</label>
-    <select id="genderSelect">
+    <label for="genderSelecttoy">Gender:</label>
+    <select id="genderSelecttoy">
         <option value="">-- Select Gender --</option>
         <option value="male">Male</option>
         <option value="female">Female</option>
@@ -688,10 +688,10 @@ function filterBloodDonations() {
 
 
 function filterToys() {
-    const ageSelect = document.getElementById("ageSelect");
-    const selectedAge = ageSelect.value.toLowerCase();
-    const genderSelect = document.getElementById("genderSelect");
-    const selectedGender = genderSelect.value.toLowerCase();
+    const ageSelecttoy = document.getElementById("ageSelecttoy");
+    const selectedAge = ageSelecttoy.value.toLowerCase();
+    const genderSelecttoy = document.getElementById("genderSelecttoy");
+    const selectedGender = genderSelecttoy.value.toLowerCase();
     const categorySelecttoy = document.getElementById("categorySelecttoy");
     const selectedCategory = categorySelecttoy.value.toLowerCase();
 
