@@ -649,7 +649,7 @@ function viewMedicalSupplyDetails(itemId) {
 
 
 
-function filterMedication() {
+    function filterMedication() {
     const medicalUseSelect = document.getElementById("Use");
     const selectedMedicalUse = medicalUseSelect.value.toLowerCase();
 
@@ -721,7 +721,6 @@ function filterMedicalSupplies() {
     // Display filtered medical supplies
     displayRequestedItems(filteredMedicalSupplies);
 }
-
 function filterFood() {
     const typeSelect = document.getElementById("foodType");
     const selectedType = typeSelect.value.toLowerCase();
