@@ -40,7 +40,7 @@
             grid-gap: 20px; /* Spacing between buttons */
             align-items: center;
             justify-content: center;
-            height: 100vh; /* Full viewport height */
+            height: calc(100vh - 80px); /* Full viewport height minus navbar height */
             color: #fff;
             text-align: center;
             align-content: center;
@@ -79,6 +79,8 @@
             -webkit-text-fill-color: transparent;
             transition: transform 0.3s ease-in-out;
             padding-top: 40px;
+            text-align: center;
+            margin-top: 80px; /* Add top margin to avoid overlapping with navbar */
         }
 
         h1:hover {
@@ -103,10 +105,17 @@
     </style>
 </head>
 <body>
-
+  
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
             <a class="navbar-brand" href="index.html">Tadamun </a>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+              <a href="driver_arrival_notification.html" class="nav-link">
+                  <span id="notificationBell" class="oi oi-bell"></span>
+                  <span id="notificationCount" class="notification-count">1</span>
+              </a>
+          </li>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="oi oi-menu"></span> Menu
             </button>
@@ -127,15 +136,19 @@
     </nav>
 
     <div class="container">
-        <h1 style="text-align: center; margin-top: 50px;">Donor Dashboard</h1>
+        <h1>Donor Dashboard</h1>
         <div class="btn-container">
-            <a href="donor_signup.html">Register</a>
-            <a href="donor_login.html">Log In</a>
             <a href="Donor-upload.html">Upload Documents</a>
             <a href="Clinic_location_specification.html">Specify Clinic Location</a>
             <a href="Subject_and_class_Selection.html">Subject and Class Selection</a>
             <a href="ViewRequestedDonationItems.html">View Requested Donation Items</a>
-            <a href="vo_role_sel.html" class="btn btn-primary">Select Role</a> <!-- New button -->
+            <a href="vo_role_sel.html" class="btn btn-primary">Select Role</a> 
+            <a href="viewRegisteredOrganizations.html">View Registered Organizations</a>
+            <a href="viewOrganizationsList.html">View Organizations List</a>
+            <a href="schedule_selection.html">Schedule Selection </a>
+            <a href="schedule_drop_off_pickup.html">Schedule Dropoff Pickup</a>
+            <a href="Track_Driver.html">Track Driver</a>
+            <!-- New button -->
         </div>
     </div>
 
