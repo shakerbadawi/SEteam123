@@ -113,8 +113,8 @@
         <!-- Add more gender options as needed -->
     </select>
 
-    <label for="categorySelect">Category:</label>
-    <select id="categorySelect">
+    <label for="categorySelecttoy">Category:</label>
+    <select id="categorySelecttoy">
         <option value="">-- Select Category --</option>
         <option value="board games">Board Games</option>
         <option value="stuffed toys">Stuffed Toys</option>
@@ -167,7 +167,7 @@
     <label for="medicalUse">Medical Use:</label>
     <select id="medicalUse">
         <option value="">-- Select Medical Use --</option>
-        <option value="headahe">headache</option>
+        <option value="headache">headache</option>
         <option value="fever">fever</option>
         <option value="diabetes">Diabetes</option>
         <!-- Add more medical use options as needed -->
@@ -623,8 +623,8 @@ function filterToys() {
     const selectedAge = ageSelect.value.toLowerCase();
     const genderSelect = document.getElementById("genderSelect");
     const selectedGender = genderSelect.value.toLowerCase();
-    const categorySelect = document.getElementById("categorySelect");
-    const selectedCategory = categorySelect.value.toLowerCase();
+    const categorySelecttoy = document.getElementById("categorySelecttoy");
+    const selectedCategory = categorySelecttoy.value.toLowerCase();
 
     // Filter toys based on selected options
     const filteredToys = requestedItems.filter(item => {
