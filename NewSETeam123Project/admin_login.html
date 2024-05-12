@@ -1,5 +1,3 @@
-<!-- index.html -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,44 +19,95 @@
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
     <style>
-        body {
-            padding-top: 80px; /* add top padding to create space between navbar and content */
-        }
+      body {
+          padding-top: 80px; /* add top padding to create space between navbar and content */
+          background-image: url('images/bg_2.jpg');
+      }
+      footer{
+        display: none;
+      }
 
-        /* Add some top margin to the navbar to align it with the padding */
-        .navbar {
-            margin-top: 20px;
-        }
+      /* Add some top margin to the navbar to align it with the padding */
+      .navbar {
+          margin-top: 20px;
+      }
 
-        /* Style the organization list table */
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
+      /* Style the organization list table */
+      table {
+          border-collapse: collapse;
+          width: 100%;
+      }
 
-        th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: left;
-        }
+      th, td {
+          border: 1px solid black;
+          padding: 8px;
+          text-align: left;
+      }
 
-        th {
-            background-color: #f2f2f2;
-        }
+      th {
+          background-color: #f2f2f2;
+      }
 
-        /* Style the search input and category filter select elements */
-        #search-input, #category-filter {
-            margin-bottom: 10px;
-            padding: 6px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
+      /* Style the search input and category filter select elements */
+      #search-input, #category-filter {
+          margin-bottom: 10px;
+          padding: 6px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+      }
 
-        /* Style the category link select element */
-        #category-link {
-            margin-right: 10px;
-        }
-    </style>
+      /* Style the category link select element */
+      #category-link {
+          margin-right: 10px;
+      }
+
+      /* Style the login form container */
+      .login-container {
+          max-width: 400px;
+          margin: 0 auto;
+          padding: 20px;
+          border: 1px solid #ccc;
+          border-radius: 10px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          background-color: white; /* Set background color to white */
+      }
+
+      /* Style the login form elements */
+      #loginForm label {
+          display: block; /* Display labels as blocks to align with input fields */
+          margin-bottom: 5px; /* Add some space between labels and input fields */
+          color: #333; /* Label text color */
+      }
+
+      #loginForm input[type="text"],
+      #loginForm input[type="password"] {
+          width: 100%; /* Make input fields fill the container width */
+          padding: 8px; /* Add some padding inside input fields */
+          margin-bottom: 10px; /* Add some space between input fields */
+          border: 1px solid #ccc; /* Input field border */
+          border-radius: 4px; /* Input field border radius */
+      }
+
+      #loginForm button[type="submit"] {
+          width: 100%; /* Make button fill the container width */
+          padding: 10px; /* Add some padding inside the button */
+          background-color: #f86f2d; /* Button background color */
+          color: #fff; /* Button text color */
+          border: none; /* Remove button border */
+          border-radius: 4px; /* Button border radius */
+          cursor: pointer; /* Add cursor pointer on hover */
+          transition: background-color 0.3s; /* Add smooth background color transition on hover */
+      }
+
+      #loginForm button[type="submit"]:hover {
+          background-color: #e25a00; /* Darker background color on hover */
+      }
+
+      .error-message {
+          color: red; /* Error message text color */
+          margin-top: 10px; /* Add some space between error message and form */
+      }
+  </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
@@ -76,15 +125,17 @@
     </nav>
 <body>
   <div class="container">
-    <h2>Login for Admins:</h2>
-    <form id="loginForm">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <button type="submit" onclick="redirectToOrganizationPage()">Login</button>
-    </form>
-    <p id="errorMessage" class="error-message"></p>
+    <div class="login-container">
+      <h2>Login for Admins:</h2>
+      <form id="loginForm">
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" required>
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required>
+          <button type="submit" onclick="redirectToOrganizationPage()">Login</button>
+      </form>
+      <p id="errorMessage" class="error-message"></p>
+  </div>
 </div>
 
     
