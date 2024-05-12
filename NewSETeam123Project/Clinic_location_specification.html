@@ -1,0 +1,296 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Tadamun - Clinic Location Specification</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Overpass:300,400,400i,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/ionicons.min.css">
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            padding-top: 80px; /* add top padding to create space between navbar and content */
+            background-image: url('images/bg_2.jpg');
+        background-size: cover;
+        background-position: center;
+
+        }
+
+        /* Add some top margin to the navbar to align it with the padding */
+        .navbar {
+            margin-top: 20px;
+        }
+
+        /* Style the form */
+        form {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        footer{
+    display: none;
+}
+h2{
+    color:#f86f2d;
+
+}
+
+
+
+
+
+  /* Style the map container */
+  #map {
+    height: 400px; /* Adjust the height as needed */
+    width: 80%; /* Adjust the width as needed */
+    margin: 20px auto; /* Center the map horizontally */
+    border: 1px solid #ccc; /* Add a border for better visibility */
+    border-radius: 5px; /* Add border radius for better appearance */
+  }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Tadamun</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <h2>Clinic Location Specification</h2>
+        <form id="subjectClassForm">
+            <label for="subjects">My Speciality:</label><br>
+            <select id="subjects" name="subjects">
+                <option value="Surgery">Surgery</option>
+                <option value="Cardiology">Cardiology</option>
+                <option value="Dermatology">Dermatology</option>
+                <option value="Neurology">Neurology</option>
+                <option value="Pediatrics">Pediatrics</option>
+                <option value="Immunology">Immunology</option>
+                <option value="Pulmonology">Pulmonology</option>
+                <option value="Psychiatry">Psychiatry</option>
+                <option value="Other">Other</option>
+            </select><br>
+            <div id="otherSubjectDiv" style="display: none;">
+                <label for="otherSubject">Other subject:</label><br>
+                <input type="text" id="otherSubject" name="otherSubject"><br>
+            </div>
+            <label for="proBonoClasses">clinic location?(address, area, governorate)</label><br>
+            <input type="text" id="proBonoClasses" name="proBonoClasses"><br>
+            <label for="proBonoStudents">Pro-Bono cases I can take:</label><br>
+            <input type="number" id="proBonoStudents" name="proBonoStudents"><br><br>
+            <input type="submit" value="Save">
+        </form>
+    </div>
+    <script>
+        document.getElementById('subjects').addEventListener('change', function() {
+            if (this.value === 'Other') {
+                document.getElementById('otherSubjectDiv').style.display = 'block';
+            } else {
+                document.getElementById('otherSubjectDiv').style.display = 'none';
+            }
+        });
+
+        document.getElementById('subjectClassForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting
+
+            // Get the form data
+            const formData = new FormData(event.target);
+            const subjects = formData.get('subjects');
+            const otherSubject = formData.get('otherSubject');
+            const proBonoClasses = formData.get('proBonoClasses');
+            const proBonoStudents = formData.get('proBonoStudents');
+
+            if (subjects === 'Other' && !otherSubject) {
+                alert('Please fill in the "Other" subject field');
+                return;
+            }
+
+            if (!proBonoClasses || !proBonoStudents) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            // You can now send this data to a server using fetch or another method
+            console.log('Subjects I can teach:', subjects === 'Other' ? otherSubject : subjects);
+            console.log('Pro-Bono Classes I can teach:', proBonoClasses);
+            console.log('Pro-Bono Students I can tutor privately:', proBonoStudents);
+
+            // For now, let's just display a message
+            alert('Subject and Class selection saved!');
+        });
+    </script>
+
+
+
+
+<body>
+<h2>Clinic Location Map</h2>
+<div id="map"></div>
+
+<script>
+  // Initialize and add the map
+  function initMap() {
+    // Location coordinates for the organization
+    var organizationLocation = { lat: 37.7749, lng: -122.4194 }; // Example coordinates for San Francisco
+    
+    // Create a new map centered at the organization location
+    var map = new google.maps.Map(document.getElementById("map"), {
+      center: organizationLocation,
+      zoom: 12 // Adjust the zoom level as needed
+    });
+    
+    // Add a marker for the organization location
+    var marker = new google.maps.Marker({
+      position: organizationLocation,
+      map: map,
+      title: "tadamon" // Replace with your organization name
+    });
+  }
+</script>
+
+<!-- Include the Google Maps JavaScript API with your API key -->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap"></script>
+
+
+</body>
+</html>
+
+
+    <footer class="ftco-footer ftco-section img">
+        <div class="overlay"></div>
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md-3">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">About Us</h2>
+              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Recent Blog</h2>
+              <div class="block-21 mb-4 d-flex">
+                <a class="blog-img mr-4" style="background-image: url(images/image_1.jpg);"></a>
+                <div class="text">
+                  <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
+                  <div class="meta">
+                    <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div>
+                    <div><a href="#"><span class="icon-person"></span> Admin</a></div>
+                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+                  </div>
+                </div>
+              </div>
+              <div class="block-21 mb-4 d-flex">
+                <a class="blog-img mr-4" style="background-image: url(images/image_2.jpg);"></a>
+                <div class="text">
+                  <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
+                  <div class="meta">
+                    <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div>
+                    <div><a href="#"><span class="icon-person"></span> Admin</a></div>
+                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2">
+             <div class="ftco-footer-widget mb-4 ml-md-4">
+              <h2 class="ftco-heading-2">Site Links</h2>
+              <ul class="list-unstyled">
+                <li><a href="#" class="py-2 d-block">Home</a></li>
+                <li><a href="#" class="py-2 d-block">About</a></li>
+                <li><a href="#" class="py-2 d-block">Donate</a></li>
+                <li><a href="#" class="py-2 d-block">Causes</a></li>
+                <li><a href="#" class="py-2 d-block">Event</a></li>
+                <li><a href="#" class="py-2 d-block">Blog</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="ftco-footer-widget mb-4">
+                <h2 class="ftco-heading-2">Have a Questions?</h2>
+                <div class="block-23 mb-3">
+                  <ul>
+                    <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
+                    <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
+                    <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
+                  </ul>
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+    
+            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+        
+        </body>
+        </html>
+        
+    
+
+    
