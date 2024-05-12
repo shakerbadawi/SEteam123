@@ -75,8 +75,23 @@
     display: none;
 }
 h2{
-    color:white;
+    color:#f86f2d;
+
 }
+
+
+
+
+
+  /* Style the map container */
+  #map {
+    height: 400px; /* Adjust the height as needed */
+    width: 80%; /* Adjust the width as needed */
+    margin: 20px auto; /* Center the map horizontally */
+    border: 1px solid #ccc; /* Add a border for better visibility */
+    border-radius: 5px; /* Add border radius for better appearance */
+  }
+
     </style>
 </head>
 <body>
@@ -157,6 +172,39 @@ h2{
             alert('Subject and Class selection saved!');
         });
     </script>
+
+
+
+
+<body>
+<h2>Clinic Location Map</h2>
+<div id="map"></div>
+
+<script>
+  // Initialize and add the map
+  function initMap() {
+    // Location coordinates for the organization
+    var organizationLocation = { lat: 37.7749, lng: -122.4194 }; // Example coordinates for San Francisco
+    
+    // Create a new map centered at the organization location
+    var map = new google.maps.Map(document.getElementById("map"), {
+      center: organizationLocation,
+      zoom: 12 // Adjust the zoom level as needed
+    });
+    
+    // Add a marker for the organization location
+    var marker = new google.maps.Marker({
+      position: organizationLocation,
+      map: map,
+      title: "tadamon" // Replace with your organization name
+    });
+  }
+</script>
+
+<!-- Include the Google Maps JavaScript API with your API key -->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap"></script>
+
+
 </body>
 </html>
 
