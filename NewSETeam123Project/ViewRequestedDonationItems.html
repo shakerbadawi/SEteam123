@@ -180,6 +180,7 @@
         <option value="">-- Select Hospital --</option>
         <option value="Hospital A">Hospital A</option>
         <option value="Hospital B">Hospital B</option>
+        <option value="Hospital C">Hospital C</option>
         <!-- Add more hospital options as needed -->
     </select>
 
@@ -188,6 +189,7 @@
         <option value="">-- Select Governorate --</option>
         <option value="Governorate X">Governorate X</option>
         <option value="Governorate Y">Governorate Y</option>
+        <option value="Governorate z">Governorate z</option>
         <!-- Add more governorate options as needed -->
     </select>
 
@@ -196,6 +198,7 @@
         <option value="">-- Select Area --</option>
         <option value="Area 1">Area 1</option>
         <option value="Area 2">Area 2</option>
+        <option value="Area 3">Area 3</option>
         <!-- Add more area options as needed -->
     </select>
     <button onclick="filterBloodDonations()">Apply Filters</button>
@@ -239,7 +242,7 @@
             { id: 7, itemName: "Toys", description: "Toys for toddlers", requester: "Orphanage",age: "child", gender: "female", category : "board games", picture: "https://images-cdn.ubuy.co.in/6530f76ce01f7d18441208f0-jumanji-the-game-real-wooden-box-edition.jpg", quantity: 200 },
             { id: 9, itemName: "School Supplies", description: "School supplies for students", requester: "School", type: "stationary", quantity: 200 },
             { id: 10, itemName: "School Supplies", description: "Textbooks for students", requester: "School",type: "books",quantity: 150,title: "The Computer Science Book",author: "Tom Johnson",language: "English",edition: "3rd Edition",summary: "This textbook provides an introduction to fundamental concepts in computer science, including programming, algorithms, and data structures. It covers a wide range of topics suitable for beginners and intermediate learners.",picture: "https://thecomputersciencebook.com/images/cover-new.jpg"}, 
-            { id: 11, itemName: "Blood Donations", description: "Blood donations for hospital", requester: "Hospital" },       
+            // { id: 11, itemName: "Blood Donations", description: "Blood donations for hospital", requester: "Hospital" },       
             { id: 12, itemName: "Toys", description: "Toys for toddlers", requester: "Orphanage", age: "child", gender: "female", category: "board games", picture: "https://images-cdn.ubuy.co.in/6530f76ce01f7d18441208f0-jumanji-the-game-real-wooden-box-edition.jpg", quantity: 200},
             { id: 13, itemName: "Toys", description: "Toys for teenagers", requester: "Youth Center", age: "teen", gender: "male", category: "stuffed toys", picture: "https://m.media-amazon.com/images/I/71BwHy5itBL._AC_UF894,1000_QL80_.jpg", quantity: 200 },
             { id: 14, itemName: "Toys", description: "Dolls for young girls", requester: "Children's Home", age: "child", gender: "female", category: "dolls", picture: "https://theclearancebin.weebly.com/uploads/1/2/3/0/1230872/3458305_orig.jpg", quantity: 200 },
@@ -278,14 +281,17 @@
         //picture: "https://example.com/baked_goods.jpg",
         quantity: 75
     },
-    { 
+    
+        { 
         id: 26, 
         itemName: "Medical Supplies", 
         description: "MRI", 
         requester: "Clinic", 
         material: "plastic",
         type : "medical devices",
-        quantity: 100 
+        quantity: 100 ,
+        picture:"https://e4rc99onazu.exactdn.com/wp-content/uploads/mri2-1.jpg"
+
     },
     { 
         id: 27, 
@@ -295,7 +301,9 @@
         material: "fabric", 
         type: "medication",
         medicaluse: "diabetes",
-        quantity: 50 
+        quantity: 50 ,
+        picture:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Inzulín.jpg/640px-Inzulín.jpg"
+
     },
     { 
         id: 28, 
@@ -305,7 +313,9 @@
         material: "fabric", 
         type: "medication",
         medicaluse  : "fever",
-        quantity: 50 
+        quantity: 50 ,
+        picture:"https://static.dw.com/image/64125277_605.jpg"
+
     },
     { 
         id: 29, 
@@ -315,7 +325,9 @@
         material: "fabric", 
         type: "medication",
         medicaluse : "headache",
-        quantity: 50 
+        quantity: 50 ,
+        picture:"https://www.dvago.pk/_next/image?url=https%3A%2F%2Fdvago-assets.s3.ap-southeast-1.amazonaws.com%2FProductsImages%2F02557.webp&w=1920&q=50"
+
     },
     { 
         id: 30, 
@@ -324,10 +336,12 @@
         requester: "Hospital", 
         material: "paper", 
         type: "medical equipment",
-        quantity: 200 
-    }, 
+        quantity: 200,
+        picture:"https://img.fruugo.com/product/0/33/195274330_max.jpg"
+    },
+
     { 
-        id: 30, 
+        id: 31, 
         itemName: "Blood Donations", 
         description: "Blood donations for patients in need", 
         requester: "Hospital", 
@@ -339,7 +353,7 @@
         urgency: "High" 
     },
     { 
-        id: 31, 
+        id: 32, 
         itemName: "Blood Donations", 
         description: "Blood donations for emergency cases", 
         requester: "Hospital", 
@@ -351,7 +365,7 @@
         urgency: "Medium" 
     },
     { 
-        id: 32, 
+        id: 33, 
         itemName: "Blood Donations", 
         description: "Urgent need for blood donations", 
         requester: "Clinic", 
@@ -438,6 +452,14 @@
             button.textContent = "View Medical Supply Details";
             button.onclick = () => viewMedicalSupplyDetails(item.id);
             itemDiv.appendChild(button);
+        } else if (item.itemName.toLowerCase() === 'blood donations') {
+            // Display details for blood donations items
+            itemDiv.innerHTML += `
+                <p><strong>Description:</strong> ${item.description}</p>
+                <p><strong>Requested by:</strong> ${item.requester}</p>
+                <p><strong>Blood Type:</strong> ${item.bloodType}</p>
+                <button onclick="viewBloodDonationDetails(${item.id})">View Details</button>
+            `;
         }
 
         requestedItemsContainer.appendChild(itemDiv);
@@ -474,32 +496,77 @@ function viewFoodDetails(itemId) {
         alert("Food item not found!");
     }
 }
-function viewMedicalSupplyDetails(itemId) {
-    // Find the medical supply item with the given itemId
-    const medicalSupplyItem = requestedItems.find(item => item.id === itemId);
+function viewBloodDonationDetails(itemId) {
+    // Find the blood donation item with the given itemId
+    const bloodDonationItem = requestedItems.find(item => item.id === itemId);
 
-    // Check if the medical supply item exists
-    if (medicalSupplyItem) {
+    // Check if the blood donation item exists
+    if (bloodDonationItem) {
         // Create a string to display the details
         let details = `
-            Details of Medical Supply Item:
-            Description: ${medicalSupplyItem.description}
-            Requested by: ${medicalSupplyItem.requester}
-            Type: ${medicalSupplyItem.type}
-            Quantity Required: ${medicalSupplyItem.quantity}
-            Material: ${medicalSupplyItem.material}
+            Details of Blood Donation:
+            Blood Type: ${bloodDonationItem.bloodType}
+            RH Type: ${bloodDonationItem.bloodTypeRH}
+            Patient Name: ${bloodDonationItem.patientName}
+            Hospital: ${bloodDonationItem.hospital}
+            Governorate: ${bloodDonationItem.governorate}
+            Area: ${bloodDonationItem.area}
+            Urgency: ${bloodDonationItem.urgency}
+            Quantity Required: ${bloodDonationItem.quantity}
         `;
 
         // Display the details in an alert
         alert(details);
     } else {
-        // If the medical supply item with the given ID is not found
-        alert("Medical supply item not found!");
+        // If the blood donation item with the given ID is not found
+        alert("Blood donation item not found!");
     }
 }
 
+function viewMedicalSupplyDetails(itemId) {
+    const item = requestedItems.find(item => item.id === itemId);
+    if (item) {
+        // Create a modal dialog
+        const modalContent = `
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">${item.description}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Description:</strong> ${item.description}</p>
+                        <p><strong>Requested by:</strong> ${item.requester}</p> 
+                        <p><strong>Type:</strong> ${item.type}</p>
+                        <p><strong>Quantity Required:</strong> ${item.quantity}</p>
+                        <p><strong>Material:</strong>  ${item.material}</p>
+                        <img src="${item.picture}" alt="Medical Supply Image" style="max-width: 100%; height: auto;">
+                    </div>
+                </div>
+            </div>
+        `;
 
+        // Create a modal container
+        const modalContainer = document.createElement('div');
+        modalContainer.classList.add('modal');
+        modalContainer.innerHTML = modalContent;
 
+        // Append the modal container to the body
+        document.body.appendChild(modalContainer);
+
+        // Show the modal
+        $(modalContainer).modal('show');
+
+        // Remove the modal from the DOM when it's closed
+        $(modalContainer).on('hidden.bs.modal', function () {
+            $(this).remove();
+        });
+    } else {
+        alert("Medical supply item not found!");
+    }
+}
 
 
         // Function to handle category dropdown change
@@ -606,7 +673,9 @@ function filterBloodDonations() {
 
     // Filter blood donations based on selected options
     const filteredBloodDonations = requestedItems.filter(item => {
-        if (item.itemName.toLowerCase() !== 'blood') return false; // Filter only blood donations
+        // Check if the item is a blood donation
+        if (item.itemName.toLowerCase() !== 'blood donations') return false;
+        // Apply filters
         if (selectedHospital && item.hospital && item.hospital.toLowerCase() !== selectedHospital) return false;
         if (selectedGovernorate && item.governorate && item.governorate.toLowerCase() !== selectedGovernorate) return false;
         if (selectedArea && item.area && item.area.toLowerCase() !== selectedArea) return false;
