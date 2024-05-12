@@ -138,6 +138,72 @@
             </select>
             <button onclick="filterSchoolSupplies()">Apply Filters</button>
         </div>
+        <div id="foodFilters" class="mt-4" style="display: none;">
+            <label for="foodType">Food Type:</label>
+            <select id="foodType">
+                <option value="">-- Select Food Type --</option>
+                <option value="fruits_vegetables">Fruits and Vegetables</option>
+                <option value="canned_foods">Canned Foods</option>
+                <option value="fresh_meals">Fresh Meals</option>
+                <option value="baked_goods">Baked Goods</option>
+                <!-- Add more food type options as needed -->
+            </select>
+            <button onclick="filterFood()">Apply Filters</button>
+        </div>
+        <!-- Filter dropdowns for medical supplies -->
+<div id="medicalSuppliesFilters" class="mt-4" style="display: none;">
+    <label for="medicalSuppliesType">Medical Supplies Type:</label>
+    <select id="medicalSuppliesType">
+        <option value="">-- Select Medical Supplies Type --</option>
+        <option value="medical devices">Medical Devices</option>
+        <option value="medical equipment">Medical Equipment</option>
+        <option value="medication">Medication</option>
+        <!-- Add more medical supplies type options as needed -->
+    </select>
+    <button onclick="filterMedicalSupplies()">Apply Filters</button>
+</div>
+<!-- Filter dropdown for medication requests -->
+<div id="medicationFilters" class="mt-4" style="display: none;">
+    <label for="medicalUse">Medical Use:</label>
+    <select id="medicalUse">
+        <option value="">-- Select Medical Use --</option>
+        <option value="headahe">headache</option>
+        <option value="fever">fever</option>
+        <option value="diabetes">Diabetes</option>
+        <!-- Add more medical use options as needed -->
+    </select>
+    <button onclick="filterMedication()">Apply Filters</button>
+</div>
+<div id="bloodFilterDropdowns" class="mt-4" style="display: none;">
+    <label for="hospitalSelect">Hospital:</label>
+    <select id="hospitalSelect">
+        <option value="">-- Select Hospital --</option>
+        <option value="Hospital A">Hospital A</option>
+        <option value="Hospital B">Hospital B</option>
+        <!-- Add more hospital options as needed -->
+    </select>
+
+    <label for="governorateSelect">Governorate:</label>
+    <select id="governorateSelect">
+        <option value="">-- Select Governorate --</option>
+        <option value="Governorate X">Governorate X</option>
+        <option value="Governorate Y">Governorate Y</option>
+        <!-- Add more governorate options as needed -->
+    </select>
+
+    <label for="areaSelect">Area:</label>
+    <select id="areaSelect">
+        <option value="">-- Select Area --</option>
+        <option value="Area 1">Area 1</option>
+        <option value="Area 2">Area 2</option>
+        <!-- Add more area options as needed -->
+    </select>
+    <button onclick="filterBloodDonations()">Apply Filters</button>
+</div>
+
+
+
+        
 
         <!-- Requested donation items container -->
         <div id="requestedItems" class="mt-4">
@@ -167,11 +233,10 @@
             { id: 1, itemName: "Clothes", description: "New or gently used clothes for all ages", requester: "Local Shelter", age: "child", gender: "male", season: "winter", material: "cotton", quantity: 50 },
             { id: 2, itemName: "Clothes", description: "Winter jackets and warm clothing", requester: "Community Center", age: "teen", gender: "female", season: "winter", material: "wool", quantity: 30 },
             { id: 3, itemName: "Clothes", description: "Children's clothing for ages 3-10", requester: "Orphanage", age: "child", gender: "female", season: "summer", material: "synthetic", quantity: 20 },
-            { id: 4, itemName: "Food", description: "Canned food, rice, pasta, etc.", requester: "Food Bank" },
-            { id: 5, itemName: "Food", description: "Fresh fruits and vegetables", requester: "Community Kitchen" },
-            { id: 6, itemName: "Food", description: "Non-perishable items for emergency relief", requester: "Red Cross" },
+            { id: 4, itemName: "Food", description: " rice, pasta, etc.", type: "fresh_meals", requester: "Food Bank" },
+            { id: 5, itemName: "Food", description: "Fresh fruits and vegetables", type: "fruits_vegetables", requester: "Community Kitchen" },
+            { id: 6, itemName: "Food", description: "Non-perishable items for emergency relief", type: "canned_foods", requester: "Red Cross" },
             { id: 7, itemName: "Toys", description: "Toys for toddlers", requester: "Orphanage",age: "child", gender: "female", category : "board games", picture: "https://images-cdn.ubuy.co.in/6530f76ce01f7d18441208f0-jumanji-the-game-real-wooden-box-edition.jpg", quantity: 200 },
-            { id: 8, itemName: "Medical Supplies", description: "Medical supplies for clinics", requester: "Clinic", material: "plastic", quantity: 100 },
             { id: 9, itemName: "School Supplies", description: "School supplies for students", requester: "School", type: "stationary", quantity: 200 },
             { id: 10, itemName: "School Supplies", description: "Textbooks for students", requester: "School",type: "books",quantity: 150,title: "The Computer Science Book",author: "Tom Johnson",language: "English",edition: "3rd Edition",summary: "This textbook provides an introduction to fundamental concepts in computer science, including programming, algorithms, and data structures. It covers a wide range of topics suitable for beginners and intermediate learners.",picture: "https://thecomputersciencebook.com/images/cover-new.jpg"}, 
             { id: 11, itemName: "Blood Donations", description: "Blood donations for hospital", requester: "Hospital" },       
@@ -184,7 +249,119 @@
             { id: 18, itemName: "Toys", description: "Educational toys for preschoolers", requester: "Preschool", age: "child", gender: "female", category: "board games", picture: "https://images-cdn.ubuy.co.in/6530f76ce01f7d18441208f0-jumanji-the-game-real-wooden-box-edition.jpg", quantity: 200 },
             { id: 19, itemName: "Toys", description: "Soft toys for infants", requester: "Maternity Hospital", age: "child", gender: "male", category: "stuffed toys", picture: "https://m.media-amazon.com/images/I/71BwHy5itBL._AC_UF894,1000_QL80_.jpg", quantity: 200 },
             { id: 20, itemName: "Toys", description: "Toy cars for boys", requester: "Children's Home", age: "child", gender: "male", category: "cars", picture: "https://i5.walmartimages.com/seo/Hot-Wheels-Set-of-20-Toy-Sports-Race-Cars-in-1-64-Scale-Collectible-Vehicles-Styles-May-Vary_3ecf516f-e716-45aa-8498-7ea640765d95.0cb2531529ba34feaa3ca5ed5db4c00b.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF", quantity: 200 },
-            { id: 21, itemName: "Toys", description: "Outdoor playsets", requester: "Family Shelter", age: "child", gender: "female", category: "outdoor", picture: "https://images.agoramedia.com/wte3.0/gcms//intex-rainbow-ring-inflatable-play-pool.jpg", quantity: 200}
+            { id: 21, itemName: "Toys", description: "Outdoor playsets", requester: "Family Shelter", age: "child", gender: "female", category: "outdoor", picture: "https://images.agoramedia.com/wte3.0/gcms//intex-rainbow-ring-inflatable-play-pool.jpg", quantity: 200},
+            { id: 22, itemName: "Food",description: "Fresh fruits and vegetables for healthy meals",requester: "Local Food Bank",type: "fruits_vegetables",picture: "https://example.com/fruits_vegetables.jpg",quantity: 50},
+    { 
+        id: 23,
+        itemName: "Food",
+        description: "Canned goods for emergency food supply",
+        requester: "Community Shelter",
+        type: "canned_foods",
+        //picture: "https://example.com/canned_foods.jpg",
+        quantity: 100
+    },
+    { 
+        id: 24,
+        itemName: "Food",
+        description: "Freshly cooked meals for homeless individuals",
+        requester: "Soup Kitchen",
+        type: "fresh_meals",
+        //picture: "https://example.com/fresh_meals.jpg",
+        quantity: 200
+    },
+    { 
+        id: 25,
+        itemName: "Food",
+        description: "Delicious baked goods for community event",
+        requester: "Local Church",
+        type: "baked_goods",
+        //picture: "https://example.com/baked_goods.jpg",
+        quantity: 75
+    },
+    { 
+        id: 26, 
+        itemName: "Medical Supplies", 
+        description: "MRI", 
+        requester: "Clinic", 
+        material: "plastic",
+        type : "medical devices",
+        quantity: 100 
+    },
+    { 
+        id: 27, 
+        itemName: "Medical Supplies", 
+        description: "insulin", 
+        requester: "Red Cross", 
+        material: "fabric", 
+        type: "medication",
+        medicaluse: "diabetes",
+        quantity: 50 
+    },
+    { 
+        id: 28, 
+        itemName: "Medical Supplies", 
+        description: "anti biotic", 
+        requester: "Red Cross", 
+        material: "fabric", 
+        type: "medication",
+        medicaluse  : "fever",
+        quantity: 50 
+    },
+    { 
+        id: 29, 
+        itemName: "Medical Supplies", 
+        description: "panadol", 
+        requester: "Red Cross", 
+        material: "fabric", 
+        type: "medication",
+        medicaluse : "headache",
+        quantity: 50 
+    },
+    { 
+        id: 30, 
+        itemName: "Medical Supplies", 
+        description: "Surgical masks for healthcare workers", 
+        requester: "Hospital", 
+        material: "paper", 
+        type: "medical equipment",
+        quantity: 200 
+    }, 
+    { 
+        id: 30, 
+        itemName: "Blood Donations", 
+        description: "Blood donations for patients in need", 
+        requester: "Hospital", 
+        bloodType: "O+", 
+        quantity: 50,
+        hospital: "Hospital A", 
+        governorate: "Governorate X", 
+        area: "Area 1", 
+        urgency: "High" 
+    },
+    { 
+        id: 31, 
+        itemName: "Blood Donations", 
+        description: "Blood donations for emergency cases", 
+        requester: "Hospital", 
+        bloodType: "A-", 
+        quantity: 30,
+        hospital: "Hospital B", 
+        governorate: "Governorate Y", 
+        area: "Area 2", 
+        urgency: "Medium" 
+    },
+    { 
+        id: 32, 
+        itemName: "Blood Donations", 
+        description: "Urgent need for blood donations", 
+        requester: "Clinic", 
+        bloodType: "AB+", 
+        quantity: 20,
+        hospital: "Hospital C", 
+        governorate: "Governorate Z", 
+        area: "Area 3", 
+        urgency: "High" 
+    }
 ];
 
         
@@ -192,73 +369,137 @@
         // Function to display requested donation items
         // Function to display requested donation items
         function displayRequestedItems(items) {
-            const requestedItemsContainer = document.getElementById("requestedItems");
-            requestedItemsContainer.innerHTML = '';
+    const requestedItemsContainer = document.getElementById("requestedItems");
+    requestedItemsContainer.innerHTML = '';
 
-            items.forEach(item => {
-                const itemDiv = document.createElement("div");
-                itemDiv.classList.add("item");
-                itemDiv.innerHTML = `
-                    <h3>${item.itemName}</h3>
-                    <p><strong>Description:</strong> ${item.description}</p>
-                    <p><strong>Requested by:</strong> ${item.requester}</p>
-                `;
+    items.forEach(item => {
+        const itemDiv = document.createElement("div");
+        itemDiv.classList.add("item");
+        itemDiv.innerHTML = `
+            <h3>${item.itemName}</h3>
+            <p><strong>Description:</strong> ${sanitizeHTML(item.description)}</p>
+            <p><strong>Requested by:</strong> ${item.requester}</p>
+        `;
 
-                // Add age, gender, and season fields only for clothes items
-                if (item.itemName.toLowerCase() === 'clothes') {
-                    itemDiv.innerHTML += `
-                        <p><strong>Age:</strong> ${item.age}</p>
-                        <p><strong>Gender:</strong> ${item.gender}</p>
-                        <p><strong>Season:</strong> ${item.season}</p>
-                        <button onclick="viewClothingDetails(${item.id})">View Details</button>
-                        <button onclick="selectQuantity(${item.id})">Select Quantity</button>
-                    `;
+        // Add specific details and buttons based on item type
+        if (item.itemName.toLowerCase() === 'clothes') {
+            // Display details for clothes items
+            itemDiv.innerHTML += `
+                <p><strong>Age:</strong> ${item.age}</p>
+                <p><strong>Gender:</strong> ${item.gender}</p>
+                <p><strong>Season:</strong> ${item.season}</p>
+                <button onclick="viewClothingDetails(${item.id})">View Details</button>
+                <button onclick="selectQuantity(${item.id})">Select Quantity</button>
+            `;
+        } else if (item.itemName.toLowerCase() === 'school supplies') {
+            // Display details for school supplies items
+            itemDiv.innerHTML += `
+                <p><strong>Description:</strong> ${sanitizeHTML(item.description)}</p>
+                <p><strong>Requested by:</strong> ${item.requester}</p>
+                <button onclick="selectQuantity(${item.id})">Select Quantity</button>
+            `;
+            const button = document.createElement("button");
+            button.textContent = item.type === "stationary" ? "View Stationary Details" : "View Book Details";
+            button.onclick = () => item.type === "stationary" ? viewStationaryDetails(item.id) : viewBookDetails(item.id);
+            itemDiv.appendChild(button);
+        } else if (item.itemName.toLowerCase() === 'toys') {
+            // Display details for toys items
+            itemDiv.innerHTML += `
+                <p><strong>Description:</strong> ${sanitizeHTML(item.description)}</p>
+                <p><strong>Requested by:</strong> ${item.requester}</p>
+                <p><strong>Age:</strong> ${item.age}</p>
+                <p><strong>Gender:</strong> ${item.gender}</p>
+                <p><strong>Category:</strong> ${item.category}</p>
+                <button onclick="selectQuantity(${item.id})">Select Quantity</button>
+            `;
+            const button = document.createElement("button");
+            button.textContent = "View Toy Details";
+            button.onclick = () => viewToyDetails(item.id);
+            itemDiv.appendChild(button);
+        } else if (item.itemName.toLowerCase() === 'food') {
+            // Display details for food items
+            itemDiv.innerHTML += `
+                <p><strong>Description:</strong> ${sanitizeHTML(item.description)}</p>
+                <p><strong>Requested by:</strong> ${item.requester}</p>
+                <button onclick="selectQuantity(${item.id})">Select Quantity</button>
+            `;
+            const button = document.createElement("button");
+            button.textContent = "View Food Details";
+            button.onclick = () => viewFoodDetails(item.id);
+            itemDiv.appendChild(button);
+        } else if (item.itemName.toLowerCase() === 'medical supplies') {
+            // Display details for medical supplies items
+            itemDiv.innerHTML += `
+                <p><strong>Description:</strong> ${sanitizeHTML(item.description)}</p>
+                <p><strong>Requested by:</strong> ${item.requester}</p>
+                <button onclick="selectQuantity(${item.id})">Select Quantity</button>
+            `;
+            const button = document.createElement("button");
+            button.textContent = "View Medical Supply Details";
+            button.onclick = () => viewMedicalSupplyDetails(item.id);
+            itemDiv.appendChild(button);
+        }
 
-                } else if (item.itemName.toLowerCase() === 'school supplies') {
-    // Toys should only display Description and Requested by
-    itemDiv.innerHTML = `
-        <h3>${item.itemName}</h3>
-        <p><strong>Description:</strong> ${item.description}</p>
-        <p><strong>Requested by:</strong> ${item.requester}</p>
-        <button onclick="selectQuantity(${item.id})">Select Quantity</button>
-    `;
-    if (item.type === "stationary") {
-        const button = document.createElement("button");
-        button.textContent = "View Stationary Details";
-        button.onclick = () => viewStationaryDetails(item.id);
-        itemDiv.appendChild(button);
+        requestedItemsContainer.appendChild(itemDiv);
+    });
+}
+
+
+function sanitizeHTML(html) {
+    // Replace < and > with their HTML entity equivalents
+    return html.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+function viewFoodDetails(itemId) {
+    // Find the food item with the given itemId
+    const foodItem = requestedItems.find(item => item.id === itemId);
+
+    // Check if the food item exists
+    if (foodItem) {
+        // Create a string to display the details
+        let details = `
+            Details of Food Item:
+            Description: ${foodItem.description}
+            Requested by: ${foodItem.requester}
+            Type: ${foodItem.type}
+            Quantity Required: ${foodItem.quantity} ${
+            foodItem.type.toLowerCase() === 'fruits_vegetables' ? 'KG' : 'Amount'
+        }
+        `;
+
+        // Display the details in an alert
+        alert(details);
+    } else {
+        // If the food item with the given ID is not found
+        alert("Food item not found!");
     }
-
-    else{
-        const button = document.createElement("button");
-        button.textContent = "View Book Details";
-        button.onclick = () => viewBookDetails(item.id);
-        itemDiv.appendChild(button); 
-    } 
-
 }
-else if (item.itemName.toLowerCase() === 'toys') {
-    // Toys should only display Description and Requested by
-    itemDiv.innerHTML = `
-        <h3>${item.itemName}</h3>
-        <p><strong>Description:</strong> ${item.description}</p>
-        <p><strong>Requested by:</strong> ${item.requester}</p>
-        <p><strong>Age:</strong> ${item.age}</p>
-        <p><strong>Gender:</strong> ${item.gender}</p>
-        <p><strong>Category:</strong> ${item.category}</p>
+function viewMedicalSupplyDetails(itemId) {
+    // Find the medical supply item with the given itemId
+    const medicalSupplyItem = requestedItems.find(item => item.id === itemId);
+
+    // Check if the medical supply item exists
+    if (medicalSupplyItem) {
+        // Create a string to display the details
+        let details = `
+            Details of Medical Supply Item:
+            Description: ${medicalSupplyItem.description}
+            Requested by: ${medicalSupplyItem.requester}
+            Type: ${medicalSupplyItem.type}
+            Quantity Required: ${medicalSupplyItem.quantity}
+            Material: ${medicalSupplyItem.material}
+        `;
+
+        // Display the details in an alert
+        alert(details);
+    } else {
+        // If the medical supply item with the given ID is not found
+        alert("Medical supply item not found!");
+    }
+}
 
 
-        <button onclick="selectQuantity(${item.id})">Select Quantity</button>
-    `;
-    
-    const button = document.createElement("button");
-    button.textContent = "View Toy Details";
-    button.onclick = () => viewToyDetails(item.id);
-    itemDiv.appendChild(button);
-}
-requestedItemsContainer.appendChild(itemDiv);
-});
-}
+
 
 
         // Function to handle category dropdown change
@@ -268,27 +509,114 @@ requestedItemsContainer.appendChild(itemDiv);
     const filterDropdowns = document.getElementById("filterDropdowns");
     const schoolSuppliesFilters = document.getElementById("schoolSuppliesFilters");
     const filterDropdown = document.getElementById("filterDropdown");
+    const foodDropdown = document.getElementById("foodFilters");
+    const medicalDropdown = document.getElementById("medicalSuppliesFilters");
+    const medicationFilters = document.getElementById("medicationFilters");
+    const blooddonationfilter = document.getElementById("bloodFilterDropdowns");
     if (selectedCategory === "clothes") {
+        // Show clothes filter dropdown
         filterDropdowns.style.display = "block";
         filterDropdown.style.display = "none";
         schoolSuppliesFilters.style.display = "none";
+        foodFilters.style.display = "none";
+        medicalDropdown.style.display = "none";
+        medicationFilters.style.display = "none";
+        blooddonationfilter.style.display = "none";
     } else if (selectedCategory === "school supplies") {
+        // Show school supplies filter dropdown
         filterDropdowns.style.display = "none";
         filterDropdown.style.display = "none";
         schoolSuppliesFilters.style.display = "block";
+        foodFilters.style.display = "none";
+        medicalDropdown.style.display = "none";
+        medicationFilters.style.display = "none";
+        blooddonationfilter.style.display = "none";
     } else if (selectedCategory === "toys") {
-        // For toys, display the filter dropdowns
+        // Show toys filter dropdown
         filterDropdown.style.display = "block";
         filterDropdowns.style.display = "none";
         schoolSuppliesFilters.style.display = "none";
-        
-    } else {
-        // For other categories, hide both filter dropdowns
+        foodFilters.style.display = "none";
+        medicalDropdown.style.display = "none";
+        medicationFilters.style.display = "none";
+        blooddonationfilter.style.display = "none";
+    } else if (selectedCategory === "food") {
+        // Show food filter dropdown
         filterDropdowns.style.display = "none";
         schoolSuppliesFilters.style.display = "none";
         filterDropdown.style.display = "none";
+        foodFilters.style.display = "block";
+        medicalDropdown.style.display = "none";
+        medicationFilters.style.display = "none";
+        blooddonationfilter.style.display = "none";
+    } else if (selectedCategory === "medical supplies") {
+        // Show medical supplies filter dropdown
+        filterDropdowns.style.display = "none";
+        schoolSuppliesFilters.style.display = "none";
+        filterDropdown.style.display = "none";
+        foodFilters.style.display = "none";
+        medicalDropdown.style.display = "block";
+        medicationFilters.style.display = "none";
+        blooddonationfilter.style.display = "none";
+    }else if (selectedCategory === "blood donations") {
+        // Show food filter dropdown
+        filterDropdowns.style.display = "none";
+        schoolSuppliesFilters.style.display = "none";
+        filterDropdown.style.display = "none";
+        foodFilters.style.display = "none";
+        medicalDropdown.style.display = "none";
+        medicationFilters.style.display = "none";
+        blooddonationfilter.style.display = "block";
     }
+        // Check if medication is selected as a subcategory
+        const medicalUseSelect = document.getElementById("medicalUse");
+        const selectedMedicalUse = medicalUseSelect.value.toLowerCase();
+        if (selectedMedicalUse === "medication") {
+            // Show medication filter dropdown
+            medicationFilters.style.display = "block";
+        } else {
+            // Hide medication filter dropdown
+            medicationFilters.style.display = "none";
+        }
+    }
+
+
+
+function filterMedication() {
+    const medicalUseSelect = document.getElementById("Use");
+    const selectedMedicalUse = medicalUseSelect.value.toLowerCase();
+
+    // Filter medication requests based on selected medical use
+    const filteredMedication = requestedItems.filter(item => {
+        if (item.itemName.toLowerCase() !== 'medication') return false; // Filter only medication requests
+        if (selectedMedicalUse && item.medicalUse && item.medicalUse.toLowerCase() !== selectedMedicalUse) return false;
+        return true;
+    });
+
+    // Display filtered medication requests
+    displayRequestedItems(filteredMedication);
 }
+function filterBloodDonations() {
+    const hospitalSelect = document.getElementById("hospitalSelect");
+    const selectedHospital = hospitalSelect.value.toLowerCase();
+    const governorateSelect = document.getElementById("governorateSelect");
+    const selectedGovernorate = governorateSelect.value.toLowerCase();
+    const areaSelect = document.getElementById("areaSelect");
+    const selectedArea = areaSelect.value.toLowerCase();
+
+    // Filter blood donations based on selected options
+    const filteredBloodDonations = requestedItems.filter(item => {
+        if (item.itemName.toLowerCase() !== 'blood') return false; // Filter only blood donations
+        if (selectedHospital && item.hospital && item.hospital.toLowerCase() !== selectedHospital) return false;
+        if (selectedGovernorate && item.governorate && item.governorate.toLowerCase() !== selectedGovernorate) return false;
+        if (selectedArea && item.area && item.area.toLowerCase() !== selectedArea) return false;
+        return true;
+    });
+
+    // Display filtered blood donations
+    displayRequestedItems(filteredBloodDonations);
+}
+
 
 function filterToys() {
     const ageSelect = document.getElementById("ageSelect");
@@ -310,7 +638,40 @@ function filterToys() {
     // Display filtered toys
     displayRequestedItems(filteredToys);
 }
- 
+function filterMedicalSupplies() {
+    const typeSelect = document.getElementById("medicalSuppliesType");
+    const selectedType = typeSelect.value.toLowerCase();
+
+    // Filter medical supplies based on selected type
+    const filteredMedicalSupplies = requestedItems.filter(item => {
+        if (item.itemName.toLowerCase() !== 'medical supplies') return false; // Filter only medical supplies
+        if (selectedType && item.type && item.type.toLowerCase() !== selectedType) return false;
+        return true;
+    });
+
+    // Display filtered medical supplies
+    displayRequestedItems(filteredMedicalSupplies);
+}
+
+function filterFood() {
+    const typeSelect = document.getElementById("foodType");
+    const selectedType = typeSelect.value.toLowerCase();
+
+    // Filter requested items to only include food items
+    const foodItems = requestedItems.filter(item => item.itemName.toLowerCase() === 'food');
+
+    // Apply type filter to food items
+    const filteredFood = foodItems.filter(item => {
+        if (selectedType && item.type && item.type.toLowerCase() !== selectedType) {
+            return false;
+        }
+        return true;
+    });
+
+    // Display filtered food items
+    displayRequestedItems(filteredFood);
+}
+
 function filterClothes() {
     const ageSelect = document.getElementById("ageSelect");
     const selectedAge = ageSelect.value.toLowerCase();
