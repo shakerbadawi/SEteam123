@@ -20,51 +20,92 @@
     <link rel="stylesheet" href="css/style.css">
     <style>
         body {
-            background-image: url("images/bg_3.jpg");
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            padding-top: 100px; /* Adjust the padding-top for the background container */
+            padding-top: 80px; /* add top padding to create space between navbar and content */
+            background-image: url('images/bg_2.jpg');
         }
 
+        /* Add some top margin to the navbar to align it with the padding */
         .navbar {
-            background-color: #000 !important; /* Set navbar background color to black */
+            margin-top: 20px;
+        }
+        footer{
+          display: none;
         }
 
-        .navbar-brand, .navbar-nav .nav-link {
-            color: #fff !important; /* Set navbar text color to white */
-        }
-
-        .navbar-nav .nav-link {
-            color: #fff !important; /* Set navbar text color to white */
-        }
-
-        .navbar-nav .nav-link:hover {
-            color: darkorange !important; /* Change color to dark orange on hover */
-        }
-
-        .background-container {
-            padding-top: 50px; /* Adjust the padding-top for the background container */
-            margin-bottom: 100px; /* Add margin-bottom to create space for the footer */
-            filter: brightness(85%); /* Apply brightness effect to the background image */
-        }
-
-        .login-container {
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 20px;
-            border-radius: 10px;
-            width: 300px; /* Adjust the width as needed */
-            margin: 0 auto; /* Center the login container horizontally */
-            text-align: center;
-        }
-
-        .footer {
-            background-color: rgba(0, 0, 0, 0.7);
-            color: #fff;
-            padding: 20px 0; /* Reduce the padding to make the footer smaller */
-            position: relative;
-            bottom: 0;
+        /* Style the organization list table */
+        table {
+            border-collapse: collapse;
             width: 100%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        /* Style the search input and category filter select elements */
+        #search-input, #category-filter {
+            margin-bottom: 10px;
+            padding: 6px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        /* Style the category link select element */
+        #category-link {
+            margin-right: 10px;
+        }
+
+        /* Style the login form container */
+        .login-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: white; /* Set background color to white */
+        }
+
+        /* Style the login form elements */
+        #loginForm label {
+            display: block; /* Display labels as blocks to align with input fields */
+            margin-bottom: 5px; /* Add some space between labels and input fields */
+            color: #333; /* Label text color */
+        }
+
+        #loginForm input[type="text"],
+        #loginForm input[type="password"] {
+            width: 100%; /* Make input fields fill the container width */
+            padding: 8px; /* Add some padding inside input fields */
+            margin-bottom: 10px; /* Add some space between input fields */
+            border: 1px solid #ccc; /* Input field border */
+            border-radius: 4px; /* Input field border radius */
+        }
+
+        #loginForm button[type="submit"] {
+            width: 100%; /* Make button fill the container width */
+            padding: 10px; /* Add some padding inside the button */
+            background-color: #f86f2d; /* Button background color */
+            color: #fff; /* Button text color */
+            border: none; /* Remove button border */
+            border-radius: 4px; /* Button border radius */
+            cursor: pointer; /* Add cursor pointer on hover */
+            transition: background-color 0.3s; /* Add smooth background color transition on hover */
+        }
+
+        #loginForm button[type="submit"]:hover {
+            background-color: #e25a00; /* Darker background color on hover */
+        }
+
+        .error-message {
+            color: red; /* Error message text color */
+            margin-top: 10px; /* Add some space between error message and form */
         }
     </style>
 </head>
@@ -83,43 +124,37 @@
         </div>
     </nav>
 
-    <div class="background-container">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="login-container">
-                        <h2>Login for Donors:</h2>
-                        <form id="loginForm">
-                            <label for="username">Username:</label>
-                            <input type="text" id="username" name="username" required>
-                            <label for="password">Password:</label>
-                            <input type="password" id="password" name="password" required>
-                            <button type="submit" onclick="redirectToDonorHome()">Login</button>
-                        </form>
-                        <p id="errorMessage" class="error-message"></p>
-                    </div>
-                </div>
-            </div>
+    <div class="container">
+        <div class="login-container">
+            <h2>Login for Donors:</h2>
+            <form id="loginForm">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit" onclick="redirectToDonorHome()">Login</button>
+            </form>
+            <p id="errorMessage" class="error-message"></p>
         </div>
     </div>
-    
+
     <script>
         function redirectToDonorHome() {
-            window.location.href = "Donor_home.html"; // Replace "donor_dashboard.html" with the actual URL of your donor dashboard page
+            window.location.href = "Donor_home.html"; // Replace "Donor_home.html" with the actual URL of your donor dashboard page
         }
     </script>
-    
+
     <script>
         document.getElementById("loginForm").addEventListener("submit", function(event) {
             event.preventDefault();
             var username = document.getElementById("username").value;
             var password = document.getElementById("password").value;
-    
+
             // Simulate authentication (replace this with actual authentication logic)
             if (username === "donor" && password === "password") {
                 // Redirect to donor dashboard or perform necessary actions
                 alert("Login successful! Redirecting to donor dashboard...");
-                window.location.href = "Donor_home.html"; // Replace "donor_dashboard.html" with actual URL
+                window.location.href = "Donor_home.html"; // Replace "Donor_home.html" with actual URL
             } else {
                 // Show error message
                 document.getElementById("errorMessage").innerText = "Invalid username or password. Please try again.";
@@ -127,7 +162,6 @@
         });
     </script>
 
-    
 <footer class="ftco-footer ftco-section img">
   <div class="overlay"></div>
   <div class="container">
