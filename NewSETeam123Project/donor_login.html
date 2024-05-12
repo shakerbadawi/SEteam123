@@ -1,5 +1,3 @@
-<!-- index.html -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,11 +21,15 @@
     <style>
         body {
             padding-top: 80px; /* add top padding to create space between navbar and content */
+            background-image: url('images/bg_2.jpg');
         }
 
         /* Add some top margin to the navbar to align it with the padding */
         .navbar {
             margin-top: 20px;
+        }
+        footer{
+          display: none;
         }
 
         /* Style the organization list table */
@@ -58,6 +60,53 @@
         #category-link {
             margin-right: 10px;
         }
+
+        /* Style the login form container */
+        .login-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: white; /* Set background color to white */
+        }
+
+        /* Style the login form elements */
+        #loginForm label {
+            display: block; /* Display labels as blocks to align with input fields */
+            margin-bottom: 5px; /* Add some space between labels and input fields */
+            color: #333; /* Label text color */
+        }
+
+        #loginForm input[type="text"],
+        #loginForm input[type="password"] {
+            width: 100%; /* Make input fields fill the container width */
+            padding: 8px; /* Add some padding inside input fields */
+            margin-bottom: 10px; /* Add some space between input fields */
+            border: 1px solid #ccc; /* Input field border */
+            border-radius: 4px; /* Input field border radius */
+        }
+
+        #loginForm button[type="submit"] {
+            width: 100%; /* Make button fill the container width */
+            padding: 10px; /* Add some padding inside the button */
+            background-color: #f86f2d; /* Button background color */
+            color: #fff; /* Button text color */
+            border: none; /* Remove button border */
+            border-radius: 4px; /* Button border radius */
+            cursor: pointer; /* Add cursor pointer on hover */
+            transition: background-color 0.3s; /* Add smooth background color transition on hover */
+        }
+
+        #loginForm button[type="submit"]:hover {
+            background-color: #e25a00; /* Darker background color on hover */
+        }
+
+        .error-message {
+            color: red; /* Error message text color */
+            margin-top: 10px; /* Add some space between error message and form */
+        }
     </style>
 </head>
 <body>
@@ -75,36 +124,37 @@
         </div>
     </nav>
 
-<body>
-  <div class="container">
-    <h2>Login for Donors:</h2>
-    <form id="loginForm">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <button type="submit" onclick="redirectToOrganizationPage()">Login</button>
-    </form>
-    <p id="errorMessage" class="error-message"></p>
-</div>
-    
+    <div class="container">
+        <div class="login-container">
+            <h2>Login for Donors:</h2>
+            <form id="loginForm">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit" onclick="redirectToDonorHome()">Login</button>
+            </form>
+            <p id="errorMessage" class="error-message"></p>
+        </div>
+    </div>
+
     <script>
         function redirectToDonorHome() {
-            window.location.href = "Donor_home.html"; // Replace "donor_dashboard.html" with the actual URL of your donor dashboard page
+            window.location.href = "Donor_home.html"; // Replace "Donor_home.html" with the actual URL of your donor dashboard page
         }
     </script>
-    
+
     <script>
         document.getElementById("loginForm").addEventListener("submit", function(event) {
             event.preventDefault();
             var username = document.getElementById("username").value;
             var password = document.getElementById("password").value;
-    
+
             // Simulate authentication (replace this with actual authentication logic)
             if (username === "donor" && password === "password") {
                 // Redirect to donor dashboard or perform necessary actions
                 alert("Login successful! Redirecting to donor dashboard...");
-                window.location.href = "Donor_home.html"; // Replace "donor_dashboard.html" with actual URL
+                window.location.href = "Donor_home.html"; // Replace "Donor_home.html" with actual URL
             } else {
                 // Show error message
                 document.getElementById("errorMessage").innerText = "Invalid username or password. Please try again.";
@@ -112,85 +162,86 @@
         });
     </script>
 
-<footer class="ftco-footer ftco-section img">
-    <div class="overlay"></div>
-  <div class="container">
-    <div class="row mb-5">
-      <div class="col-md-3">
-        <div class="ftco-footer-widget mb-4">
-          <h2 class="ftco-heading-2">About Us</h2>
-          <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-          <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-            <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-            <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-            <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="ftco-footer-widget mb-4">
-          <h2 class="ftco-heading-2">Recent Blog</h2>
-          <div class="block-21 mb-4 d-flex">
-            <a class="blog-img mr-4" style="background-image: url(images/image_1.jpg);"></a>
-            <div class="text">
-              <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
-              <div class="meta">
-                <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div>
-                <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                <div><a href="#"><span class="icon-chat"></span> 19</a></div>
-              </div>
+    <footer class="ftco-footer ftco-section img">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-md-3">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">About Us</h2>
+                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                        <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                            <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                            <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                            <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">Recent Blog</h2>
+                        <div class="block-21 mb-4 d-flex">
+                            <a class="blog-img mr-4" style="background-image: url(images/image_1.jpg);"></a>
+                            <div class="text">
+                                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
+                                <div class="meta">
+                                    <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div>
+                                    <div><a href="#"><span class="icon-person"></span> Admin</a></div>
+                                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="block-21 mb-4 d-flex">
+                            <a class="blog-img mr-4" style="background-image: url(images/image_2.jpg);"></a>
+                            <div class="text">
+                                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
+                                <div class="meta">
+                                    <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div>
+                                    <div><a href="#"><span class="icon-person"></span> Admin</a></div>
+                                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="ftco-footer-widget mb-4 ml-md-4">
+                        <h2 class="ftco-heading-2">Site Links</h2>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="py-2 d-block">Home</a></li>
+                            <li><a href="#" class="py-2 d-block">About</a></li>
+                            <li><a href="#" class="py-2 d-block">Donate</a></li>
+                            <li><a href="#" class="py-2 d-block">Causes</a></li>
+                            <li><a href="#" class="py-2 d-block">Event</a></li>
+                            <li><a href="#" class="py-2 d-block">Blog</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">Have a Questions?</h2>
+                        <div class="block-23 mb-3">
+                            <ul>
+                                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
+                                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
+                                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="block-21 mb-4 d-flex">
-            <a class="blog-img mr-4" style="background-image: url(images/image_2.jpg);"></a>
-            <div class="text">
-              <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
-              <div class="meta">
-                <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div>
-                <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                <div><a href="#"><span class="icon-chat"></span> 19</a></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-2">
-         <div class="ftco-footer-widget mb-4 ml-md-4">
-          <h2 class="ftco-heading-2">Site Links</h2>
-          <ul class="list-unstyled">
-            <li><a href="#" class="py-2 d-block">Home</a></li>
-            <li><a href="#" class="py-2 d-block">About</a></li>
-            <li><a href="#" class="py-2 d-block">Donate</a></li>
-            <li><a href="#" class="py-2 d-block">Causes</a></li>
-            <li><a href="#" class="py-2 d-block">Event</a></li>
-            <li><a href="#" class="py-2 d-block">Blog</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="ftco-footer-widget mb-4">
-            <h2 class="ftco-heading-2">Have a Questions?</h2>
-            <div class="block-23 mb-3">
-              <ul>
-                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
-                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
-              </ul>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+                        All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
+                </div>
             </div>
         </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12 text-center">
+    </footer>
 
-        <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-      </div>
-    </div>
-  </div>
-</footer>
-    
     </body>
-    </html>
-    
+</html>
